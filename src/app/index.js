@@ -1,13 +1,14 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-require('./scss/styles.scss');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const HeaderStyle = require('./scss/styles.scss');
 
 class ReactHeader extends React.Component{
-  render(){
+  render() {
     return (
       <div>
-        <h1>Hello World!</h1>
+        <header>Hello World!</header>
       </div>);
   }
 }
-ReactDOM.render(<ReactHeader/>, document.querySelector(".center"));
+
+ReactDOM.render(<ReactHeader />, document.getElementById('root'));
