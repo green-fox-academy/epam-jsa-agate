@@ -1,8 +1,9 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const HeaderStyle = require('./scss/styles.scss');
+import {Component} from 'react';
+import ReactDOM from 'react-dom';
 
-class ReactHeader extends React.Component{
+require('./scss/styles.scss');
+
+class ReactHeader extends Component {
   render() {
     return (
       <div>
@@ -11,4 +12,4 @@ class ReactHeader extends React.Component{
   }
 }
 
-ReactDOM.render(<ReactHeader />, document.getElementById('root'));
+ReactDOM.render(<ReactHeader/>, document.getElementById('root'));
