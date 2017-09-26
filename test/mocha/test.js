@@ -1,6 +1,6 @@
-var assert = require('assert');
+const assert = require('assert');
 describe('Mocha Test', function () {
-  it('dummy test', function () {
-    assert.equal(true, true);
+  it('Dummy Backend Test', function () {
+    assert.ok(true);
   });
 });
