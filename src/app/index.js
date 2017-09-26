@@ -6,7 +6,7 @@ class ReactHeader extends React.Component{
   render() {
     return (
       <div>
-        <header>Hello World!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</header>
+        <header>Hello World!</header>
       </div>);
   }
 }
