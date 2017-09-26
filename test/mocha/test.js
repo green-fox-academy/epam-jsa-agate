@@ -1,5 +1,5 @@
 const assert = require('assert');
-describe('Mocha Test', function () {
+describe('Dummy Backend Test', function () {
   it('True is True', function () {
     assert.ok(true);
   });
