@@ -1,9 +1,12 @@
 module.exports = {
   'extends': 'google',
-  'parser': 'babel-eslint',
+  'parserOptions': {
+    'ecmaFeatures': {
+      'jsx': true,
+    },
+  },
   'env': {
-    'browser': true,
-    'node': true,
+    'es6': true,
   },
   'rules': {
     'require-jsdoc': 0,
