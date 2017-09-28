@@ -5,4 +5,5 @@ EPAM-JSA-AGATE --Local Business Finder (Yelp)
 npm run test:backend
 
 # mongodb & express config sample can be found in express.config.sample.json
-fell free customise it to your environment please
+fell free customise it to your environment
+then create one file express.config.json in root
