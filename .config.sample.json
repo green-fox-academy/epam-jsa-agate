@@ -1,8 +1,10 @@
 {
-  "db":{
-    "url":"mongodb://localhost",
-    "prot":"12345",
-    "databaseName": "dataName",
-    "collection": "heartbeat"
+  "express": {
+    "database": {
+      "url": "mongodb://localhost",
+      "port": "12345",
+      "databaseName": "dataName",
+      "collection": "heartbeat"
+    }
   }
 }

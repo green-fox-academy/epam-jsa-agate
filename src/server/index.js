@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const checkDatabaseHealth = require('./heart-beat-db');
+const checkDatabaseHealth = require('./database-check');
 
 app.get('/heartbeat', function(req, res) {
   checkDatabaseHealth(res);
