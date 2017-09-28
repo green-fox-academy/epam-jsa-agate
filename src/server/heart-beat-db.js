@@ -1,5 +1,5 @@
 'use strict';
-const config = require('../../express.config.json');
+const config = require('../../.config.json');
 const MongoClient = require('mongodb').MongoClient;
 const url = `${config.db.url}:${config.db.port}/${config.db.databaseName}`;
 const okStatus =  {status: 'ok',database: 'ok'};
