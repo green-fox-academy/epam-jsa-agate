@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const checkDatabaseHealth = require('./database-check');
+const DatabaseHealth = require('./database-check');
 
 app.get('/heartbeat', function(req, res) {
-  checkDatabaseHealth(res);
+  DatabaseHealth.checkDatabaseHealth(res,DatabaseHealth.databaseResponse);
 });
 
 app.listen(PORT, function() {

@@ -1,5 +1,5 @@
 .idea
-node_modules
-/dist/app
-npm-debug.log
-/.config.json
+node_modules/
+dist/app
+*.log
+.database-config.json

@@ -1,35 +1,44 @@
 'use strict';
 
-const config = require('../../.config.json');
-
+const config = require('../../.database-config.json');
 const MongoClient = require('mongodb').MongoClient;
-const address = config.express.database.url;
-const port = config.express.database.port;
-const databaseName = config.express.database.databaseName;
+
+const address = config.database.url;
+const port = config.database.port;
+const databaseName = config.database.databaseName;
 const okStatus = {status: 'ok', database: 'ok'};
 const errorStatus = {status: 'ok', database: 'error'};
 
-const createDatabaseUrl = function (address, port, databaseName) {
+const createDatabaseUrl = function () {
   return `${address}:${port}/${databaseName}`;
 };
 
-const checkDatabaseHealth = function(res) {
-  let url = createDatabaseUrl(address, port, databaseName);
-  MongoClient.connect(url, function(err, db) {
+function databaseResponse(res, status) {
+  return function () {
+    res.json(status);
+  }();
+}
+
+const checkDatabaseHealth = function (res, callback) {
+  const url = createDatabaseUrl();
+  MongoClient.connect(url, function (err, db) {
     if (err === null) {
       let collection = db.collection('heartbeat');
-      collection.find({}).toArray(function(err, docs) {
+      collection.find({}).toArray(function (err, docs) {
         if (err === null && docs.length > 0) {
-          res.json(okStatus);
+          callback(res, okStatus);
         } else {
-          res.json(errorStatus);
+          callback(res, errorStatus);
         }
       });
     } else {
-      res.json(errorStatus);
+      callback(res, errorStatus);
     }
     db.close();
   });
 };
 
-module.exports = checkDatabaseHealth;
+module.exports = {
+  checkDatabaseHealth: checkDatabaseHealth,
+  databaseResponse: databaseResponse
+};

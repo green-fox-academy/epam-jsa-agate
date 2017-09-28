@@ -5,4 +5,4 @@ EPAM-JSA-AGATE --Local Business Finder (Yelp)
 npm run test:backend
 
 # configuration 
-create .config.json in root and customize it as .config.sample.json
+**mongodb** create `.database-config.json` in root and customize it as .config.sample.json
