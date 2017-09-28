@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test:backend": "mocha test/mocha",
-    "lint": "eslint src",
-    "test": "jest"    
+    "test:frontend": "jest --colors",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
