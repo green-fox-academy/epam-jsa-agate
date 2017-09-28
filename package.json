@@ -4,10 +4,12 @@
   "description": "EPAM-JSA-AGATE --Local Business Finder (Yelp)",
   "main": "index.js",
   "scripts": {
-    "test:backend": "mocha test/mocha",
+    "test:backend": "mocha --colors",
+    "test:frontend": "jest --colors",
     "lint": "eslint src",
-    "start": "node server.js",
-    "server": "node server.js"
+    "build": "webpack -p --colors --config webpack.config.js",
+    "start:backend": "node ./src/server/index.js",
+    "start": "npm-run-all --sequential build start:backend"
   },
   "repository": {
     "type": "git",
@@ -24,10 +26,10 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.7.2",
-    "eslint-config-google": "^0.9.1",
-    "eslint-plugin-react": "^7.4.0",
+    "jest": "^21.2.0",
     "mocha": "^3.5.3",
     "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0",
