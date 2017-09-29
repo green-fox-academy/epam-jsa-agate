@@ -1,5 +1,5 @@
 module.exports = {
-  'extends': 'google',
+  'extends': ['eslint:recommended', 'google'],
   'parserOptions': {
     'ecmaFeatures': {
       'jsx': true,
@@ -35,6 +35,24 @@ module.exports = {
       ],
       'env': {
         'node': true,
+      },
+    },
+    {
+      'files': ['src/client/**/*.test.js'],
+      'env': {
+        'jest': true,
+      },
+    },
+    {
+      'files': ['test/**/*.test.js'],
+      'env': {
+        'mocha': true,
+      },
+    },
+    {
+      'files': ['src/server/**/*.js'],
+      'rules': {
+        'no-console': 0,
       },
     },
   ],
