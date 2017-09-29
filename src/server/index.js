@@ -16,8 +16,6 @@ app.get('/heartbeat', function (req, res) {
 
 app.use(express.static(path.resolve(__dirname, '../../dist')));
 
-
-
 app.listen(PORT, function () {
   console.log(`app is listening on port ${PORT}`);
 });
