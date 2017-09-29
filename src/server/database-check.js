@@ -1,8 +1,14 @@
 'use strict';
 
-const config = process.env.NODE_ENV !== 'production'?
-  require('../../.application-config.json'):{};
 const MongoClient = require('mongodb').MongoClient;
+
+const config = function() {
+  if (process.env.NODE_ENV !== 'production') {
+    return require('../../.application-config.json');
+  } else {
+    return {};
+  }
+}();
 
 const createDatabaseUrl = function() {
   const address = config.database.url || process.env.MONGO_ADDRESS;
