@@ -1,12 +1,13 @@
 'use strict';
 
-const config = require('../../.application-config.json');
+const config = process.env.NODE_ENV !== 'production'?
+  require('../../.application-config.json'):{};
 const MongoClient = require('mongodb').MongoClient;
 
 const createDatabaseUrl = function() {
-  const address = config.database.url;
-  const port = config.database.port;
-  const databaseName = config.database.databaseName;
+  const address = config.database.url || process.env.MONGO_ADDRESS;
+  const port = config.database.port || process.env.MONGO_PORT;
+  const databaseName = config.database.databaseName || process.env.MONGO_DBNAME;
   return `${address}:${port}/${databaseName}`;
 };
 
