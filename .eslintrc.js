@@ -16,4 +16,26 @@ module.exports = {
   'plugins': [
     'react',
   ],
+  'overrides': [
+    {
+      'files': ['src/client/**/*.js'],
+      'parserOptions': {
+        'sourceType': 'module',
+      },
+      'env': {
+        'browser': true,
+      },
+    },
+    {
+      'files': [
+        'webpack.*.js',
+        '.eslintrc.js',
+        'test/**/*.test.js',
+        'src/server/**/*.js',
+      ],
+      'env': {
+        'node': true,
+      },
+    },
+  ],
 };
