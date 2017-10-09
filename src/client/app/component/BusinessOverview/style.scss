@@ -1,6 +1,7 @@
 #business-overview-container {
   // width:60%;
   // border: 1px solid black;
+  font-family: FSElliotPro-Bold;
 
 }
 
@@ -15,8 +16,9 @@
 .image-container {
   width: 212px;
   height: 212px;
-  border: 1px solid black;
+  // border: 1px solid black;
   position: relative;
+  background-image: url("./images/1.png")
 }
 
 .business-rate {
@@ -29,7 +31,8 @@
 .business-name {
   width: 128px;
   height: 27px;
-  border: 1px solid black;
+  font-size: 22px;
+  // border: 1px solid black;
   color: #F8E71C;
   position: absolute;
   top: 108px;
@@ -39,6 +42,7 @@
 .business-title {
   width: 155px;
   height: 17px;
+  font-size: 14px;
   color: #FFFFFF;
   position: absolute;
   top: 226px;
@@ -47,12 +51,27 @@
 
 .business-description {
   width: 194px;
-  height: 60px;
+  height: 30px;
+  font-size: 12px;
   color: #ADAFB2;
+  display: -webkit-box !important;  
+  overflow: hidden;  
+  text-overflow: ellipsis;  
+  word-break: break-all;  
+  -webkit-box-orient: vertical;  
+  -webkit-line-clamp: 2;  
+  overflow : hidden;
   position: absolute;
   left: 7px;
   top: 251.5px;
 }
+
+// #business-description-ellipse:after {
+//   display: inline;
+//   content: "...";
+//   font-size: 16px;
+
+// }
 
 .business-infor {
   position: absolute;
@@ -62,6 +81,7 @@
 .business-keywords {
   width: 117px;
   height: 14px;
+  font-size: 12px;
   color: #ADAFB2;
   position: absolute;
   left: 8px;
@@ -71,6 +91,7 @@
 .business-more {
   width: 35px;
   height: 14px;
+  font-size: 12px;
   color: #F8E71C;
   position: absolute;
   left: 160px;
