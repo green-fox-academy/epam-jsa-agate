@@ -19,12 +19,10 @@ const checkDatabaseHealth = function(callback) {
         if (err === null && docs.length > 0) {
           callback(true);
         } else {
-          console.log('Connected now.');
           callback(false);
         }
       });
     } else {
-      console.log('Not connected.');
       callback(false);
     }
     db.close();
