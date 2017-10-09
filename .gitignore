@@ -3,4 +3,3 @@ node_modules/
 dist/app
 .env
 *.log
-.application-config.json
