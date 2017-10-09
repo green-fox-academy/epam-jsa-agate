@@ -1,39 +1,44 @@
-#business-overview-container {
-  // width:60%;
-  // border: 1px solid black;
-  font-family: FSElliotPro-Bold;
+$font-family: FSElliotPro-Bold;
+$border: 1px solid black;
+$red: #D93738;
+$yellow: #F8E71C;
+$white: #FFFFFF;
 
+#business-overview-container {
+  font-family: $font-family;
+  width: 759px;
+  background-color: #4B4B4B;
 }
 
 .single-business {
   width: 212px;
   height: 355px;
-  border: 1px solid black;
+  border: $border;
   background-color: #282828;
   position: relative;
+  display: inline-block;
+  margin-left: 29px;
+  margin-top: 27px;
 }
 
 .image-container {
   width: 212px;
   height: 212px;
-  // border: 1px solid black;
   position: relative;
-  // background-image: url("./images/1.png")
 }
 
-.business-rate {
+.business-score {
   position: absolute;
   top: 10px;
   left: 10px;
-  color: #D93738;
+  color: $red;
 }
 
 .business-name {
   width: 128px;
   height: 27px;
   font-size: 22px;
-  // border: 1px solid black;
-  color: #F8E71C;
+  color: $yellow;
   position: absolute;
   top: 108px;
   left: 40px;
@@ -43,7 +48,7 @@
   width: 155px;
   height: 17px;
   font-size: 14px;
-  color: #FFFFFF;
+  color: $white;
   position: absolute;
   top: 226px;
   left: 7px;
@@ -54,24 +59,17 @@
   height: 30px;
   font-size: 12px;
   color: #ADAFB2;
-  display: -webkit-box !important;  
-  overflow: hidden;  
-  text-overflow: ellipsis;  
-  word-break: break-all;  
-  -webkit-box-orient: vertical;  
-  -webkit-line-clamp: 2;  
-  overflow : hidden;
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
   position: absolute;
   left: 7px;
   top: 251.5px;
 }
-
-// #business-description-ellipse:after {
-//   display: inline;
-//   content: "...";
-//   font-size: 16px;
-
-// }
 
 .business-infor {
   position: absolute;
@@ -92,7 +90,8 @@
   width: 35px;
   height: 14px;
   font-size: 12px;
-  color: #F8E71C;
+  color: $yellow;
+  text-decoration: none;
   position: absolute;
   left: 160px;
   top: 310px;
