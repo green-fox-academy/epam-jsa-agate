@@ -1,10 +1,78 @@
 #business-overview-container {
-  width:60%;
-  border: 1px solid black;
+  // width:60%;
+  // border: 1px solid black;
 
 }
 
-#single-business {
-  width: 30%;
+.single-business {
+  width: 212px;
+  height: 355px;
   border: 1px solid black;
+  background-color: #282828;
+  position: relative;
+}
+
+.image-container {
+  width: 212px;
+  height: 212px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.business-rate {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #D93738;
+}
+
+.business-name {
+  width: 128px;
+  height: 27px;
+  border: 1px solid black;
+  color: #F8E71C;
+  position: absolute;
+  top: 108px;
+  left: 40px;
+}
+
+.business-title {
+  width: 155px;
+  height: 17px;
+  color: #FFFFFF;
+  position: absolute;
+  top: 226px;
+  left: 7px;
+}
+
+.business-description {
+  width: 194px;
+  height: 60px;
+  color: #ADAFB2;
+  position: absolute;
+  left: 7px;
+  top: 251.5px;
+}
+
+.business-infor {
+  position: absolute;
+  top: 20px;
+}
+
+.business-keywords {
+  width: 117px;
+  height: 14px;
+  color: #ADAFB2;
+  position: absolute;
+  left: 8px;
+  top: 310px;
+}
+
+.business-more {
+  width: 35px;
+  height: 14px;
+  color: #F8E71C;
+  position: absolute;
+  left: 160px;
+  top: 310px;
 }
