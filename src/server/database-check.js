@@ -3,6 +3,8 @@
 const MongoClient = require('mongodb').MongoClient;
 
 const config = function() {
+  console.log(process.env);
+  console.log(process.env.NODE_ENV);
   if (process.env.NODE_ENV !== 'production') {
     return require('../../.application-config.json');
   } else {
