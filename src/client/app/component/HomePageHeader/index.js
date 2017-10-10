@@ -5,13 +5,11 @@ class HomePageHeader extends React.Component {
   render() {
     return (
       <div className = "HomePageHeader">
-        <div className="align_text_left"></div>
-        <form>
-          <div>
-            <label for="mySearch"></label>
-            <input className="search" type="search" id="mySearch" name="q"
-              placeholder="Search"/>
-          </div>
+        <button className="align_text_left"></button>
+        <form className="header">
+          <label for="mySearch"></label>
+          <input className="search" type="search" id="mySearch" name="q"
+            placeholder="Search"/>
         </form>
       </div>
     );
