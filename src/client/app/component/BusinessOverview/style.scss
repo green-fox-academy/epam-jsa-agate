@@ -1,0 +1,98 @@
+$font-family: FSElliotPro-Bold;
+$border: 1px solid black;
+$red: #D93738;
+$yellow: #F8E71C;
+$white: #FFFFFF;
+
+#business-overview-container {
+  font-family: $font-family;
+  width: 759px;
+  background-color: #4B4B4B;
+}
+
+.single-business {
+  width: 212px;
+  height: 355px;
+  border: $border;
+  background-color: #282828;
+  position: relative;
+  display: inline-block;
+  margin-left: 29px;
+  margin-top: 27px;
+}
+
+.image-container {
+  width: 212px;
+  height: 212px;
+  position: relative;
+}
+
+.business-score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: $red;
+}
+
+.business-name {
+  width: 128px;
+  height: 27px;
+  font-size: 22px;
+  color: $yellow;
+  position: absolute;
+  top: 108px;
+  left: 40px;
+}
+
+.business-title {
+  width: 155px;
+  height: 17px;
+  font-size: 14px;
+  color: $white;
+  position: absolute;
+  top: 226px;
+  left: 7px;
+}
+
+.business-description {
+  width: 194px;
+  height: 30px;
+  font-size: 12px;
+  color: #ADAFB2;
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  position: absolute;
+  left: 7px;
+  top: 251.5px;
+}
+
+.business-infor {
+  position: absolute;
+  top: 20px;
+}
+
+.business-keywords {
+  width: 117px;
+  height: 14px;
+  font-size: 12px;
+  color: #ADAFB2;
+  position: absolute;
+  left: 8px;
+  top: 310px;
+}
+
+.business-more {
+  width: 35px;
+  height: 14px;
+  font-size: 12px;
+  color: $yellow;
+  text-decoration: none;
+  position: absolute;
+  left: 160px;
+  top: 310px;
+}
