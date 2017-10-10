@@ -1,0 +1,26 @@
+$mapWidth: 636px;
+$containerWidth: calc(100% - #{$mapWidth});
+$testHeight: 1035px;
+
+.HomePage {
+  width: 100%;
+}
+
+.Main{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  height: $testHeight;
+}
+
+.HomePageContainer{
+  order: 0;
+  flex-basis: $containerWidth;
+}
+
+.HomePageMap{
+  order: 1;
+  flex-basis: $mapWidth;
+  width: $mapWidth;
+  height: $testHeight;
+}

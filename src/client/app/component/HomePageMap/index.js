@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.scss';
 
-class ReactHeader extends React.Component {
+class HomePageMap extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,7 +15,7 @@ class ReactHeader extends React.Component {
     let mapProp = {
       center: center,
       zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
     let map = new google.maps.Map(
       document.getElementsByClassName('MapContainer')[0], mapProp);
@@ -33,7 +33,6 @@ class ReactHeader extends React.Component {
     //   position: {lat: 22.528640199999998, lng: 113.94},
     //   map: map,
     // });
-
   }
   render() {
     return <div className="MapContainer" ></div>;
@@ -47,4 +46,4 @@ function loadJS(src) {
   ref.parentNode.insertBefore(script, ref);
 }
 
-export default ReactHeader;
+export default HomePageMap;

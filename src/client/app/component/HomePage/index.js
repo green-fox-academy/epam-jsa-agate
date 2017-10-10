@@ -1,18 +1,23 @@
-import {Component} from 'react';
-import from '../HomePageHeader';
-import from '../HomePageContainer';
-import from '../HomePageMap';
+import React from 'react';
+import HomePageHeader from '../HomePageHeader';
+import HomePageContainer from '../HomePageContainer';
+import HomePageMap from '../HomePageMap';
+
 import './style.scss';
 
-class HomePage extends Component {
-  render(){
+class HomePage extends React.Component {
+  render() {
     return (
-      <div className = "homePage">
+      <div className = "HomePage">
         <HomePageHeader/>
-        <HomePageContainer/>
-        <HOmePageMap/>
+        <div className = "Main">
+          <HomePageContainer/>
+          <HomePageMap/>
+        </div>
       </div>
-    )
+    );
   }
 }
+
+export default HomePage;
 
