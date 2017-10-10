@@ -5,7 +5,7 @@ class HomePageHeader extends React.Component {
   render() {
     return (
       <div className = "HomePageHeader">
-        <button className="menu"></button>
+        <div className="menu"></div>
         <form className="header">
           <label htmlFor="mySearch"></label>
           <input className="search" type="search" id="mySearch" name="q"

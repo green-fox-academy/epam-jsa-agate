@@ -4,7 +4,8 @@
   height: 77px;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .search{
@@ -20,6 +21,8 @@
 
 .menu{
   border: none;
-  background-size: 60% 60%;
-  background: url('./align_text_left.png') no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 100% 100%;
+  background: url('./align_text_left.png') no-repeat center;
 }
