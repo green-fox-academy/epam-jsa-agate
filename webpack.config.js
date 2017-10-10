@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  devtool: 'inline-source-map',  
+  devtool: 'inline-source-map',
   entry: './src/client/index.js',
   output: {
     path: path.resolve(__dirname, 'dist/app'),
@@ -35,7 +35,14 @@ module.exports = {
           },
         ],
       }),
-    }],
+    },
+    {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [
+        'file-loader'
+      ]
+    }
+  ],
   },
   plugins: [
     new CleanWebpackPlugin([path.resolve(__dirname, './dist/app')]),
