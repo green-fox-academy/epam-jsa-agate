@@ -1,0 +1,40 @@
+$font-family: FSElliotPro-Bold;
+$border: 1px solid black;
+$red: #D93738;
+$yellow: #F8E71C;
+$white: #FFFFFF;
+
+#nav-container {
+  background-color: #4B4B4B;  
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3em;
+}
+
+.nav-link {
+  color: #FFFFFF;
+  border-bottom: 1px solid black;
+  width: 8.9375em;
+  height: 0.875em;
+  font-size: 0.75em;
+  padding: 1.6em 0em;
+  text-decoration: none;
+  text-align: center;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+}
+.nav-link:active {
+  border-bottom-color: yellow;
+}
+
+.nav-link-start {
+  border-bottom-color: #4B4B4B;
+}
+
+.nav-link-end {
+  border-bottom-color: yellow;
+}
