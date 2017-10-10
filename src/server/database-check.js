@@ -5,7 +5,6 @@ const dbUtility = require('./db-utility');
 
 const checkDatabaseHealth = function(callback) {
   const url = dbUtility.createDatabaseUrl();
-  console.log('url',url);
   MongoClient.connect(url, function(err, db) {
     if (err === null) {
       let collection = db.collection('heartbeat');
