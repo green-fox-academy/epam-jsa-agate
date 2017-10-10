@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.scss';
+import SingleBusinessOverview from'../SingleBusinessOverview';
 
 class BusinessOverview extends React.Component {
 
@@ -74,21 +75,9 @@ class BusinessOverview extends React.Component {
 
      imagesDetails.map(
       function(item, index) {
+        item.businessTitle = index+1 + ". " + item.businessTitle;
         allBusiness.push(
-          <div className="single-business">
-          <div className="image-container" style={item.businessImageUrl} >
-            <span className="business-score">{item.businessScore}</span>
-            <span className="business-name">{item.businessName}</span>
-          </div>
-  
-          <p className="business-title"><span>{index+1}. </span>{item.businessTitle}</p>
-          <p className="business-description">{item.businessDescription}</p>
-  
-          <div className="business-infor">
-            <span className="business-keywords">{item.businessKeywords}</span>
-            <a className="business-more" href={item.businessMore}>More</a>
-          </div>
-        </div>
+         <SingleBusinessOverview itemInfo={item} />        
         );
       },this);
 
