@@ -35,7 +35,14 @@ module.exports = {
           },
         ],
       }),
-    }],
+    },
+    {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [
+        'file-loader',
+      ],
+    },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin([path.resolve(__dirname, './dist/app')]),
