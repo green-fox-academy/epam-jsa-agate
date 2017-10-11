@@ -20,7 +20,7 @@ class SingleBusinessOverview extends React.Component {
           <span className="business-keywords">
             {this.props.itemInfo.businessKeywords}</span>
           <a className="business-more" href={this.props.itemInfo.businessMore}>
-            More</a>
+            MORE</a>
         </div>
       </div>
     );
