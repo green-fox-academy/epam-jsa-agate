@@ -71,15 +71,10 @@ class BusinessOverview extends React.Component {
       },
     ];
 
-    var allBusiness = [];
-
-     imagesDetails.map(
-      function(item, index) {
+    var allBusiness = imagesDetails.map((item, index) => {
         item.businessTitle = index+1 + ". " + item.businessTitle;
-        allBusiness.push(
-         <SingleBusinessOverview itemInfo={item} />        
-        );
-      },this);
+        return <SingleBusinessOverview itemInfo={item} />        
+      });
 
   return (
     <div id="business-overview-container">
