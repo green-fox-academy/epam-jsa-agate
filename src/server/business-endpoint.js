@@ -8,7 +8,7 @@ const fetchBusinesses = function(callback) {
     if (err === null) {
       let collection = db.collection(collectionName);
       collection.find({}).toArray(function(err, docs) {
-        if (err === null && docs.length > 0) {
+        if (err === null) {
           callback(true, docs);
         } else {
           callback(false);
