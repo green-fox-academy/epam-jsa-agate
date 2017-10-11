@@ -15,10 +15,7 @@ app.get('/heartbeat', function(req, res) {
       res.json(errorStatus);
   });
 });
-app.get('/login', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
-});
-app.get('/register', (req, res) => {
+app.get(['/', '/login', '/register'], (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
 });
 
