@@ -4,9 +4,9 @@ import './style.scss';
 class CommonHeader extends React.Component {
   render() {
     return (
-      <div className="CommonHeader">
-        <div className="Menu"></div>
-        <div className="Avatar"></div>
+      <div className="common-header">
+        <div className="menu"></div>
+        <div className="avatar"></div>
       </div>
     );
   }

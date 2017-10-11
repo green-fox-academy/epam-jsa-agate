@@ -6,9 +6,9 @@ import './style.scss';
 class LoginPage extends React.Component {
   render() {
     return (
-      <div className="LoginPage">
+      <div className="login-page">
         <Header />
-        <div className="LoginPageContent">
+        <div className="login-page-content">
           <LoginForm />
         </div>
       </div>
