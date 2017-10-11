@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="LoginBox">
-        <p className="LoginBoxTitle">Log in</p>
+        <h1 className="LoginBoxTitle">Log in</h1>
         <form className="LoginForm" >
           <input type="email" name="email" required placeholder="E-mail" />
           <input type="password" name="password" required

@@ -7,7 +7,8 @@ class CommonHeader extends React.Component {
       <div className="CommonHeader">
         <div className="Menu"></div>
         <div className="Avatar"></div>
-      </div>);
+      </div>
+    );
   }
 }
 

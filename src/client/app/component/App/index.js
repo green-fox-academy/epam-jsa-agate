@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ReactHeader from '../ReactHeader';
 import LoginPage from '../LoginPage';
+import './style.scss';
 
 class App extends React.Component {
   render() {

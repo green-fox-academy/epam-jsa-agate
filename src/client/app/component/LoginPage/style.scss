@@ -1,10 +1,7 @@
 .LoginPage {
   height: 100vh;
   .LoginPageContent{
-    height: 86.7%;
+    height: calc(100vh - 4.8125em);
     background-color: #4b4b4b;
   }
-}
-body {
-  margin: 0;
 }
