@@ -11,7 +11,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const okStatus = {status: 'ok', database: 'ok'};
 const errorStatus = {status: 'ok', database: 'error'};
-
 const apiErrorMessage = {error: 'something went wrong'};
 
 app.get('/feed', function(req, res) {
@@ -39,6 +38,10 @@ app.get('/api/businesses', function(req, res) {
 });
 
 app.use(express.static(path.resolve(__dirname, '../../dist')));
+
+app.get('/login', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
+});
 
 app.listen(PORT, function() {
   console.log(`app is listening on port ${PORT}`);
