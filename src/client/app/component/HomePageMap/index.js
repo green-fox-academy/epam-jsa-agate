@@ -1,5 +1,5 @@
+/* global google*/
 import React from 'react';
-
 import './style.scss';
 
 class HomePageMap extends React.Component {
@@ -9,7 +9,7 @@ class HomePageMap extends React.Component {
       businesses: [{lat: 22.528640199999998, lng: 113.94},
         {lat: 22.53, lng: 113.93874219999998},
         {lat: 22.56, lng: 113.95555555555},
-        {lat: 22.55, lng: 114.000001}]
+        {lat: 22.55, lng: 114.000001}],
     };
   }
   componentDidMount() {
