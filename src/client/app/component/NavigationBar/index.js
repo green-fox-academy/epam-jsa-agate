@@ -15,7 +15,11 @@ class NavigationBar extends React.Component {
 
   render() {
     return (
-      <nav id="nav-container">
+      <div>
+        <div className="nav-title">
+          <h1>Browsing Osaka</h1>
+        </div>
+        <nav id="nav-container">
         <a href="#" id="1-link"
           className=
             {this.state.addClass !== '1-link'?
@@ -43,6 +47,10 @@ class NavigationBar extends React.Component {
           onClick={this.handleClickLink.bind(this)}>
       WRITE A REVIEW  <img id="comment-img" src="./images/edit.png"/></a>
       </nav>
+
+
+      </div>
+      
     );
   }
 }

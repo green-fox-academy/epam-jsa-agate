@@ -3,8 +3,16 @@ $border: 1px solid black;
 $red: #D93738;
 $yellow: #F8E71C;
 $white: #FFFFFF;
-
-#business-overview-container {
+.business-overview-title{
+  font-family: FSElliotPro-Bold;
+  font-size: 1.2em;
+  width: 47.4375em;
+  background-color: #4B4B4B;
+  color: #FFFFFF;
+  margin: 0 0 0 1.5em;
+  padding: 1em 0 0 0;
+}
+ #business-overview-container {
   font-family: $font-family;
   width: 47.4375em;
   background-color: #4B4B4B;
