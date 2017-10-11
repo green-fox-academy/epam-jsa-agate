@@ -1,0 +1,45 @@
+$font-family: FSElliotPro-Bold;
+$border: 1px solid black;
+$red: #D93738;
+$yellow: #F8E71C;
+$white: #FFFFFF;
+
+#nav-container {
+  background-color: #4B4B4B;  
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3em;
+  position: relative;
+}
+
+.nav-link-origin {
+  color: #FFFFFF;
+  width: 9.9375em;
+  height: 0.875em;
+  font-size: 0.85em;
+  padding: 1.4em 0em;
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.nav-link-change {
+  color: #FFFFFF;
+  width: 9.9375em;
+  height: 0.875em;
+  font-size: 0.85em;
+  padding: 1.4em 0em;
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid yellow;
+}
+
+#comment-img {
+  width: 1em;
+  height: 1em;
+  margin-top: -2px;
+  position: absolute;
+  top: 1.5em;
+}
