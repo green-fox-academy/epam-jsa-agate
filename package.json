@@ -54,8 +54,11 @@
   },
   "homepage": "https://github.com/greenfox-academy/epam-jsa-agate#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.5",
+    "express-jwt": "^5.3.0",
+    "jsonwebtoken": "^8.1.0",
     "mongodb": "^2.2.31",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
