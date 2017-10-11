@@ -5,12 +5,14 @@ import './style.scss';
 
 class LoginPage extends React.Component {
   render() {
-    return (<div className="LoginPage">
-      <Header />
-      <div className="LoginPageContent">
-        <LoginForm />
+    return (
+      <div className="LoginPage">
+        <Header />
+        <div className="LoginPageContent">
+          <LoginForm />
+        </div>
       </div>
-    </div>);
+    );
   }
 }
 

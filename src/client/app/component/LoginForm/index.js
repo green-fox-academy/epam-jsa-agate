@@ -8,12 +8,12 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="LoginBox">
-        <p className="LoginBoxTittle">Log in</p>
+        <p className="LoginBoxTitle">Log in</p>
         <form className="LoginForm" >
           <input type="email" name="email" required placeholder="E-mail" />
           <input type="password" name="password" required
             placeholder="Password"/>
-          <input type="submit" value='login'/>
+          <input type="submit" value="login"/>
         </form>
         <button>Register</button>
       </div>);
