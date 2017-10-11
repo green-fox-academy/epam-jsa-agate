@@ -24,7 +24,7 @@ class HomePageMap extends React.Component {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
     let map = new google.maps.Map(
-      document.getElementsByClassName('HomePageMap')[0], mapProp);
+      document.getElementsByClassName('home-page-map')[0], mapProp);
     this.state.businesses.forEach(function(value) {
       let marker = new google.maps.Marker({
         position: value,
@@ -33,7 +33,7 @@ class HomePageMap extends React.Component {
     });
   }
   render() {
-    return <div className="HomePageMap" ></div>;
+    return <div className="home-page-map" ></div>;
   }
 }
 
