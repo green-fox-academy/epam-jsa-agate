@@ -15,7 +15,7 @@ $white: #FFFFFF;
 }
 
 .nav-link-origin {
-  color: #FFFFFF;
+  color: #ADAFB2 ;
   width: 9.9375em;
   height: 0.875em;
   font-size: 0.85em;
@@ -42,4 +42,9 @@ $white: #FFFFFF;
   margin-top: -2px;
   position: absolute;
   top: 1.5em;
+}
+
+#nav-container a:first-child {
+  color: #FFFFFF;
+  
 }

@@ -3,13 +3,9 @@ import './style.scss';
 import SingleBusinessOverview from'../SingleBusinessOverview';
 import {imagesDetails} from'./imagesDetails';
 
-console.log("11" + imagesDetails)
 class BusinessOverview extends React.Component {
 
-  render() {
-    console.log(imagesDetails);
-    
-    
+  render() {    
     var allBusiness = imagesDetails.map((item, index) => {
         item.businessTitle = index+1 + ". " + item.businessTitle;
         return <SingleBusinessOverview itemInfo={item} />        

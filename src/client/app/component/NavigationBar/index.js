@@ -5,12 +5,12 @@ class NavigationBar extends React.Component {
   constructor(){
     super();
     this.state = {
-      addClass: -1
+      addClass: "1-link"
     }
   }
 
   handleClickLink(event){
-    this.setState({addClass:event.target.id})
+    this.setState({addClass:"1-link"})
   }
  
   render() {
