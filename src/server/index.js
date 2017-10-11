@@ -1,5 +1,6 @@
 const express = require('express');
 const DatabaseHealth = require('./database-check');
+const DatabasePostRegister = require('./database-post-register');
 const path = require('path');
 
 let bodyParser = require('body-parser');
@@ -16,11 +17,13 @@ app.use(expressJWT({secret: 'nyancat 4 ever'}).
 const PORT = 3000;
 const okStatus = {status: 'ok', database: 'ok'};
 const errorStatus = {status: 'ok', database: 'error'};
-const contentTypeError = {status: "400", description:
+const contentTypeError = {status: '400', description:
  'request\'s content-type header is not set to application/json'};
-const userNameMissing = {status: "400", description: 'username required'};
-const passWordMissing = {status: "400", description: 'password required'};
-
+const userNameMissing = {status: '400', description: 'username required'};
+const passWordMissing = {status: '400', description: 'password required'};
+const conflictUserName = {status: '409', description: 'conflict user name'};
+const otherError = {status: '500', description: 'something else went wrong'};
+const registerSuccess = {status: '201'};
 app.get('/heartbeat', function(req, res) {
   DatabaseHealth.checkDatabaseHealth((isWorking) => {
     isWorking ? res.json(okStatus) :
@@ -43,9 +46,19 @@ app.post('/api/register', function(req, res) {
     return;
   }
 
-  DatabaseHealth.checkDatabaseHealth((isWorking) => {
-    isWorking ? res.json(okStatus) :
-      res.json(errorStatus);
+  DatabasePostRegister.postRegister(req.body,(dbResponseStatus) => {
+    if (dbResponseStatus === '409') {
+      res.json(conflictUserName);
+      return;
+    }
+    if (dbResponseStatus === '500') {
+      res.json(otherError);
+      return;
+    }
+    if (dbResponseStatus === '201') {
+      res.json(registerSuccess);
+      return;
+    }
   });
 });
 
