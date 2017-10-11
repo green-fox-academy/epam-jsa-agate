@@ -28,7 +28,7 @@ app.get('/heartbeat', function(req, res) {
 app.get('/api/businesses', function(req, res) {
   BusinessessEndpoint.fetchBusinesses((isWorking, docs) => {
     if (isWorking) {
-      let data = docs[0] ? docs[0].businesses : {};
+      let data = docs[0] ? docs[0].businesses : [];
       let businesses = {businesses: data};
       res.status(200).json(businesses);
     } else {
