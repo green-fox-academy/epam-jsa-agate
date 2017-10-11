@@ -1,7 +1,7 @@
 $mapWidth: 45%;
 $containerWidth: 55%;
 $testHeight: 64.6875em;
-body{
+body {
   margin: 0;
 }
 
@@ -10,14 +10,14 @@ body{
   height: 100%;
 }
 
-.main{
+.main {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   height: calc(100vh - 4.812em);  
 }
 
-.home-page-container{
+.home-page-container {
   order: 0;
   flex-basis: $containerWidth;
   background-color: #4B4B4B;
@@ -25,7 +25,7 @@ body{
   
 }
 
-.home-page-map{
+.home-page-map {
   order: 1;
   flex-basis: $mapWidth;
   width: $mapWidth;
