@@ -1,25 +1,18 @@
 $mapWidth: 45%;
 $containerWidth: 55%;
 $testHeight: 64.6875em;
-<<<<<<< HEAD
 body{
   margin: 0;
 }
-.HomePage {
-=======
 
 .home-page {
->>>>>>> 1bac4479d749b4e7144b5fa108b923f4fd5d6957
   width: 100%;
-  height: 100vh;
-  
 }
 
 .main{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  // height: $testHeight;
 }
 
 .home-page-container{
@@ -33,5 +26,5 @@ body{
   order: 1;
   flex-basis: $mapWidth;
   width: $mapWidth;
-  // height: $testHeight;
+  height: 55.6875em;  
 }
