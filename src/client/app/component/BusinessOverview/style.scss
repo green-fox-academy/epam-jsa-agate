@@ -16,7 +16,8 @@ $white: #FFFFFF;
   font-family: $font-family;
   width: 47.4375em;
   background-color: #4B4B4B;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .single-business {

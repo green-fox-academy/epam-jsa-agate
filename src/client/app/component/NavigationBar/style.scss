@@ -17,18 +17,19 @@ $white: #FFFFFF;
   background-color: #4B4B4B;  
   border-bottom: 1px solid #ADAFB2 ;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   height: 3em;
   position: relative;
+  margin-left: 2em;
 }
 
 .nav-link-origin {
   color: #ADAFB2 ;
-  width: 5.9375em;
+  // width: 5.9375em;
   height: 0.875em;
   font-size: 0.85em;
-  padding: 1.3em 0em;
+  padding: 1.32em 0em;
   text-decoration: none;
   text-align: center;
   //border-bottom: 1px solid #ADAFB2 ;
@@ -38,14 +39,14 @@ $white: #FFFFFF;
 
 .nav-link-change {
   color: #FFFFFF;
-  width: 5.9375em;
+  // width: 5.9375em;
   height: 0.875em;
   font-size: 0.85em;
-  padding: 1.3em 0em;
+  padding: 1.32em 0em;
   text-decoration: none;
   text-align: center;
-  //border-bottom: 1px solid yellow;
-  border: 1px solid yellow;
+  border-bottom: 1px solid yellow;
+  // border: 1px solid yellow;
   
 }
 
@@ -59,5 +60,28 @@ $white: #FFFFFF;
 
 #nav-container a:first-child {
   color: #FFFFFF;
+  width: 5.9375em;
+}
+
+#nav-container a:nth-child(2) {
+  width: 7.9375em;
+  
+  
+}
+
+#nav-container a:nth-child(3) {
+  width: 5.9375em;
+  
+  
+}
+
+
+#nav-container a:nth-child(4) {
+  width: 7.9375em;
+  
+}
+
+#nav-container a:nth-child(5) {
+  width: 9.9375em;
   
 }
