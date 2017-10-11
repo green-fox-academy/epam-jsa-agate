@@ -1,10 +1,10 @@
 'use strict';
 const MongoClient = require('mongodb').MongoClient;
 
-const createDatabaseUrl = function(addressEnv, portEnv, dataEnv) {
-  const address = process.env.DB_URL || process.env.addressEnv;
-  const port = process.env.DB_PORT || process.env.portEnv;
-  const databaseName = process.env.DB_NAME || process.env.dataEnv;
+const createDatabaseUrl = function() {
+  const address = process.env.DB_URL;
+  const port = process.env.DB_PORT;
+  const databaseName = process.env.DB_NAME;
   return `${address}:${port}/${databaseName}`;
 };
 
@@ -18,7 +18,6 @@ const insertFileToDatabase = function(requiredJsonfile,collectionName) {
           db.close();
         } else {
           collection.insert(requiredJsonfile, function(err, r) {
-            console.log('err', err, 'result', r);
             if (err === null) {
               db.close();
             }

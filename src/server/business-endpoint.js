@@ -1,11 +1,8 @@
 const dbUtility = require('./db-utility');
-const businessesJson = require('./businesses.json');
 const MongoClient = require('mongodb').MongoClient;
 const collectionName = 'businesses';
 
-dbUtility.insertFileToDatabase(businessesJson, collectionName);
-
-const apiBusinessesGET = function(callback) {
+const fetchBusinesses = function(callback) {
   const url = dbUtility.createDatabaseUrl();
   MongoClient.connect(url, function(err, db) {
     if (err === null) {
@@ -26,5 +23,5 @@ const apiBusinessesGET = function(callback) {
 };
 
 module.exports = {
-  apiBusinessesGET: apiBusinessesGET,
+  fetchBusinesses: fetchBusinesses,
 };
