@@ -11,11 +11,11 @@ class BusinessOverview extends React.Component {
         return <SingleBusinessOverview itemInfo={item} />        
       });
 
-  return (
-    <div id="business-overview-container">
-      {allBusiness}
-    </div>
-  );
+    return (
+      <div id="business-overview-container">
+        {allBusiness}
+      </div>
+    );
   }
 }
 
