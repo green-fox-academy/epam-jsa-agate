@@ -6,7 +6,7 @@ import './style.scss';
 class HomePageContainer extends React.Component {
   render() {
     return (
-      <div className = "HomePageContainer">
+      <div className = "home-page-container">
         <NavigationBar />
         <BusinessOverview />
       </div>

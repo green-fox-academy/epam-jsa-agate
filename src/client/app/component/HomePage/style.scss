@@ -2,25 +2,25 @@ $mapWidth: 45%;
 $containerWidth: 55%;
 $testHeight: 64.6875em;
 
-.HomePage {
+.home-page {
   width: 100%;
 }
 
-.Main{
+.main{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   height: $testHeight;
 }
 
-.HomePageContainer{
+.home-page-container{
   order: 0;
   flex-basis: $containerWidth;
   background-color: #4B4B4B;
   
 }
 
-.HomePageMap{
+.home-page-map{
   order: 1;
   flex-basis: $mapWidth;
   width: $mapWidth;

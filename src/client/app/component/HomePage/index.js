@@ -8,9 +8,9 @@ import './style.scss';
 class HomePage extends React.Component {
   render() {
     return (
-      <div className = "HomePage">
+      <div className = "home-page">
         <HomePageHeader/>
-        <div className = "Main">
+        <div className = "main">
           <HomePageContainer/>
           <HomePageMap/>
         </div>
