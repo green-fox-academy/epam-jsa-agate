@@ -7,18 +7,21 @@ body{
 
 .home-page {
   width: 100%;
+  height: 100%;
 }
 
 .main{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  height: calc(100vh - 4.812em);  
 }
 
 .home-page-container{
   order: 0;
   flex-basis: $containerWidth;
   background-color: #4B4B4B;
+  height: 100%;
   
 }
 
@@ -26,5 +29,5 @@ body{
   order: 1;
   flex-basis: $mapWidth;
   width: $mapWidth;
-  height: 55.6875em;  
+  height: 100%;  
 }
