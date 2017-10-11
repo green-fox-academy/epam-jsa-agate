@@ -46,7 +46,7 @@ app.post('/api/register', function(req, res) {
     return;
   }
 
-  DatabasePostRegister.postRegister(req.body,(dbResponseStatus) => {
+  DatabasePostRegister.postRegister(req.body, (dbResponseStatus) => {
     if (dbResponseStatus === '409') {
       res.json(conflictUserName);
       return;
