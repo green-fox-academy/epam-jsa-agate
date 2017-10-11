@@ -18,6 +18,9 @@ app.get('/heartbeat', function(req, res) {
 app.get('/login', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
 });
+app.get('/register', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
+});
 
 app.listen(PORT, function() {
   console.log(`app is listening on port ${PORT}`);
