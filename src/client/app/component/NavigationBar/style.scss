@@ -11,30 +11,35 @@ $white: #FFFFFF;
   justify-content: space-around;
   align-items: center;
   height: 3em;
+  position: relative;
 }
 
-.nav-link {
+.nav-link-origin {
   color: #FFFFFF;
-  border-bottom: 1px solid black;
-  width: 8.9375em;
+  width: 9.9375em;
   height: 0.875em;
-  font-size: 0.75em;
-  padding: 1.6em 0em;
+  font-size: 0.85em;
+  padding: 1.4em 0em;
   text-decoration: none;
   text-align: center;
+  border-bottom: 1px solid black;
 }
 
-.nav-link:hover {
-  cursor: pointer;
-}
-.nav-link:active {
-  border-bottom-color: yellow;
+.nav-link-change {
+  color: #FFFFFF;
+  width: 9.9375em;
+  height: 0.875em;
+  font-size: 0.85em;
+  padding: 1.4em 0em;
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid yellow;
 }
 
-.nav-link-start {
-  border-bottom-color: #4B4B4B;
-}
-
-.nav-link-end {
-  border-bottom-color: yellow;
+#comment-img {
+  width: 1em;
+  height: 1em;
+  margin-top: -2px;
+  position: absolute;
+  top: 1.5em;
 }
