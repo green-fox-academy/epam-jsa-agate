@@ -50,7 +50,6 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
-  console.log(req.body);
   login.validation(req, (status) => {
     if (status === 0) {
       return res.status(400).
@@ -65,9 +64,11 @@ app.post('/api/login', (req, res) => {
         let Token = jwt.sign({username: req.body.username}, 'epam jsa agate');
         return res.status(200).json(Token);
       } else if (status === 3) {
-        return res.status(403).json({error: 'bad credentials'});
+        return res.status(403).json({error: 'Bad credentials'});
       } else if (status === 4) {
-        return res.status(500).send('something went wrong');
+        return res.status(500).json({error: 'Something went wrong'});
+      } else if (status === 5) {
+        return res.status(404).json({error: 'User not found'});
       }
     }
   );
