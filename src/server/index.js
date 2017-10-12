@@ -6,11 +6,9 @@ const path = require('path');
 const dbUtility = require('./db-utility');
 const businessesJson = require('./businesses.json');
 
-let bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-let jsonParser = bodyParser.json();
 
 const collectionName = 'businesses';
 const dataFeedStatus = {insert: 'ok'};
@@ -62,35 +60,30 @@ app.get(['/', '/login', '/register'], (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
 });
 
-app.post('/api/register', jsonParser, function(req, res) {
+app.post('/api/register', function(req, res) {
   if (req.headers['content-type'] !== 'application/json') {
-    res.json(contentTypeError);
-    return;
+    return res.json(contentTypeError);
   }
   if (!req.body.username) {
-    res.status(400).send(userNameMissing);
-    return;
+    return res.status(400).send(userNameMissing);
   }
   if (!req.body.password) {
-    res.json(passWordMissing);
-    return;
+    return res.json(passWordMissing);
   }
 
-  req.body.password = generateHash(req.body.password);
-  DatabasePostRegister.postRegister(req.body, (dbResponseStatus) => {
-    if (dbResponseStatus === '409') {
-      res.json(conflictUserName);
-      return;
-    }
-    if (dbResponseStatus === '500') {
-      res.json(otherError);
-      return;
-    }
-    if (dbResponseStatus === '201') {
-      res.json(registerSuccess);
-      return;
-    }
-  });
+  const passwordHash= generateHash(req.body.password);
+  DatabasePostRegister.postRegister(req.body.username, passwordHash,
+    (dbResponseStatus) => {
+      if (dbResponseStatus === '409') {
+        return res.json(conflictUserName);
+      }
+      if (dbResponseStatus === '500') {
+        return res.json(otherError);
+      }
+      if (dbResponseStatus === '201') {
+        return res.json(registerSuccess);
+      }
+    });
 });
 
 app.listen(PORT, function() {

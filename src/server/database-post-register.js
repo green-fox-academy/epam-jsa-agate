@@ -7,18 +7,17 @@ const createDatabaseUrl = function() {
   return `${address}:${port}/${databaseName}`;
 };
 
-const postRegister = function(body, callback) {
+const postRegister = function(postUsername, hashPassword, callback) {
   const url = createDatabaseUrl();
   MongoClient.connect(url, function(err, db) {
-    const searchUserName = {username: body.username, password: body.password};
-    console.log(searchUserName);
+    const searchUserName = {username: postUsername};
     if (err === null) {
       let collection = db.collection('register');
       collection.find(searchUserName).toArray(function(err, docs) {
         if (docs.length > 0) {
           callback('409');
         } else {
-          collection.insertOne(body, function(err, docs2) {
+          collection.insertOne({username: postUsername, password: hashPassword}, function(err, docs2) {
             callback('201');
             db.close();
           });
