@@ -19,7 +19,7 @@ const apiErrorMessage = {error: 'something went wrong'};
 const JWTMiddleware = expressJWT({secret: 'epam jsa agate'});
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+
 
 app.get('/feed', function(req, res) {
   dbUtility.insertFileToDatabase(businessesJson, collectionName);
