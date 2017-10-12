@@ -16,7 +16,14 @@ const dataFeedStatus = {insert: 'ok'};
 const okStatus = {status: 'ok', database: 'ok'};
 const errorStatus = {status: 'ok', database: 'error'};
 const apiErrorMessage = {error: 'something went wrong'};
-const JWTMiddleware = expressJWT({secret: 'epam jsa agate'});
+const secret = 'epam jsa agate';
+const JWTMiddleware = expressJWT({secret: secret});
+const WRONG_CONTENTTYPE = 0;
+const WRONG_USERNAMEPASSWORD = 1;
+const CORRECT = 2;
+const WRONG_CREDENTIALS = 3;
+const WRONG_SERVER = 4;
+const WRONG_USERNOTFOUND = 5;
 
 app.use(bodyParser.json());
 
@@ -51,24 +58,24 @@ app.get('/login', (req, res) => {
 
 app.post('/api/login', (req, res) => {
   login.validation(req, (status) => {
-    if (status === 0) {
+    if (status === WRONG_CONTENTTYPE) {
       return res.status(400).
         json({error: 'content-type should be application/json'});
-    } else if (status === 1){
+    } else if (status === WRONG_USERNAMEPASSWORD) {
       return res.status(400).json({error: 'usename and password required'});
     }
   });
   login.createTokenForExistingUser(req.body,
     (status) => {
-      if (status === 2) {
-        let Token = jwt.sign({username: req.body.username}, 'epam jsa agate');
-        return res.status(200).json({token: Token});
-      } else if (status === 3) {
+      if (status === CORRECT) {
+        const token = jwt.sign({username: req.body.username}, secret);
+        return res.status(200).json({token: token});
+      } else if (status === WRONG_CREDENTIALS) {
         return res.status(403).json({error: 'Bad credentials'});
-      } else if (status === 4) {
+      } else if (status === WRONG_SERVER) {
         return res.status(500).json({error: 'Something went wrong'});
-      } else if (status === 5) {
-        return res.status(404).json({error: 'User not found'});
+      } else if (status === WRONG_USERNOTFOUND) {
+        return res.status(404).json({error: 'Not Found'});
       }
     }
   );
