@@ -26,7 +26,7 @@ class BusinessCard extends React.Component {
           <span className="business-keywords">
             {data.keyword}</span>
           <a className="business-more" href={data.businessMore}>
-            MORE</a>
+            More</a>
         </div>
       </div>
     );
