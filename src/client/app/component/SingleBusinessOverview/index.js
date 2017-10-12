@@ -3,23 +3,28 @@ import './style.scss';
 
 class SingleBusinessOverview extends React.Component {
   render() {
+    let data = this.props.itemInfo;
+    let score = Math.floor(data.rating);
+    data.rating = '★'.repeat(score);
+    data.imageUrl = {background: 'url(./images/' + (data.id % 6 + 1) + '.png)'};
+
     return (
       <div className="single-business">
         <div className="image-container"
-          style={this.props.itemInfo.businessImageUrl} >
+          style={data.imageUrl} >
           <span className="business-score">
-            {this.props.itemInfo.businessScore}</span>
+            {data.rating}</span>
           <span className="business-name">
-            {this.props.itemInfo.businessName}</span>
+            {data.name}</span>
         </div>
         <p className="business-title">
-          {this.props.itemInfo.businessTitle}</p>
+          {data.name}</p>
         <p className="business-description">
-          {this.props.itemInfo.businessDescription}</p>
+          {data.description}</p>
         <div className="business-infor">
           <span className="business-keywords">
-            {this.props.itemInfo.businessKeywords}</span>
-          <a className="business-more" href={this.props.itemInfo.businessMore}>
+            #Nishi-nari Ward</span>
+          <a className="business-more" href={data.businessMore}>
             MORE</a>
         </div>
       </div>

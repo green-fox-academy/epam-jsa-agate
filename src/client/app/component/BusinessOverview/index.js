@@ -1,12 +1,13 @@
 import React from 'react';
 import './style.scss';
 import SingleBusinessOverview from '../SingleBusinessOverview';
-import {imagesDetails} from './imagesDetails';
 
 class BusinessOverview extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
-    let allBusiness = imagesDetails.map((item, index) => {
-      item.businessTitle = index+1 + '. ' + item.businessTitle;
+    let allBusiness = this.props.businesses.map((item, index) => {
       return <SingleBusinessOverview itemInfo={item} />;
     });
 
