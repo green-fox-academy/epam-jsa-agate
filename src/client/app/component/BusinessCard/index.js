@@ -1,17 +1,17 @@
 import React from 'react';
 import './style.scss';
 
-class SingleBusinessOverview extends React.Component {
+class BusinessCard extends React.Component {
   render() {
     let data = this.props.itemInfo;
     let score = Math.floor(data.rating);
     data.rating = '★'.repeat(score);
-    data.imageUrl = {background: 'url(./images/' + (data.id % 6 + 1) + '.png)'};
+    let style = {background: data.imageUrl};
 
     return (
       <div className="single-business">
         <div className="image-container"
-          style={data.imageUrl} >
+          style={style} >
           <span className="business-score">
             {data.rating}</span>
           <span className="business-name">
@@ -23,7 +23,7 @@ class SingleBusinessOverview extends React.Component {
           {data.description}</p>
         <div className="business-infor">
           <span className="business-keywords">
-            #Nishi-nari Ward</span>
+            {data.keyword}</span>
           <a className="business-more" href={data.businessMore}>
             MORE</a>
         </div>
@@ -32,4 +32,4 @@ class SingleBusinessOverview extends React.Component {
   }
 }
 
-export default SingleBusinessOverview;
+export default BusinessCard;

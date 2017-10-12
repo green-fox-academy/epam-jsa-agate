@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import SingleBusinessOverview from '../SingleBusinessOverview';
+import BusinessCard from '../BusinessCard';
 
 class BusinessOverview extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class BusinessOverview extends React.Component {
   }
   render() {
     let allBusiness = this.props.businesses.map((item, index) => {
-      return <SingleBusinessOverview itemInfo={item} />;
+      return <BusinessCard itemInfo={item} />;
     });
 
     return (

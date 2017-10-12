@@ -17,16 +17,14 @@ class HomePage extends React.Component {
   }
   fetchBusinesses() {
     let that = this;
-    let myInit = {method: 'GET'};
-    fetch('/api/businesses', myInit).then(function(response) {
+    fetch('/api/businesses').then(function(response) {
       if (response.status === 200) {
         return response.json();
       } else if (response.status === 404) {
-        throw new Error('Businesses not found');
+        throw new Error('Oops..something went wrong.');
       }
     }).then(function(value) {
       that.setState({businesses: value.businesses});
-      return value;
     }).catch(function(err) {
       console.log(err);
     });
