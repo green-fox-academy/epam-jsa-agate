@@ -10,18 +10,15 @@ const createDatabaseUrl = function() {
 const postRegister = function(body, callback) {
   const url = createDatabaseUrl();
   MongoClient.connect(url, function(err, db) {
-    const searchUserName = {username: body.username};
+    const searchUserName = {username: body.username, password: body.password};
     console.log(searchUserName);
     if (err === null) {
       let collection = db.collection('register');
       collection.find(searchUserName).toArray(function(err, docs) {
-        console.log(docs);
         if (docs.length > 0) {
           callback('409');
         } else {
-          console.log(body)
           collection.insertOne(body, function(err, docs2) {
-            console.log(err)
             callback('201');
             db.close();
           });

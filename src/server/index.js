@@ -26,6 +26,12 @@ const conflictUserName = {status: '409', description: 'conflict user name'};
 const otherError = {status: '500', description: 'something else went wrong'};
 const registerSuccess = {status: '201'};
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+let generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
+};
+
 app.get('/feed', function(req, res) {
   dbUtility.insertFileToDatabase(businessesJson, collectionName);
   res.json(dataFeedStatus);
@@ -70,6 +76,7 @@ app.post('/api/register', jsonParser, function(req, res) {
     return;
   }
 
+  req.body.password = generateHash(req.body.password);
   DatabasePostRegister.postRegister(req.body, (dbResponseStatus) => {
     if (dbResponseStatus === '409') {
       res.json(conflictUserName);
