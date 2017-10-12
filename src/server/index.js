@@ -16,12 +16,10 @@ const dataFeedStatus = {insert: 'ok'};
 const okStatus = {status: 'ok', database: 'ok'};
 const errorStatus = {status: 'ok', database: 'error'};
 const apiErrorMessage = {error: 'something went wrong'};
+const JWTMiddleware = expressJWT({secret: 'epam jsa agate'});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(expressJWT({secret: 'epam jsa agate'}).unless({
-  path: ['/feed', '/heartbeat', '/api/businesses', '/login'],
-}));
 
 app.get('/feed', function(req, res) {
   dbUtility.insertFileToDatabase(businessesJson, collectionName);
@@ -52,26 +50,23 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  if (req.headers['content-type'] !== 'application/json') {
-    res.status(400).send('application/json as content-type');
-    return;
-  }
-  if (!req.body.username) {
-    res.status(400).send('username required');
-    return;
-  }
-  if (!req.body.password) {
-    res.status(400).send('password required');
-    return;
-  }
-  login.creatTokenForExistedUser(req.body.username,
-    (caseOfUser) => {
-      console.log(caseOfUser);
-      let Token = jwt.sign({username: req.body.username}, 'epam jsa agate');
-      switch (caseOfUser) {
-      case 500: res.status(500).send('something went wrong'); break;
-      case req.body.password: res.status(200).json(Token); break;
-      default: res.status(403).json({error: 'bad credentials'});
+  login.validation(req, (status) => {
+    if (status === 0) {
+      return res.status(400).
+        json({error: 'content-type should be application/json'});
+    } else {
+      return res.status(400).json({error: 'usename and password required'});
+    }
+  });
+  login.createTokenForExistingUser(req.body,
+    (status) => {
+      if (status === 2) {
+        let Token = jwt.sign({username: req.body.username}, 'epam jsa agate');
+        return res.status(200).json(Token);
+      } else if (status === 3) {
+        return res.status(403).json({error: 'bad credentials'});
+      } else if (status === 4) {
+        return res.status(500).send('something went wrong');
       }
     }
   );

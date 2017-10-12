@@ -1,27 +1,44 @@
 const dbUtility = require('./db-utility');
+const bcrypt = require('bcrypt');
 
 const collectionName = 'login';
 
-const creatTokenForExistedUser = function(username, callback) {
+const createTokenForExistingUser = function(body, callback) {
   const url = dbUtility.createDatabaseUrl();
-  dbUtility.connectMongo(url, findUser(username, callback));
+  dbUtility.connectMongo(url, findUser(body, callback));
 };
 
-const findUser = function(username, callback) {
+const findUser = function(body, callback) {
   return function(err, db) {
     if (err === null) {
-      let collection = db.collection(collectionName);
-      collection.find({username: username}).toArray(function(err, docs) {
-        console.log('docs', docs);
-        callback(docs[0].password);
-      });
+      db.collection(collectionName).findOne({username: body.username},
+        function(err, docs) {
+          verifyPassword(body.password, docs.password, callback);
+        });
     } else {
-      callback(500);
+      return callback(4);
     }
   };
 };
 
+const verifyPassword = function(reqPassword, queryPassword, callback) {
+  if (bcrypt.compare(reqPassword, queryPassword)) {
+    return callback(2);
+  }
+  return callback(3);
+};
+
+const validation = function(req, callback) {
+  if (req.headers['content-type'] !== 'application/json') {
+    return callback(0);
+  }
+  if (!req.body.username && !req.body.password) {
+    return callback(1);
+  }
+};
+
 module.exports={
-  creatTokenForExistedUser: creatTokenForExistedUser,
+  createTokenForExistingUser: createTokenForExistingUser,
+  validation: validation,
 };
 
