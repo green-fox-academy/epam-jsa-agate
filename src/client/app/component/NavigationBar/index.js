@@ -9,11 +9,11 @@ class NavigationBar extends React.Component {
           <h1>Browsing Osaka</h1>
         </div>
         <nav id="nav-container">
-          <a href="#" id="1-link" className= 'nav-link-change'>OVERVIEW</a>
-          <a href="#" id="2-link" className= 'nav-link-origin'>RESTARUANTS</a>
-          <a href="#" id="3-link" className= 'nav-link-origin'>NIGHTLIFE</a>
-          <a href="#" id="4-link" className= 'nav-link-origin'>HOME SERVICE</a>
-          <a href="#" id="5-link" className= 'nav-link-origin'>WRITE A REVIEW
+          <a href="#" id="1-link" className= 'nav-link-change'>Overview</a>
+          <a href="#" id="2-link" className= 'nav-link-origin'>Restaurants</a>
+          <a href="#" id="3-link" className= 'nav-link-origin'>Nighlife</a>
+          <a href="#" id="4-link" className= 'nav-link-origin'>Home Service</a>
+          <a href="#" id="5-link" className= 'nav-link-origin'>Write a review
             <img id="comment-img" src="./images/edit.png"/></a>
         </nav>
       </div>
