@@ -62,7 +62,7 @@ app.post('/api/login', (req, res) => {
     (status) => {
       if (status === 2) {
         let Token = jwt.sign({username: req.body.username}, 'epam jsa agate');
-        return res.status(200).json(Token);
+        return res.status(200).json({token: Token});
       } else if (status === 3) {
         return res.status(403).json({error: 'Bad credentials'});
       } else if (status === 4) {
