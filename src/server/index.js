@@ -50,6 +50,7 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
+  console.log(req.body);
   login.validation(req, (status) => {
     if (status === 0) {
       return res.status(400).
@@ -59,7 +60,6 @@ app.post('/api/login', (req, res) => {
     }
   });
   login.createTokenForExistingUser(req.body,
-    console.log(req.body)
     (status) => {
       if (status === 2) {
         let Token = jwt.sign({username: req.body.username}, 'epam jsa agate');
