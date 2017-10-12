@@ -13,7 +13,9 @@ const findUser = function(body, callback) {
     if (err === null) {
       db.collection(collectionName).findOne({username: body.username},
         function(err, docs) {
-          verifyPassword(body.password, docs.password, callback);
+          let reqPassword = body.password;
+          let queryPassword = docs.password;
+          verifyPassword(reqPassword, queryPassword, callback);
         });
     } else {
       return callback(4);
