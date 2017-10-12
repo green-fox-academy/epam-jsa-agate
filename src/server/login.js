@@ -18,7 +18,7 @@ const findUser = function(body, callback) {
             const queryPassword = docs.password;
             verifyPassword(reqPassword, queryPassword, callback);
           } else {
-            return callback(5);
+            return callback(3);
           }
         });
     } else {
@@ -29,17 +29,17 @@ const findUser = function(body, callback) {
 
 const verifyPassword = function(reqPassword, queryPassword, callback) {
   if (bcrypt.compare(reqPassword, queryPassword)) {
-    return callback(2);
+    return callback(0);
   }
   return callback(3);
 };
 
 const validation = function(req, callback) {
   if (req.headers['content-type'] !== 'application/json') {
-    return callback(0);
+    return callback(1);
   }
   if (!req.body.username && !req.body.password) {
-    return callback(1);
+    return callback(2);
   }
 };
 

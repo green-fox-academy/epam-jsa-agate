@@ -8,6 +8,7 @@ const BusinessessEndpoint = require('./business-endpoint');
 const dbUtility = require('./db-utility');
 const businessesJson = require('./businesses.json');
 const login = require('./login');
+const statusCode = require('./status-code');
 
 const app = express();
 const collectionName = 'businesses';
@@ -18,12 +19,7 @@ const errorStatus = {status: 'ok', database: 'error'};
 const apiErrorMessage = {error: 'something went wrong'};
 const secret = 'epam jsa agate';
 const JWTMiddleware = expressJWT({secret: secret});
-const WRONG_CONTENTTYPE = 0;
-const WRONG_USERNAMEPASSWORD = 1;
-const CORRECT = 2;
-const WRONG_CREDENTIALS = 3;
-const WRONG_SERVER = 4;
-const WRONG_USERNOTFOUND = 5;
+
 
 app.use(bodyParser.json());
 
@@ -58,23 +54,23 @@ app.get('/login', (req, res) => {
 
 app.post('/api/login', (req, res) => {
   login.validation(req, (status) => {
-    if (status === WRONG_CONTENTTYPE) {
+    if (status === statusCode.WRONG_CONTENT_TYPE) {
       return res.status(400).
         json({error: 'content-type should be application/json'});
-    } else if (status === WRONG_USERNAMEPASSWORD) {
+    } else if (status === statusCode.WRONG_USERNAME_PASSWORD) {
       return res.status(400).json({error: 'usename and password required'});
     }
   });
   login.createTokenForExistingUser(req.body,
     (status) => {
-      if (status === CORRECT) {
+      if (status === statusCode.CORRECT) {
         const token = jwt.sign({username: req.body.username}, secret);
         return res.status(200).json({token: token});
-      } else if (status === WRONG_CREDENTIALS) {
+      } else if (status === statusCode.MISSING_CREDENTIALS) {
         return res.status(403).json({error: 'Bad credentials'});
-      } else if (status === WRONG_SERVER) {
+      } else if (status === statusCode.WRONG_SERVER) {
         return res.status(500).json({error: 'Something went wrong'});
-      } else if (status === WRONG_USERNOTFOUND) {
+      } else if (status === statusCode.MISSING_CREDENTIALS) {
         return res.status(404).json({error: 'Not Found'});
       }
     }
