@@ -71,7 +71,7 @@ app.post('/api/login', (req, res) => {
       } else if (status === statusCode.WRONG_SERVER) {
         return res.status(500).json({error: 'Something went wrong'});
       } else if (status === statusCode.MISSING_CREDENTIALS) {
-        return res.status(404).json({error: 'Not Found'});
+        return res.status(404).json({error: 'Bad credentials'});
       }
     }
   );
