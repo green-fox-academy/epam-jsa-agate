@@ -10,6 +10,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/app/',
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     loaders: [{
       test: /\.js$/,
@@ -41,7 +44,8 @@ module.exports = {
       use: [
         'file-loader',
       ],
-    }],
+    },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin([path.resolve(__dirname, './dist/app')]),
