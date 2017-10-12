@@ -1,4 +1,5 @@
 const dbUtility = require('./db-utility');
+const loginStatusCode = require('./status-code');
 const bcrypt = require('bcrypt');
 
 const collectionName = 'login';
@@ -18,28 +19,28 @@ const findUser = function(body, callback) {
             const queryPassword = docs.password;
             verifyPassword(reqPassword, queryPassword, callback);
           } else {
-            return callback(3);
+            return callback(loginStatusCode.MISSING_CREDENTIALS);
           }
         });
     } else {
-      return callback(4);
+      return callback(loginStatusCode.WRONG_SERVER);
     }
   };
 };
 
 const verifyPassword = function(reqPassword, queryPassword, callback) {
   if (bcrypt.compare(reqPassword, queryPassword)) {
-    return callback(0);
+    return callback(loginStatusCode.CORRECT);
   }
-  return callback(3);
+  return callback(loginStatusCode.MISSING_CREDENTIALS);
 };
 
 const validation = function(req, callback) {
   if (req.headers['content-type'] !== 'application/json') {
-    return callback(1);
+    return callback(loginStatusCode.WRONG_CONTENT_TYPE);
   }
   if (!req.body.username && !req.body.password) {
-    return callback(2);
+    return callback(loginStatusCode.WRONG_USERNAME_PASSWORD);
   }
 };
 
