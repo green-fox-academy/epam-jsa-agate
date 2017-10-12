@@ -9,7 +9,7 @@ const createDatabaseUrl = function() {
   return `${address}:${port}/${databaseName}`;
 };
 
-const insertFileToDatabase = function(requiredJsonfile,collectionName) {
+const insertFileToDatabase = function(requiredJsonfile, collectionName) {
   const url = createDatabaseUrl();
   MongoClient.connect(url, function(err, db) {
     if (err === null) {
