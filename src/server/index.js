@@ -54,7 +54,7 @@ app.post('/api/login', (req, res) => {
     if (status === 0) {
       return res.status(400).
         json({error: 'content-type should be application/json'});
-    } else {
+    } else if (status === 1){
       return res.status(400).json({error: 'usename and password required'});
     }
   });
