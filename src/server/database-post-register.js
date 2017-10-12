@@ -10,14 +10,14 @@ const createDatabaseUrl = function() {
 const postRegister = function(body, callback) {
   const url = createDatabaseUrl();
   MongoClient.connect(url, function(err, db) {
-    const searchUserName = {username:  body.username};
+    const searchUserName = {username: body.username};
     if (err === null) {
       let collection = db.collection('heartbeat');
       collection.find(searchUserName).toArray(function(err, docs) {
         if (docs.length > 0) {
           callback('409');
         } else {
-          collection.insertOne(body,function(err, docs2) {
+          collection.insertOne(body, function(err, docs2) {
             callback('201');
           });
         }

@@ -10,11 +10,10 @@ let jwt = require('jsonwebtoken');
 const app = express();
 
 app.use(bodyParser.urlencoded());
-app.use(expressJWT({secret: 'nyancat 4 ever'}).
-  unless({path: ['/login', '/api/cats']}));
+// app.use(expressJWT({secret: 'nyancat 4 ever'}).
+//   unless({path: ['/login', '/api/cats']}));
 
-// const PORT = process.env.PORT || 3000;
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const okStatus = {status: 'ok', database: 'ok'};
 const errorStatus = {status: 'ok', database: 'error'};
 const contentTypeError = {status: '400', description:
