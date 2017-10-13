@@ -7,17 +7,17 @@ const createDatabaseUrl = function() {
   return `${address}:${port}/${databaseName}`;
 };
 
-const handleInfo = function(userName, hashPassword, callback) {
+const handleInfo = function(username, passwordHash, callback) {
   const url = createDatabaseUrl();
   MongoClient.connect(url, function(err, db) {
-    const filter = {username: userName};
+    const filter = {username: username};
     if (err === null) {
       let collection = db.collection('register');
       collection.findOne(filter, function(err, docs) {
         if (docs !== null) {
           callback('409');
         } else {
-          collection.insertOne({username: userName, password: hashPassword}, function(err, docs2) {
+          collection.insertOne({username: username, password: passwordHash}, function(err, docs2) {
             callback('201');
             db.close();
           });
