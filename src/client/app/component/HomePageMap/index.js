@@ -13,22 +13,22 @@ class HomePageMap extends React.Component {
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAHP4cn0A4W4VIudAlmHmpAakBvbmcR5fY&callback=initMap');
   }
   initMap() {
-    let center = {lat: 22.2222, lng: 114};
-    let mapProp = {
+    const center = {lat: 22.2222, lng: 114};
+    const mapProp = {
       center: center,
       zoom: 9,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
-    let map = new google.maps.Map(
+    const map = new google.maps.Map(
       document.getElementsByClassName('home-page-map')[0], mapProp);
     this.setState({map: map});
-    this.makeMarker();
+    this.makeMarkers();
   }
-  makeMarker() {
+  makeMarkers() {
     const that = this;
     if (this.props.businesses && this.state.map) {
       this.props.businesses.forEach(function(value) {
-        let marker = new google.maps.Marker({
+        const marker = new google.maps.Marker({
           position: {lat: value.latitude, lng: value.longitude},
           map: that.state.map,
         });
@@ -36,7 +36,7 @@ class HomePageMap extends React.Component {
     }
   }
   render() {
-    this.makeMarker();
+    this.makeMarkers();
     return <div className="home-page-map" ></div>;
   }
 }
