@@ -6,8 +6,8 @@
       "imageUrl": "./images/1.png",
       "keyword": "Nishi-nari Ward",
       "rating": 4.5,
-      "longitude": 114.0578650,
-      "latitude": 22.5430960
+      "longitude": 113.951610,
+      "latitude": 22.530347
     },
     {
       "id": 2,
@@ -16,8 +16,8 @@
       "imageUrl": "./images/2.png",
       "keyword": "Nishi Ward",
       "rating": 4.1,
-      "longitude": 114.2622942,
-      "latitude": 22.0519021
+      "longitude": 113.958391,
+      "latitude": 22.523529
     },
     {
       "id": 3,
@@ -26,8 +26,8 @@
       "imageUrl": "./images/3.png",
       "keyword": "Coffee",
       "rating": 4.8,
-      "longitude": 114.2313677,
-      "latitude": 22.3426965
+      "longitude": 113.936891,
+      "latitude": 22.519763
     },
     {
       "id": 4,
@@ -36,8 +36,8 @@
       "imageUrl": "./images/4.png",
       "keyword": "Asian",
       "rating": 3.9,
-      "longitude": 113.7513683,
-      "latitude": 21.7885762
+      "longitude": 113.939380,
+      "latitude": 22.531735
     },
     {
       "id": 5,
@@ -46,8 +46,8 @@
       "imageUrl": "./images/5.png",
       "keyword": "Sushi",
       "rating": 4.5,
-      "longitude": 114.4695493,
-      "latitude": 21.8780153
+      "longitude": 113.956632,
+      "latitude": 22.528207
     },
     {
       "id": 6,
@@ -56,8 +56,8 @@
       "imageUrl": "./images/6.png",
       "keyword": "Nishi-nari Ward",
       "rating": 4.5,
-      "longitude": 113.60,
-      "latitude": 22.0194896
+      "longitude": 113.952769,
+      "latitude": 22.517385
     },
     {
       "id": 7,
@@ -66,8 +66,8 @@
       "imageUrl": "./images/1.png",
       "keyword": "Nishi-nari Ward",
       "rating": 4.5,
-      "longitude": 113.78,
-      "latitude": 22.018
+      "longitude": 113.951439,
+      "latitude": 22.535104
     }
   ]
 }
