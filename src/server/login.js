@@ -14,7 +14,8 @@ const findUser = function(body, callback) {
     if (err === null) {
       db.collection(collectionName).findOne({username: body.username},
         function(err, docs) {
-          if (docs !== null) {
+          if (docs !== null && body.password !== null
+            && body.password !== undefined) {
             const reqPassword = body.password;
             const queryPassword = docs.password;
             verifyPassword(reqPassword, queryPassword, callback);
@@ -29,7 +30,7 @@ const findUser = function(body, callback) {
 };
 
 const verifyPassword = function(reqPassword, queryPassword, callback) {
-  console.log('reqPss', reqPassword ,'query', queryPassword);
+  console.log('reqPss', reqPassword, 'query', queryPassword);
   bcrypt.compare(reqPassword, queryPassword).then(
     function(res) {
       console.log('res', res);
@@ -46,8 +47,10 @@ const validation = function(req, callback) {
   if (req.headers['content-type'] !== 'application/json') {
     return callback(loginStatusCode.WRONG_CONTENT_TYPE);
   }
-  if (!req.body.username && !req.body.password) {
-    return callback(loginStatusCode.WRONG_USERNAME_PASSWORD);
+  if (!req.body) {
+    if (!req.body.username && !req.body.password) {
+      return callback(loginStatusCode.WRONG_USERNAME_PASSWORD);
+    }
   }
 };
 
