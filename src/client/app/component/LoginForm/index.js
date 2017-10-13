@@ -5,17 +5,20 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
   }
+  goToRegisterPage() {
+    window.location.href = '/register';
+  }
   render() {
     return (
       <div className="login-box">
         <h1>Log in</h1>
-        <form>
-          <input type="email" name="email" required placeholder="E-mail" />
+        <form method="post" onSubmit={this.props.onSubmit}>
+          <input name="username" required placeholder="Username" />
           <input type="password" name="password" required
             placeholder="Password"/>
           <input type="submit" value="login"/>
         </form>
-        <button>Register</button>
+        <button onClick={this.goToRegisterPage}>Register</button>
       </div>
     );
   }
