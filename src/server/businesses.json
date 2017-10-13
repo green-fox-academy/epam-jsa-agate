@@ -4,7 +4,7 @@
       "name": "Starbucks",
       "description": "We sell overpriced coffee.",
       "imageUrl": "./images/1.png",
-      "keyword": "Nishi-nari Ward",
+      "keyword": "Nishi-nari",
       "rating": 4.5,
       "longitude": 113.951610,
       "latitude": 22.530347
@@ -54,7 +54,7 @@
       "name": "wagamama",
       "description": "from bowl to soul",
       "imageUrl": "./images/6.png",
-      "keyword": "Nishi-nari Ward",
+      "keyword": "Nishi-nari",
       "rating": 4.5,
       "longitude": 113.952769,
       "latitude": 22.517385
@@ -64,7 +64,7 @@
       "name": "My Old Dutch",
       "description": "My Old Dutch, the original London pancake house, offers savoury and sweet pancakes as well as a selection of salads, traditional Dutch starters and desserts.",
       "imageUrl": "./images/1.png",
-      "keyword": "Nishi-nari Ward",
+      "keyword": "Nishi-nari",
       "rating": 4.5,
       "longitude": 113.951439,
       "latitude": 22.535104

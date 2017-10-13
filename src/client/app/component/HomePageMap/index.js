@@ -28,7 +28,6 @@ class HomePageMap extends React.Component {
     const that = this;
     if (this.props.businesses && this.state.map) {
       this.props.businesses.forEach(function(value) {
-        console.log(value.latitude + " + " + value.longitude);
         const marker = new google.maps.Marker({
           position: {lat: value.latitude, lng: value.longitude},
           map: that.state.map,
