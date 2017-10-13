@@ -12,7 +12,7 @@ const handleInfo = function(username, passwordHash, callback) {
   MongoClient.connect(url, function(err, db) {
     const filter = {username: username};
     if (err === null) {
-      let collection = db.collection('register');
+      let collection = db.collection('users');
       collection.findOne(filter, function(err, docs) {
         if (docs !== null) {
           callback('409');
