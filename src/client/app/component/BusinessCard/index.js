@@ -6,7 +6,7 @@ class BusinessCard extends React.Component {
     let data = this.props.itemInfo;
     let score = Math.floor(data.rating);
     data.rating = '★'.repeat(score);
-    data.keyword = '#' + data.keyword;
+    //data.keyword = '#' + data.keyword;
     let style = {background: 'url(' + data.imageUrl + ')'};
 
     return (
@@ -24,7 +24,7 @@ class BusinessCard extends React.Component {
           {data.description}</p>
         <div className="business-infor">
           <span className="business-keywords">
-            {data.keyword}</span>
+            #{data.keyword}</span>
           <a className="business-more" href={data.businessMore}>
             More</a>
         </div>
