@@ -6,7 +6,6 @@ class BusinessCard extends React.Component {
     let data = this.props.itemInfo;
     let score = Math.floor(data.rating);
     data.rating = '★'.repeat(score);
-    //data.keyword = '#' + data.keyword;
     let style = {background: 'url(' + data.imageUrl + ')'};
 
     return (

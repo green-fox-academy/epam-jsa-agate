@@ -6,7 +6,7 @@ class NavigationBar extends React.Component {
     return (
       <div>
         <div className="nav-title">
-          <h1>Browsing Osaka</h1>
+          <h1>Browsing Shenzhen</h1>
         </div>
         <nav className="nav-container">
           <a href="#" className='nav-link-change'>Overview</a>

@@ -14,7 +14,7 @@ class BusinessOverview extends React.Component {
     return (
       <div id="business-overview-container">
         <div className="business-overview-title">
-          The Best places you should not miss in Osaka</div>
+          The Best places you should not miss in Shenzhen</div>
         {allBusiness}
       </div>
     );
