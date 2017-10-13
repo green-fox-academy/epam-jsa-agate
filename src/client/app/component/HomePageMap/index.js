@@ -13,10 +13,10 @@ class HomePageMap extends React.Component {
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAHP4cn0A4W4VIudAlmHmpAakBvbmcR5fY&callback=initMap');
   }
   initMap() {
-    const center = {lat: 22.2222, lng: 114};
+    const center = {lat: 22.528113, lng: 113.946343};
     const mapProp = {
       center: center,
-      zoom: 9,
+      zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
     const map = new google.maps.Map(
@@ -28,6 +28,7 @@ class HomePageMap extends React.Component {
     const that = this;
     if (this.props.businesses && this.state.map) {
       this.props.businesses.forEach(function(value) {
+        console.log(value.latitude + " + " + value.longitude);
         const marker = new google.maps.Marker({
           position: {lat: value.latitude, lng: value.longitude},
           map: that.state.map,
