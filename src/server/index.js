@@ -1,7 +1,7 @@
 const responseMessage = require('./responseMessage.js');
 const express = require('express');
 const DatabaseHealth = require('./database-check');
-const DatabasePostRegister = require('./database-post-register');
+const Register = require('./database-post-register');
 const BusinessessEndpoint = require('./business-endpoint');
 const path = require('path');
 const dbUtility = require('./db-utility');
@@ -30,8 +30,8 @@ app.get('/feed', function(req, res) {
 
 app.get('/heartbeat', function(req, res) {
   DatabaseHealth.checkDatabaseHealth((isWorking) => {
-    isWorking ? res.json(responseMessage.okStatus) :
-      res.json(responseMessage.errorStatus);
+    isWorking ? res.json(responseMessage.OK_Status) :
+      res.json(responseMessage.Error_Status);
   });
 });
 
@@ -42,7 +42,7 @@ app.get('/api/businesses', function(req, res) {
       let businesses = {businesses: data};
       res.status(200).json(businesses);
     } else {
-      res.status(500).json(responseMessage.apiErrorMessage);
+      res.status(500).json(responseMessage.API_Error_Message);
     }
   });
 });
@@ -55,26 +55,26 @@ app.get(['/', '/login', '/register'], (req, res) => {
 
 app.post('/api/register', function(req, res) {
   if (req.headers['content-type'] !== 'application/json') {
-    return res.json(responseMessage.contentTypeError);
+    return res.json(responseMessage.ContentType_Error);
   }
   if (!req.body.username) {
-    return res.json(responseMessage.userNameMissing);
+    return res.json(responseMessage.Username_Missing);
   }
   if (!req.body.password) {
-    return res.json(responseMessage.passWordMissing);
+    return res.json(responseMessage.Password_Missing);
   }
 
-  const passwordHash= generateHash(req.body.password);
-  DatabasePostRegister.postRegister(req.body.username, passwordHash,
+  const passwordHash = generateHash(req.body.password);
+  Register.handleInfo(req.body.username, passwordHash,
     (dbResponseStatus) => {
       if (dbResponseStatus === '409') {
-        return res.json(responseMessage.conflictUserName);
+        return res.json(responseMessage.Username_Conflict);
       }
       if (dbResponseStatus === '500') {
-        return res.json(responseMessage.otherError);
+        return res.json(responseMessage.Other_Error);
       }
       if (dbResponseStatus === '201') {
-        return res.json(responseMessage.registerSuccess);
+        return res.json(responseMessage.Register_Success);
       }
     });
 });

@@ -7,17 +7,34 @@ const createDatabaseUrl = function() {
   return `${address}:${port}/${databaseName}`;
 };
 
-const postRegister = function(postUsername, hashPassword, callback) {
+// const findUser = function(body, callback) {
+//   return function(err, db) {
+//     if (err === null) {
+//       db.collection(collectionName).findOne({username: body.username},
+//         function(err, docs) {
+//           if (docs !== null) {
+//             const reqPassword = body.password;
+//             const queryPassword = docs.password;
+//             verifyPassword(reqPassword, queryPassword, callback);
+//           } else {
+//             return callback(loginStatusCode.MISSING_CREDENTIALS);
+//           }
+//         });
+//     } else {
+//       return callback(loginStatusCode.WRONG_SERVER);
+//     }
+//   };
+const handleInfo = function(userName, hashPassword, callback) {
   const url = createDatabaseUrl();
   MongoClient.connect(url, function(err, db) {
-    const searchUserName = {username: postUsername};
+    const filter = {username: userName};
     if (err === null) {
       let collection = db.collection('register');
-      collection.find(searchUserName).toArray(function(err, docs) {
-        if (docs.length > 0) {
+      collection.findOne(filter, function(err, docs) {
+        if (docs !== null) {
           callback('409');
         } else {
-          collection.insertOne({username: postUsername, password: hashPassword}, function(err, docs2) {
+          collection.insertOne({username: userName, password: hashPassword}, function(err, docs2) {
             callback('201');
             db.close();
           });
@@ -30,5 +47,5 @@ const postRegister = function(postUsername, hashPassword, callback) {
 };
 
 module.exports = {
-  postRegister: postRegister,
+  handleInfo: handleInfo,
 };
