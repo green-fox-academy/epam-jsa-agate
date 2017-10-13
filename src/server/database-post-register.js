@@ -17,7 +17,7 @@ const handleInfo = function(username, passwordHash, callback) {
         if (docs !== null) {
           callback('409');
         } else {
-          collection.insertOne({username: username, password: passwordHash}, function(err, docs2) {
+          collection.insertOne({username: username, password: passwordHash}, function(err, doc) {
             callback('201');
             db.close();
           });
