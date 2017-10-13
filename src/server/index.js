@@ -30,8 +30,8 @@ app.get('/feed', function(req, res) {
 
 app.get('/heartbeat', function(req, res) {
   DatabaseHealth.checkDatabaseHealth((isWorking) => {
-    isWorking ? res.json(responseMessage.OK_Status) :
-      res.json(responseMessage.Error_Status);
+    isWorking ? res.json(responseMessage.OK_STATUS) :
+      res.json(responseMessage.ERROR_STATUS);
   });
 });
 
@@ -42,7 +42,7 @@ app.get('/api/businesses', function(req, res) {
       let businesses = {businesses: data};
       res.status(200).json(businesses);
     } else {
-      res.status(500).json(responseMessage.API_Error_Message);
+      res.status(500).json(responseMessage.API_ERROR_MESSAGE);
     }
   });
 });
@@ -55,26 +55,26 @@ app.get(['/', '/login', '/register'], (req, res) => {
 
 app.post('/api/register', function(req, res) {
   if (req.headers['content-type'] !== 'application/json') {
-    return res.json(responseMessage.ContentType_Error);
+    return res.json(responseMessage.CONTENTTYPE_ERROR);
   }
   if (!req.body.username) {
-    return res.json(responseMessage.Username_Missing);
+    return res.json(responseMessage.USERNAME_MISSING);
   }
   if (!req.body.password) {
-    return res.json(responseMessage.Password_Missing);
+    return res.json(responseMessage.PASSWORD_MISSING);
   }
 
   const passwordHash = generateHash(req.body.password);
   Register.handleInfo(req.body.username, passwordHash,
     (dbResponseStatus) => {
       if (dbResponseStatus === '409') {
-        return res.json(responseMessage.Username_Conflict);
+        return res.json(responseMessage.USERNAME_CONFLICT);
       }
       if (dbResponseStatus === '500') {
-        return res.json(responseMessage.Other_Error);
+        return res.json(responseMessage.OTHER_ERROR);
       }
       if (dbResponseStatus === '201') {
-        return res.json(responseMessage.Register_Success);
+        return res.json(responseMessage.REGISTER_SUCCESS);
       }
     });
 });

@@ -1,14 +1,14 @@
 const responseMessage = {
-  OK_Status: {status: 'ok', database: 'ok'},
-  Error_Status: {status: 'ok', database: 'error'},
-  API_Error_Message: {error: 'something went wrong'},
-  ContentType_Error: {status: '400', description:
+  OK_STATUS: {status: 'ok', database: 'ok'},
+  ERROR_STATUS: {status: 'ok', database: 'error'},
+  API_ERROR_MESSAGE: {error: 'something went wrong'},
+  CONTENTTYPE_ERROR: {status: '400', description:
   'request\'s content-type header is not set to application/json'},
-  Username_Missing: {status: '400', description: 'username required'},
-  Password_Missing: {status: '400', description: 'password required'},
-  Username_Conflict: {status: '409', description: 'conflict user name'},
-  Other_Error: {status: '500', description: 'something else went wrong'},
-  Register_Success: {status: '201'},
+  USERNAME_MISSING: {status: '400', description: 'username required'},
+  PASSWORD_MISSING: {status: '400', description: 'password required'},
+  USERNAME_CONFLICT: {status: '409', description: 'conflict user name'},
+  OTHER_ERROR: {status: '500', description: 'something else went wrong'},
+  REGISTER_SUCCESS: {status: '201'},
 };
 
 module.exports = responseMessage;

@@ -7,23 +7,6 @@ const createDatabaseUrl = function() {
   return `${address}:${port}/${databaseName}`;
 };
 
-// const findUser = function(body, callback) {
-//   return function(err, db) {
-//     if (err === null) {
-//       db.collection(collectionName).findOne({username: body.username},
-//         function(err, docs) {
-//           if (docs !== null) {
-//             const reqPassword = body.password;
-//             const queryPassword = docs.password;
-//             verifyPassword(reqPassword, queryPassword, callback);
-//           } else {
-//             return callback(loginStatusCode.MISSING_CREDENTIALS);
-//           }
-//         });
-//     } else {
-//       return callback(loginStatusCode.WRONG_SERVER);
-//     }
-//   };
 const handleInfo = function(userName, hashPassword, callback) {
   const url = createDatabaseUrl();
   MongoClient.connect(url, function(err, db) {
