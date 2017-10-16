@@ -1,3 +1,10 @@
+@mixin error-form-box {
+  input:not([type='submit']) {
+    background-color: #fff5f5;
+    border-bottom: 1px solid #f00;
+  }
+}
+
 @mixin login-signup-form-box {
   background-color: #eee;
   border-radius: 3px;

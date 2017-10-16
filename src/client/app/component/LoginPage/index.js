@@ -4,56 +4,33 @@ import LoginForm from '../LoginForm';
 import Header from '../CommonHeader';
 import './style.scss';
 
-const ZERO = 0;
-const MINUS_ONE = -1;
-const TWO = 2;
-
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       'loading': false,
-      'form': undefined,
-      'isLoggedIn': document.cookie.length > ZERO,
+      'isLoggedIn': localStorage.getItem('Authorization'),
+      'formHasError': false,
     };
   }
   submitHandler(event) {
-    this.setState({'loading': true, 'form': event.target});
+    this.setState({'loading': true});
     event.preventDefault();
     this.submitData({
       username: event.target.elements[0].value,
       password: event.target.elements[1].value,
-    });
+    }, event.target);
   }
   errorHandler(err) {
-    document.getElementsByClassName('form-error-message')[0].innerText = err;
-    for (let i = 0; i < TWO; i++) {
-      let element = this.state.form.elements[i];
-
-      if (element.className.indexOf('login-form-error') === MINUS_ONE) {
-        this.state.form.elements[i].className += ' login-form-error';
-      }
-    }
+    this.setState({'errMsg': err.message, 'formHasError': true});
+    localStorage.removeItem('Authorization');
   }
-  removeErrorHandler() {
-    document.getElementsByClassName('form-error-message')[0].innerText = '';
-    for (let i = 0; i < TWO; i++) {
-      let element = this.state.form.elements[i];
-
-      if (element.className.indexOf('login-form-error') > MINUS_ONE) {
-        element.className = element.className.replace(
-          (new RegExp('(^|\\s)' + 'login-form-error' + '(\\s|$)')), ' ');
-      }
-    }
-  }
-
   successHandler(token) {
-    document.cookie = 'Authorization=' + token;
-    this.removeErrorHandler();
+    this.setState({'errMsg': '', 'formHasError': false});
+    localStorage.setItem('Authorization', token);
     this.setState({'isLoggedIn': true});
   }
-
-  submitData(data) {
+  submitData(data, form) {
     let that = this;
     let myHeaders = new Headers();
     let myInit = {
@@ -83,7 +60,8 @@ class LoginPage extends React.Component {
         <Header />
         <div className="login-page-content">
           <LoginForm onSubmit={this.submitHandler.bind(this)}
-            loading={this.state.loading}/>
+            loading={this.state.loading} errMsg={this.state.errMsg}
+            formHasError={this.state.formHasError}/>
         </div>
       </div>
     );

@@ -13,12 +13,15 @@ class LoginForm extends React.Component {
     this.props.history.push('/register');
   }
   render() {
+    const formClassNames = this.props.formHasError ?
+      'login-box error-form-box' : 'login-box';
+
     return (
-      <div className="login-box">
+      <div className={formClassNames}>
         <Spin spinning={this.props.loading}>
           <h1>Log in</h1>
           <form method="post" onSubmit={this.props.onSubmit}>
-            <label className="form-error-message"></label>
+            <p className="form-error-message">{this.props.errMsg}</p>
             <input name="username" required placeholder="Username" />
             <input type="password" name="password" required
               placeholder="Password"/>
