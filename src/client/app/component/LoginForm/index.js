@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {Spin} from 'antd';
 import 'antd/lib/spin/style/index.css';
 import './style.scss';
@@ -7,6 +8,9 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {loading: false};
+  }
+  goToRegisterPage() {
+    this.props.history.push('/register');
   }
   render() {
     return (
@@ -20,11 +24,11 @@ class LoginForm extends React.Component {
               placeholder="Password"/>
             <input type="submit" value="login"/>
           </form>
-          <button onClick={this.goToRegisterPage}>Register</button>
+          <button onClick={this.goToRegisterPage.bind(this)}>Register</button>
         </Spin>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
