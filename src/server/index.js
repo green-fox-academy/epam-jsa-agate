@@ -4,7 +4,6 @@ const responseMessage = require('./responseMessage.js');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const expressJWT = require('express-jwt');
 const jwt = require('jsonwebtoken');
 const DatabaseHealth = require('./database-check');
 const Register = require('./database-post-register');
@@ -20,7 +19,6 @@ const collectionName = 'businesses';
 const PORT = process.env.PORT || DEFAULT_PORT;
 const dataFeedStatus = {insert: 'ok'};
 const secret = 'epam jsa agate';
-const JWTMiddleware = expressJWT({secret: secret});
 
 app.use(bodyParser.json());
 
