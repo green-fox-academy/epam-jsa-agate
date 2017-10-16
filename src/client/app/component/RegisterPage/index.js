@@ -16,14 +16,16 @@ class RegisterPage extends React.Component {
   validatePasswords(password, retypePassword) {
     if (password != retypePassword) {
       this.setState({'loading': false});
-      this.setState({'errMsg': 'Passwords are not the same.', 'formHasError': true});
+      this.setState({
+        'errMsg': 'Passwords are not the same.',
+        'formHasError': true,
+      });
     } else {
       this.submitData({
         username: event.target.elements[0].value,
         password: password,
       });
     }
-
   }
   submitHandler(event) {
     this.setState({'loading': true});
