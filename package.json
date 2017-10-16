@@ -11,6 +11,7 @@
     "test:backend": "mocha --colors",
     "test:frontend": "jest --colors",
     "lint": "eslint **/*.js --ignore-pattern node_modules/",
+    "lint:css": "stylelint src/client/**/*.scss --colors",
     "build": "webpack -p --colors --config webpack.config.js",
     "start:backend": "node -r dotenv/config ./src/server/index.js",
     "start": "npm-run-all --sequential build start:backend",
