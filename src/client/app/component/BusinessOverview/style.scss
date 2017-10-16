@@ -8,15 +8,14 @@ $white: #fff;
   color: #fff;
   font-size: 1.2em;
   margin: 0 0 0 1.5em;
-  padding: 1em 0 0 0;
+  padding: 1em 0 0;
   width: 47.4375em;
-};
+}
 
-#business-overview-container {
+.business-overview-container {
   background-color: #4b4b4b;
   height: calc(100vh - 86px - 4.8125em);
   overflow-x: hidden;
   overflow-y: scroll;
   width: 100%;
-};
-
+}
