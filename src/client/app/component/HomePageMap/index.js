@@ -16,7 +16,7 @@ class HomePageMap extends React.Component {
     super(props);
     this.state = {map: undefined};
   }
-  componentWillMount() {
+  componentDidMount() {
     window.initMap = this.initMap.bind(this);
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAHP4cn0A4W4VIudAlmHmpAakBvbmcR5fY&callback=initMap');
   }
@@ -37,14 +37,12 @@ class HomePageMap extends React.Component {
     const that = this;
 
     if (this.props.businesses && this.state.map) {
-      let markers = this.props.businesses.map(function(value) {
+      this.props.businesses.forEach(function(value) {
         return new google.maps.Marker({
           position: {lat: value.latitude, lng: value.longitude},
           map: that.state.map,
         });
       });
-
-      this.setState({'markers': markers});
     }
   }
   render() {
