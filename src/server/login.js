@@ -2,7 +2,7 @@ const dbUtility = require('./db-utility');
 const loginStatusCode = require('./status-code');
 const bcrypt = require('bcrypt');
 
-const collectionName = 'login';
+const collectionName = 'users';
 
 const createTokenForExistingUser = function(body, callback) {
   const url = dbUtility.createDatabaseUrl();
@@ -14,7 +14,8 @@ const findUser = function(body, callback) {
     if (err === null) {
       db.collection(collectionName).findOne({username: body.username},
         function(err, docs) {
-          if (docs !== null) {
+          if (docs !== null && body.password !== null
+          && body.password != undefined) {
             const reqPassword = body.password;
             const queryPassword = docs.password;
             verifyPassword(reqPassword, queryPassword, callback);
@@ -29,10 +30,17 @@ const findUser = function(body, callback) {
 };
 
 const verifyPassword = function(reqPassword, queryPassword, callback) {
-  if (bcrypt.compare(reqPassword, queryPassword)) {
-    return callback(loginStatusCode.CORRECT);
-  }
-  return callback(loginStatusCode.MISSING_CREDENTIALS);
+  console.log('reqPss', reqPassword, 'query', queryPassword);
+  bcrypt.compare(reqPassword, queryPassword).then(
+    function(res) {
+      console.log('res', res);
+      if (res) {
+        return callback(loginStatusCode.CORRECT);
+      } else {
+        return callback(loginStatusCode.MISSING_CREDENTIALS);
+      }
+    }
+  );
 };
 
 const validation = function(req, callback) {

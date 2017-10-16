@@ -1,3 +1,5 @@
+'use strict';
+
 const CORRECT = 0;
 const WRONG_CONTENT_TYPE = 1;
 const WRONG_USERNAME_PASSWORD = 2;
