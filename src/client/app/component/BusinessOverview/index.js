@@ -7,9 +7,8 @@ class BusinessOverview extends React.Component {
     super(props);
   }
   render() {
-    let allBusiness = this.props.businesses.map((item, index) => {
-      return <BusinessCard itemInfo={item} />;
-    });
+    let allBusiness = this.props.businesses.map(
+      (item, index) => <BusinessCard itemInfo={item} />);
 
     return (
       <div id="business-overview-container">
