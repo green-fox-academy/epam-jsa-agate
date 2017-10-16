@@ -13,16 +13,31 @@ class RegisterPage extends React.Component {
       'formHasError': false,
     };
   }
+  validatePasswords(password, retypePassword) {
+    if (password != retypePassword) {
+      this.setState({'loading': false});
+      this.setState({'errMsg': 'Passwords are not the same.', 'formHasError': true});
+    } else {
+      this.submitData({
+        username: event.target.elements[0].value,
+        password: password,
+      });
+    }
+
+  }
   submitHandler(event) {
     this.setState({'loading': true});
     event.preventDefault();
-    this.submitData({
-      username: event.target.elements[0].value,
-      password: event.target.elements[1].value,
-    });
+    let password = event.target.elements[1].value;
+    let retypePassword = event.target.elements[2].value;
+
+    this.validatePasswords(password, retypePassword);
   }
   errorHandler(err) {
-    this.setState({'errMsg': err.message, 'formHasError': true});
+    if (err.message == '409') {
+      this.setState({'errMsg': 'User Name Conflict', 'formHasError': true});
+    }
+    // this.setState({'errMsg': err.message, 'formHasError': true});
     // localStorage.removeItem('Authorization');
   }
 
@@ -57,10 +72,9 @@ class RegisterPage extends React.Component {
     });
   }
 
-
   render() {
     const {successRegister, loading, errMsg, formHasError} = this.state;
-    
+
     return successRegister ? (<Redirect to="/login" />) : (
       <div className="register-page">
         <Header />
