@@ -14,7 +14,7 @@
   background-size: 1.75em 1.75em;
   border-radius: .9375em;
   height: 2.1875em;
-  margin: .1875em 0em 0em 3.125em;
+  margin: .1875em 0 0 3.125em;
   outline: none;
   padding: .375em .9375em .375em 1.875em;
   width: 21.875em;
@@ -22,7 +22,7 @@
 
 .menu {
   background: url('./align_text_left.png') no-repeat center;
-  border: none;
+  border: 0;
   height: 3.125em;
   transform: scale(.5);
   width: 3.125em;
