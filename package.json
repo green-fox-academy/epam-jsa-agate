@@ -10,7 +10,7 @@
     "test": "npm-run-all --parallel test:frontend test:backend",
     "test:backend": "mocha --colors",
     "test:frontend": "jest --colors",
-    "lint": "eslint **/*.js --ignore-pattern node_modules/",
+    "lint:js": "eslint . --ext .js --color --ignore-pattern node_modules/",
     "lint:css": "stylelint src/client/**/*.scss --colors",
     "build": "webpack -p --colors --config webpack.config.js",
     "start:backend": "node -r dotenv/config ./src/server/index.js",
