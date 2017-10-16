@@ -3,3 +3,7 @@
 .login-box {
   @include login-signup-form-box;  
 }
+.login-form-error {
+  background-color: #fff5f5 !important;
+  border-bottom: 1px solid red !important;
+}
