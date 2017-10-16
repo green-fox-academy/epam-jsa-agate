@@ -19,7 +19,7 @@ class LoginPage extends React.Component {
     this.submitData({
       username: event.target.elements[0].value,
       password: event.target.elements[1].value,
-    }, event.target);
+    });
   }
   errorHandler(err) {
     this.setState({'errMsg': err.message, 'formHasError': true});
@@ -30,7 +30,7 @@ class LoginPage extends React.Component {
     localStorage.setItem('Authorization', token);
     this.setState({'isLoggedIn': true});
   }
-  submitData(data, form) {
+  submitData(data) {
     let that = this;
     let myHeaders = new Headers();
     let myInit = {
