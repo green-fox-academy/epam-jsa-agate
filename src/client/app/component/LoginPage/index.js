@@ -9,7 +9,7 @@ class LoginPage extends React.Component {
     super(props);
     this.state = {
       'loading': false,
-      'isLoggedIn': localStorage.getItem('Authorization'),
+      'isLoggedIn': localStorage.getItem('Authorization') !== null,
       'formHasError': false,
     };
   }
@@ -55,13 +55,15 @@ class LoginPage extends React.Component {
     });
   }
   render() {
-    return this.state.isLoggedIn ? (<Redirect to="/" />) : (
+    const {isLoggedIn, loading, errMsg, formHasError} = this.state;
+
+    return isLoggedIn ? (<Redirect to="/" />) : (
       <div className="login-page">
         <Header />
         <div className="login-page-content">
           <LoginForm onSubmit={this.submitHandler.bind(this)}
-            loading={this.state.loading} errMsg={this.state.errMsg}
-            formHasError={this.state.formHasError}/>
+            loading={loading} errMsg={errMsg}
+            formHasError={formHasError}/>
         </div>
       </div>
     );

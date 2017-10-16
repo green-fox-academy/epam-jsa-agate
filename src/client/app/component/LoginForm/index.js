@@ -15,13 +15,14 @@ class LoginForm extends React.Component {
   render() {
     const formClassNames = this.props.formHasError ?
       'login-box error-form-box' : 'login-box';
+    const {loading, onSubmit, errMsg} = this.props;
 
     return (
       <div className={formClassNames}>
-        <Spin spinning={this.props.loading}>
+        <Spin spinning={loading}>
           <h1>Log in</h1>
-          <form method="post" onSubmit={this.props.onSubmit}>
-            <p className="form-error-message">{this.props.errMsg}</p>
+          <form method="post" onSubmit={onSubmit}>
+            <p className="form-error-message">{errMsg}</p>
             <input name="username" required placeholder="Username" />
             <input type="password" name="password" required
               placeholder="Password"/>
