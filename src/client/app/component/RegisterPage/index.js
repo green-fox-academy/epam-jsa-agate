@@ -13,6 +13,15 @@ class RegisterPage extends React.Component {
       'formHasError': false,
     };
   }
+  submitHandler(event) {
+    this.setState({'loading': true});
+    event.preventDefault();
+    let password = event.target.elements[1].value;
+    let retypePassword = event.target.elements[2].value;
+
+    this.validatePasswords(password, retypePassword);
+  }
+
   validatePasswords(password, retypePassword) {
     if (password != retypePassword) {
       this.setState({'loading': false});
@@ -27,28 +36,6 @@ class RegisterPage extends React.Component {
       });
     }
   }
-  submitHandler(event) {
-    this.setState({'loading': true});
-    event.preventDefault();
-    let password = event.target.elements[1].value;
-    let retypePassword = event.target.elements[2].value;
-
-    this.validatePasswords(password, retypePassword);
-  }
-  errorHandler(err) {
-    if (err.message == '409') {
-      this.setState({'errMsg': 'User Name Conflict', 'formHasError': true});
-    }
-    // this.setState({'errMsg': err.message, 'formHasError': true});
-    // localStorage.removeItem('Authorization');
-  }
-
-  successHandler() {
-    this.setState({'errMsg': '', 'formHasError': false});
-    // localStorage.setItem('Authorization', token);
-    this.setState({'successRegister': true});
-  }
-
   submitData(data) {
     let that = this;
     let myHeaders = new Headers();
@@ -73,7 +60,15 @@ class RegisterPage extends React.Component {
       that.errorHandler(err);
     });
   }
-
+  successHandler() {
+    this.setState({'errMsg': '', 'formHasError': false});
+    this.setState({'successRegister': true});
+  }
+  errorHandler(err) {
+    if (err.message == '409') {
+      this.setState({'errMsg': 'User Name Conflict', 'formHasError': true});
+    }
+  }
   render() {
     const {successRegister, loading, errMsg, formHasError} = this.state;
 
