@@ -24,4 +24,25 @@ function fetchBusinesses(callback) {
   });
 }
 
-module.exports = {fetchBusinesses: fetchBusinesses};
+function fetchSingleBusiness(callback) {
+  const url = dbUtility.createDatabaseUrl();
+
+  MongoClient.connect(url, function(err, db) {
+    if (err === null) {
+      let collection = db.collection(collectionName);
+
+      //add req :id
+      collection.find({}).toArray(function(err, docs) {
+        if (err === null) {
+          return callback(true, docs);
+        }
+        return callback(false);
+      });
+    } else {
+      return callback(false);
+    }
+    db.close();
+  });
+}
+
+module.exports = {fetchBusinesses: fetchBusinesses, fetchSingleBusiness: fetchSingleBusiness};

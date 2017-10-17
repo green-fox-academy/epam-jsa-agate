@@ -43,6 +43,19 @@ app.get('/api/businesses', function(req, res) {
   });
 });
 
+app.get('/api/business/:id', function(req, res) {
+  BusinessessEndpoint.fetchSingleBusiness((isWorking, docs) => {
+    if (isWorking) {
+      let [...data] = docs;
+      let businesses = {businesses: data};
+
+      res.status(HTTP_200).json(businesses);
+    } else {
+      res.status(HTTP_500).json(responseMessage.API_ERROR_MESSAGE);
+    }
+  });
+});
+
 app.get(['/', '/login', '/register'], (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
 });
