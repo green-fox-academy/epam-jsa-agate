@@ -18,12 +18,14 @@ module.exports = {
       test: /\.js$/,
       include: path.resolve(__dirname, 'src'),
       loader: 'babel-loader',
+      exclude: /node_modules/,
       query: {
         presets: ['react', 'env'],
       },
     },
     {
       test: /\.css$/,
+      exclude: /node_modules/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: [
@@ -35,6 +37,7 @@ module.exports = {
     },
     {
       test: /\.scss$/,
+      exclude: /node_modules/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: [
@@ -55,6 +58,7 @@ module.exports = {
       use: [
         'file-loader',
       ],
+      exclude: /node_modules/,
     },
     ],
   },
