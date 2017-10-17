@@ -10,7 +10,10 @@ const Register = require('./database-post-register');
 const BusinessessEndpoint = require('./business-endpoint');
 const login = require('./login');
 const loginStatusCode = require('./status-code');
-const {HTTP_200, HTTP_400, HTTP_403, HTTP_500} = require('./http-status-code');
+const {
+  HTTP_200, HTTP_400, HTTP_403, HTTP_404,
+  HTTP_500,
+} = require('./http-status-code');
 const app = express();
 const DEFAULT_PORT = 3000;
 const PORT = process.env.PORT || DEFAULT_PORT;
@@ -44,14 +47,16 @@ app.get('/api/businesses', function(req, res) {
 });
 
 app.get('/api/business/:id', function(req, res) {
-  BusinessessEndpoint.fetchSingleBusiness(req.params.id, (isWorking, docs) => {
-    if (isWorking) {
+  BusinessessEndpoint.fetchSingleBusiness(req.params.id, (status, docs) => {
+    if (status === '200') {
       let [...data] = docs;
       let businesses = {businesses: data};
 
-      res.status(HTTP_200).json(businesses);
-    } else {
-      res.status(HTTP_500).json(responseMessage.API_ERROR_MESSAGE);
+      return res.status(HTTP_200).json(businesses);
+    } else if (status === '500') {
+      return res.status(HTTP_500).json(responseMessage.API_ERROR_MESSAGE);
+    } else if (status === '404') {
+      return res.status(HTTP_404).json(responseMessage.NO_BUSINESS_EXISTS);
     }
   });
 });

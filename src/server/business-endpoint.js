@@ -36,13 +36,13 @@ function fetchSingleBusiness(searchId, callback) {
       let collection = db.collection(collectionName);
 
       collection.find(filter).toArray(function(err, docs) {
-        if (err === null) {
-          return callback(true, docs);
+        if (docs.length !== 0) {
+          return callback('200', docs);
         }
-        return callback(false);
+        return callback('404');
       });
     } else {
-      return callback(false);
+      return callback('500');
     }
     db.close();
   });
