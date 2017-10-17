@@ -1,5 +1,4 @@
 {
-  "id": 1,
   "name": "Starbucks",
   "description": "We sell overpriced coffee.",
   "imageUrl": "./images/1.png",
@@ -9,7 +8,6 @@
   "latitude": 22.5430960
 }
 {
-  "id": 2,
   "name": "Tesco Express",
   "description": "Every little helps",
   "imageUrl": "./images/2.png",
@@ -19,7 +17,6 @@
   "latitude": 22.0519021
 }
 {
-  "id": 3,
   "name": "Pret A Manger",
   "description": "Organic Coffee, Natural Food",
   "imageUrl": "./images/3.png",
@@ -29,7 +26,6 @@
   "latitude": 22.3426965
 }
 {
-  "id": 4,
   "name": "itsu",
   "description": "Delicious, healthy, Asian inspired food.",
   "imageUrl": "./images/4.png",
@@ -39,7 +35,6 @@
   "latitude": 21.7885762
 }
 {
-  "id": 5,
   "name": "Wasabi",
   "description": "Konnichiwa! Wasabi offers fresh, authentic, handmade Japanese Sushi and Bento",
   "imageUrl": "./images/5.png",
@@ -49,7 +44,6 @@
   "latitude": 21.8780153
 }
 {
-  "id": 6,
   "name": "wagamama",
   "description": "from bowl to soul",
   "imageUrl": "./images/6.png",
@@ -59,7 +53,6 @@
   "latitude": 22.0194896
 }
 {
-  "id": 7,
   "name": "My Old Dutch",
   "description": "My Old Dutch, the original London pancake house, offers savoury and sweet pancakes as well as a selection of salads, traditional Dutch starters and desserts.",
   "imageUrl": "./images/1.png",

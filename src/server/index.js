@@ -15,11 +15,10 @@ const app = express();
 const DEFAULT_PORT = 3000;
 const PORT = process.env.PORT || DEFAULT_PORT;
 const secret = 'epam jsa agate';
-
-app.use(bodyParser.json());
-
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+
+app.use(bodyParser.json());
 
 function generateHash(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
@@ -52,10 +51,10 @@ app.post('/api/login', (req, res) => {
   login.validation(req, (status) => {
     if (status === loginStatusCode.WRONG_CONTENT_TYPE) {
       return res.status(HTTP_400).
-        json({error: 'Content-type should be application/json.'});
+        json({error: 'content-type should be application/json'});
     } else if (status === loginStatusCode.WRONG_USERNAME_PASSWORD) {
       return res.status(HTTP_400).
-        json({error: 'Usename and password required.'});
+        json({error: 'usename and password required'});
     }
   });
   if (!res._headerSent) {
@@ -66,9 +65,9 @@ app.post('/api/login', (req, res) => {
 
           return res.status(HTTP_200).json({token: token});
         } else if (status === loginStatusCode.MISSING_CREDENTIALS) {
-          return res.status(HTTP_403).json({error: 'Bad credentials.'});
+          return res.status(HTTP_403).json({error: 'Bad credentials'});
         } else if (status === loginStatusCode.WRONG_SERVER) {
-          return res.status(HTTP_500).json({error: 'Something went wrong.'});
+          return res.status(HTTP_500).json({error: 'Something went wrong'});
         }
       }
     );
@@ -112,6 +111,7 @@ function responseRegisterSuccess(dbResponseStatus, res) {
     return res.json(responseMessage.REGISTER_SUCCESS);
   }
 }
+
 app.post('/api/register', function(req, res) {
   validateHeader(req, res);
   validateUsername(req, res);
