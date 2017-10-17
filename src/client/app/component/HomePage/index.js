@@ -40,12 +40,19 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className = "home-page">
-        <HomePageHeader/>
-        <div className = "main">
+        <div className = "home-page-main">
+          <HomePageHeader/>
           <HomePageContainer businesses={this.state.businesses}/>
-          <HomePageMap businesses={this.state.businesses}/>
         </div>
+        <HomePageMap businesses={this.state.businesses}/>
       </div>
+      // <div className = "home-page">
+      //   <HomePageHeader/>
+      //   <div className = "main">
+      //     <HomePageContainer businesses={this.state.businesses}/>
+      //     <HomePageMap businesses={this.state.businesses}/>
+      //   </div>
+      // </div>
     );
   }
 }
