@@ -18,7 +18,7 @@ class HomePage extends React.Component {
   errorHandler(err) {
     notification.open({
       message: err.message,
-      description: 'please try again.',
+      description: 'Please try again.',
       placement: 'bottomLeft',
     });
   }
