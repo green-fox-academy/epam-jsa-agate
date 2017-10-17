@@ -18,7 +18,7 @@ class RegisterPage extends React.Component {
     event.preventDefault();
     let password = event.target.elements[1].value;
     let retypePassword = event.target.elements[2].value;
-
+    
     this.validatePasswords(password, retypePassword);
   }
 
