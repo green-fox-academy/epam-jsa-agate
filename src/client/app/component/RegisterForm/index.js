@@ -16,8 +16,7 @@ class RegisterForm extends React.Component {
     const formClassNames = this.props.formHasError ?
       'register-box error-form-box' : 'login-box';
     const {loading, onSubmit, errMsg} = this.props;
-    const passwordFormat = '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])' +
-    '[A-Za-z\\d$@$!%*#?&]{6,50}$';
+    const passwordFormat = '[A-Za-z0-9]{6,8}';
 
     return (
       <div className={formClassNames}>
