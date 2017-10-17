@@ -26,12 +26,12 @@ class RegisterForm extends React.Component {
             <input title="Username must be 3 to 15 letters" type="text"
               name="username" placeholder="Username" pattern="[A-Za-z]{3,15}"
               required />
-            <input title="Password must be 6-8 letters or numbers"
+            <input title="Password must be 6-50 letters or numbers"
               type="password" name="password" placeholder="Password"
-              pattern="[A-Za-z0-9]{6,8}" required/>
-            <input title="Password must be 6-8 letters or numbers"
+              pattern="[A-Za-z0-9]{6,50}" required/>
+            <input title="Password must be 6-50 letters or numbers"
               type="password" name="retype-password"
-              placeholder="Re-type Password" pattern="[A-Za-z0-9]{6,8}"
+              placeholder="Re-type Password" pattern="[A-Za-z0-9]{6,50}"
               required/>
             <input type="submit" value="Register me!"/>
           </form>

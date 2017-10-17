@@ -18,7 +18,7 @@ class RegisterPage extends React.Component {
     event.preventDefault();
     let password = event.target.elements[1].value;
     let retypePassword = event.target.elements[2].value;
-    
+
     this.validatePasswords(password, retypePassword);
   }
 
@@ -66,7 +66,10 @@ class RegisterPage extends React.Component {
   }
   errorHandler(err) {
     if (err.message == '409') {
-      this.setState({'errMsg': 'User Name Conflict', 'formHasError': true});
+      this.setState({
+        'errMsg': 'User name has been used.',
+        'formHasError': true,
+      });
     }
   }
   render() {
