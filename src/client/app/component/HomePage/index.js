@@ -31,7 +31,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className = "home-page">
-        <HomePageHeader/>
+        <HomePageHeader businesses = {this.state.businesses}/>
         <div className = "main">
           <HomePageContainer businesses={this.state.businesses}/>
           <HomePageMap businesses={this.state.businesses}/>
