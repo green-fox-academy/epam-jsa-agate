@@ -33,7 +33,6 @@ function handleInfo(username, passwordHash, callback) {
               return callback('500');
             }
             db.close();
-            console.log(err);
             return callback('201');
           });
       });
