@@ -20,7 +20,6 @@ class HomePage extends React.Component {
       message: err.message,
       description: 'please try again.',
       placement: 'bottomLeft',
-      duration: 100,
     });
   }
   fetchBusinesses() {
