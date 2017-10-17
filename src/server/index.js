@@ -44,7 +44,7 @@ app.get('/api/businesses', function(req, res) {
 });
 
 app.get('/api/business/:id', function(req, res) {
-  BusinessessEndpoint.fetchSingleBusiness((isWorking, docs) => {
+  BusinessessEndpoint.fetchSingleBusiness(req.params.id, (isWorking, docs) => {
     if (isWorking) {
       let [...data] = docs;
       let businesses = {businesses: data};

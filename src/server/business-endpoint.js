@@ -2,7 +2,10 @@
 
 const dbUtility = require('./db-utility');
 const MongoClient = require('mongodb').MongoClient;
+let ObjectID = require('mongodb').ObjectID;
 const collectionName = 'businesses';
+
+let objectId = ObjectID;
 
 function fetchBusinesses(callback) {
   const url = dbUtility.createDatabaseUrl();
@@ -24,15 +27,15 @@ function fetchBusinesses(callback) {
   });
 }
 
-function fetchSingleBusiness(callback) {
+function fetchSingleBusiness(searchId, callback) {
   const url = dbUtility.createDatabaseUrl();
+  const filter = {_id: objectId(searchId)};
 
   MongoClient.connect(url, function(err, db) {
     if (err === null) {
       let collection = db.collection(collectionName);
 
-      //add req :id
-      collection.find({}).toArray(function(err, docs) {
+      collection.find(filter).toArray(function(err, docs) {
         if (err === null) {
           return callback(true, docs);
         }
@@ -45,4 +48,7 @@ function fetchSingleBusiness(callback) {
   });
 }
 
-module.exports = {fetchBusinesses: fetchBusinesses, fetchSingleBusiness: fetchSingleBusiness};
+module.exports = {
+  fetchBusinesses: fetchBusinesses,
+  fetchSingleBusiness: fetchSingleBusiness,
+};
