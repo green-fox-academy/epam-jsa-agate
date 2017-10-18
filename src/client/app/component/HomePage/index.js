@@ -10,7 +10,19 @@ import './style.scss';
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {businesses: []};
+    this.state = {businesses: [], constBusinesses: []};
+  }
+  filterBusinesses(inputStr) {
+    const filteredBusinesses =
+      () => this.state.constBusinesses.filter((el) =>
+        this.searchString(el.name.toLowerCase(), inputStr.toLowerCase()));
+
+    return () => {
+      this.setState({businesses: filteredBusinesses()});
+    };
+  }
+  searchString(business, inputStr) {
+    return business.includes(inputStr);
   }
   componentWillMount() {
     this.fetchBusinesses();
@@ -31,7 +43,10 @@ class HomePage extends React.Component {
       if (value.error) {
         throw new Error(value.error);
       } else {
-        that.setState({businesses: value.businesses});
+        that.setState({
+          businesses: value.businesses,
+          constBusinesses: value.businesses,
+        });
       }
     }).catch(function(err) {
       that.errorHandler(err);
@@ -41,18 +56,11 @@ class HomePage extends React.Component {
     return (
       <div className = "home-page">
         <div className = "home-page-main">
-          <HomePageHeader/>
+          <HomePageHeader search = {this.filterBusinesses.bind(this)}/>
           <HomePageContainer businesses={this.state.businesses}/>
         </div>
         <HomePageMap businesses={this.state.businesses}/>
       </div>
-      // <div className = "home-page">
-      //   <HomePageHeader/>
-      //   <div className = "main">
-      //     <HomePageContainer businesses={this.state.businesses}/>
-      //     <HomePageMap businesses={this.state.businesses}/>
-      //   </div>
-      // </div>
     );
   }
 }
