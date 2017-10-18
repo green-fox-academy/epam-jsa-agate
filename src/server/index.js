@@ -91,19 +91,16 @@ app.post('/api/login', (req, res) => {
 
 app.use(express.static(path.resolve(__dirname, '../../dist')));
 
-function validateHeader(req, res) {
-    res.status(HTTP_400).json(responseMessage.CONTENTTYPE_ERROR);
-  
+function responseContentTypeError(req, res) {
+  res.status(HTTP_400).json(responseMessage.CONTENTTYPE_ERROR);
 }
 
-function validateUsername(req, res) {
-    res.status(HTTP_400).json(responseMessage.USERNAME_MISSING);
-  
+function responseUsernameMissing(req, res) {
+  res.status(HTTP_400).json(responseMessage.USERNAME_MISSING);
 }
 
-function validatePassword(req, res) {
-    res.status(HTTP_400).json(responseMessage.PASSWORD_MISSING);
-  
+function responsePasswordMissing(req, res) {
+  res.status(HTTP_400).json(responseMessage.PASSWORD_MISSING);
 }
 
 function responseUsernameConflit(dbResponseStatus, res) {
@@ -129,20 +126,20 @@ function responseRegisterSuccess(dbResponseStatus, req, res) {
 
 app.post('/api/register', function(req, res) {
   if (req.headers['content-type'] !== 'application/json') {
-    (validateHeader(req, res)) 
-  } else if (!req.body.username) { 
-    (validateUsername(req, res))
+    (responseContentTypeError(req, res));
+  } else if (!req.body.username) {
+    (responseUsernameMissing(req, res));
   } else if (!req.body.password) {
-    (validatePassword(req, res))
+    (responsePasswordMissing(req, res));
   } else {
     const passwordHash = generateHash(req.body.password);
-    
-      Register.handleInfo(req.body.username, passwordHash,
-        (dbResponseStatus) => {
-          responseUsernameConflit(dbResponseStatus, res);
-          responseOtherError(dbResponseStatus, res);
-          responseRegisterSuccess(dbResponseStatus, req, res);
-        });
+
+    Register.handleInfo(req.body.username, passwordHash,
+      (dbResponseStatus) => {
+        responseUsernameConflit(dbResponseStatus, res);
+        responseOtherError(dbResponseStatus, res);
+        responseRegisterSuccess(dbResponseStatus, req, res);
+      });
   }
 });
 
