@@ -3,18 +3,19 @@ import {Redirect} from 'react-router-dom';
 import Header from '../HomePageHeader';
 import Map from '../HomePageMap';
 import Images from '../DisplayImage';
+// import CommentList from '../CommentList';
 import './style.scss';
 
 class SingleBusinessPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'name': this.props.param.name};
+    this.state = {'id': this.props.match.params.id};
   }
   render() {
     return (
       <div className="single-business-page">
         <Header/>
-        <div classNmae="display-business">
+        <div className="display-business">
           <Map/>
           <Images/>
         </div>
