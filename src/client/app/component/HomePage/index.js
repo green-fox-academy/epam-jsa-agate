@@ -54,9 +54,9 @@ class HomePage extends React.Component {
   }
   render() {
     return (
-      <div className = "home-page">
-        <div className = "home-page-main">
-          <HomePageHeader search = {this.filterBusinesses.bind(this)}/>
+      <div className="home-page">
+        <div className="home-page-main">
+          <HomePageHeader search={this.filterBusinesses.bind(this)}/>
           <HomePageContainer businesses={this.state.businesses}/>
         </div>
         <HomePageMap businesses={this.state.businesses}/>
