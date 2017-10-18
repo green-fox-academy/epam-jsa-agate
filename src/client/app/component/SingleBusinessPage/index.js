@@ -1,9 +1,9 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import HomePageHeader from '../HomePageHeader';
-import HomePageMap from '../HomePageMap';
-import DisplayImage from '../DisplayImage';
-import CommentList from '../CommentList';
+import Header from '../HomePageHeader';
+import Map from '../HomePageMap';
+import Images from '../DisplayImage';
+// import CommentList from '../CommentList';
 import './style.scss';
 
 class SingleBusinessPage extends React.Component {
@@ -14,10 +14,10 @@ class SingleBusinessPage extends React.Component {
   render() {
     return (
       <div className="single-business-page">
-        <HomePageHeader/>
+        <Header/>
         <div className="display-business">
-          <HomePageMap/>
-          <DisplayImage/>
+          <Map/>
+          <Images/>
         </div>
         <CommentList/>
       </div>
