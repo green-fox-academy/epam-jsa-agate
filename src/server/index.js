@@ -91,15 +91,15 @@ app.post('/api/login', (req, res) => {
 
 app.use(express.static(path.resolve(__dirname, '../../dist')));
 
-function responseContentTypeError(req, res) {
+function responseContentTypeError(res) {
   res.status(HTTP_400).json(responseMessage.CONTENTTYPE_ERROR);
 }
 
-function responseUsernameMissing(req, res) {
+function responseUsernameMissing(res) {
   res.status(HTTP_400).json(responseMessage.USERNAME_MISSING);
 }
 
-function responsePasswordMissing(req, res) {
+function responsePasswordMissing(res) {
   res.status(HTTP_400).json(responseMessage.PASSWORD_MISSING);
 }
 
@@ -126,11 +126,11 @@ function responseRegisterSuccess(dbResponseStatus, req, res) {
 
 app.post('/api/register', function(req, res) {
   if (req.headers['content-type'] !== 'application/json') {
-    (responseContentTypeError(req, res));
+    (responseContentTypeError(res));
   } else if (!req.body.username) {
-    (responseUsernameMissing(req, res));
+    (responseUsernameMissing(res));
   } else if (!req.body.password) {
-    (responsePasswordMissing(req, res));
+    (responsePasswordMissing(res));
   } else {
     const passwordHash = generateHash(req.body.password);
 
