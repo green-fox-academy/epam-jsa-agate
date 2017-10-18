@@ -2,10 +2,8 @@
 
 const dbUtility = require('./db-utility');
 const MongoClient = require('mongodb').MongoClient;
-let ObjectID = require('mongodb').ObjectID;
+const ObjectID = require('mongodb').ObjectID;
 const collectionName = 'businesses';
-
-let objectId = ObjectID;
 
 function fetchBusinesses(callback) {
   const url = dbUtility.createDatabaseUrl();
@@ -29,16 +27,15 @@ function fetchBusinesses(callback) {
 
 function fetchSingleBusiness(searchId, callback) {
   const url = dbUtility.createDatabaseUrl();
-  const filter = {_id: objectId(searchId)};
-  const ZERO = 0;
+  const filter = {_id: new ObjectID(searchId)};
 
   MongoClient.connect(url, function(err, db) {
     if (err === null) {
       let collection = db.collection(collectionName);
 
-      collection.find(filter).toArray(function(err, docs) {
+      collection.findOne(filter, function(err, docs) {
         db.close();
-        if (docs.length !== ZERO && !err) {
+        if (docs && !err) {
           return callback('200', docs);
         }
         return callback('404');

@@ -49,10 +49,7 @@ app.get('/api/businesses', function(req, res) {
 app.get('/api/business/:id', function(req, res) {
   BusinessessEndpoint.fetchSingleBusiness(req.params.id, (status, docs) => {
     if (status === '200') {
-      let [...data] = docs;
-      let businesses = {businesses: data};
-
-      return res.status(HTTP_200).json(businesses);
+      return res.status(HTTP_200).json(docs);
     } else if (status === '500') {
       return res.status(HTTP_500).json(responseMessage.API_ERROR_MESSAGE);
     } else if (status === '404') {
