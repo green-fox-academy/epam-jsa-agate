@@ -30,13 +30,15 @@ function fetchBusinesses(callback) {
 function fetchSingleBusiness(searchId, callback) {
   const url = dbUtility.createDatabaseUrl();
   const filter = {_id: objectId(searchId)};
+  const ZERO = 0;
 
   MongoClient.connect(url, function(err, db) {
     if (err === null) {
       let collection = db.collection(collectionName);
 
       collection.find(filter).toArray(function(err, docs) {
-        if (docs.length !== 0) {
+        db.close();
+        if (docs.length !== ZERO && !err) {
           return callback('200', docs);
         }
         return callback('404');
@@ -44,7 +46,6 @@ function fetchSingleBusiness(searchId, callback) {
     } else {
       return callback('500');
     }
-    db.close();
   });
 }
 
