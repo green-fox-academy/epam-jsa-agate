@@ -14,7 +14,7 @@ function loadJS(src) {
 class HomePageMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {map: undefined};
+    this.state = {map: undefined, markers: []};
   }
   componentDidMount() {
     window.initMap = this.initMap.bind(this);
@@ -31,18 +31,33 @@ class HomePageMap extends React.Component {
       document.getElementsByClassName('google-map-component')[0], mapProp);
 
     this.setState({map: map});
-    this.makeMarkers();
+    this.makeMarkers(this.props.businesses);
   }
-  makeMarkers() {
+  componentWillReceiveProps(nextProps) {
+    this.makeMarkers(nextProps.businesses);
+  }
+  clearMarkers() {
+    if (this.state.markers && this.state.markers.length > 0) {
+      this.state.markers.forEach(function(item) {
+        item.setMap(null);
+      });
+      this.setState({markers: []});
+    }
+  }
+  makeMarkers(businesses) {
     const that = this;
 
-    if (this.props.businesses && this.state.map) {
-      this.props.businesses.forEach(function(value) {
+    if (businesses && this.state.map) {
+      this.clearMarkers();
+
+      const markers = businesses.map(function(value) {
         return new google.maps.Marker({
           position: {lat: value.latitude, lng: value.longitude},
           map: that.state.map,
         });
       });
+
+      this.setState({markers: markers});
     }
   }
   render() {
