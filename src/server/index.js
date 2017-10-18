@@ -159,7 +159,6 @@ app.post('/api/businesses', function(req, res) {
   || !req.body.latitude) {
     (responseRequiredFieldsMissing(res));
   } else {
-
     BusinessessEndpoint.createBusiness(req.body,
       (dbResponseStatus) => {
         responseOtherError(dbResponseStatus, res);
