@@ -14,8 +14,8 @@ const responseMessage = {
   OTHER_ERROR: {error: 'Something else went wrong.'},
   REGISTER_SUCCESS: {status: 'Success Register'},
   NO_BUSINESS_EXISTS: {error: 'No business exists.'},
-  REQUIREDFIELDS_MISSING: {erro: 'Required fields missing'},
-  CREATE_BUSINESS_SUCCESS: {status: 'Success Register'},
+  REQUIREDFIELDS_MISSING: {error: 'Required fields missing.'},
+  CREATE_BUSINESS_SUCCESS: {status: 'Success creating a business.'},
 };
 
 module.exports = responseMessage;

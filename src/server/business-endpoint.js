@@ -62,10 +62,10 @@ function createBusiness(body, callback) {
 
       collection.insertOne(businessInfo,
         function(err, doc) {
+          db.close();
           if (err) {
             return callback('500');
           }
-          db.close();
           return callback('201');
         });
     } else {

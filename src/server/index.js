@@ -144,25 +144,35 @@ app.post('/api/register', function(req, res) {
 });
 
 function responseRequiredFieldsMissing(res) {
-  res.status(HTTP_400).json(responseMessage.REQUIREDFIELDS_MISSING);
+  return res.status(HTTP_400).json(responseMessage.REQUIREDFIELDS_MISSING);
 }
 
 function responseCreateBusinessSuccess(res) {
-  res.status(HTTP_201).json(responseMessage.CREATE_BUSINESS_SUCCESS);
+  return res.status(HTTP_201).json(responseMessage.CREATE_BUSINESS_SUCCESS);
 }
+
+function validateRequestBody(req) {
+  if (!req.body.name || !req.body.description ||
+    !req.body.imageUrl || !req.body.keyword
+    || !req.body.rating || !req.body.longitude
+    || !req.body.latitude) {
+    return true;
+  } return false;
+}
+
 app.post('/api/businesses', function(req, res) {
   if (req.headers['content-type'] !== 'application/json') {
     (responseContentTypeError(res));
-  } else if (!req.body.name || !req.body.description ||
-  !req.body.imageUrl || !req.body.keyword
-  || !req.body.rating || !req.body.longitude
-  || !req.body.latitude) {
+  } else if (validateRequestBody(req)) {
     (responseRequiredFieldsMissing(res));
   } else {
     BusinessessEndpoint.createBusiness(req.body,
       (dbResponseStatus) => {
-        responseOtherError(dbResponseStatus, res);
-        responseCreateBusinessSuccess(res);
+        if (dbResponseStatus === '500') {
+          responseOtherError(dbResponseStatus, res);
+        } else {
+          responseCreateBusinessSuccess(res);
+        }
       });
   }
 });
