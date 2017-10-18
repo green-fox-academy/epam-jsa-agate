@@ -14,7 +14,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
-          <Route path="/business/:name" component={SingleBusinessPage} />
+          <Route path="/business/:id" component={SingleBusinessPage} />
         </div>
       </Router>
     );
