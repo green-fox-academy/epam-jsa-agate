@@ -26,3 +26,4 @@ class SingleBusinessPage extends React.Component {
 }
 
 export default SingleBusinessPage;
+
