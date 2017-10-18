@@ -50,7 +50,7 @@ class HomePageMap extends React.Component {
     if (businesses && this.state.map) {
       this.clearMarkers();
 
-      const markers = businesses.map(function(value) {
+      const markers = businesses.map(function(value, index) {
         return new google.maps.Marker({
           position: {lat: value.latitude, lng: value.longitude},
           map: that.state.map,
