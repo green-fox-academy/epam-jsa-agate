@@ -1,6 +1,8 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import Header from '../HomePageHeader';
+import Map from '../HomePageMap';
+import Images from '../DisplayImage';
 import './style.scss';
 
 class SingleBusinessPage extends React.Component {
@@ -12,9 +14,14 @@ class SingleBusinessPage extends React.Component {
     return (
       <div className="single-business-page">
         <Header/>
-        <DisplayBusiness/>
+        <div classNmae="display-business">
+          <Map/>
+          <Images/>
+        </div>
         <CommentList/>
       </div>
     );
   }
 }
+
+export default SingleBusinessPage;
