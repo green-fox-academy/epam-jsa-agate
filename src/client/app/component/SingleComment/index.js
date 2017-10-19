@@ -15,7 +15,9 @@ class SingleComment extends React.Component {
 
     return (
       <div className="single-comment-container">
-        <Avatar style={{backgroundColor: '#87d068'}}>U</Avatar>
+        <div>
+          <Avatar style={{backgroundColor: '#87d068'}}>U</Avatar>
+        </div>
         <div className="comment-details">
           <div className="comment-username">{username}</div>
           <Rate character={character} disabled allowHalf defaultValue={score}/>
