@@ -44,12 +44,14 @@ class SingleBusinessPage extends React.Component {
     });
   }
   render() {
+    const mapType = 'detail';
+
     return (
       <div className="single-business-page">
         <HomePageHeader/>
         <SingleBusinessTitle singleBusinessDetail={this.state.businessDetail}/>
         <div className="display-business">
-          <HomePageMap businesses={[this.state.businessDetail]}/>
+          <HomePageMap businesses={[this.state.businessDetail]} mapType={mapType}/>
           <DisplayImage/>
         </div>
         <CommentList comments={this.state.businessDetail.comments}/>
