@@ -11,6 +11,7 @@ class SingleBusinessPage extends React.Component {
     super(props);
     this.state = {'id': this.props.match.params.id};
   }
+
   render() {
     return (
       <div className="single-business-page">
