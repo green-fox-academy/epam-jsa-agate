@@ -7,12 +7,33 @@ const imageData =
   [imagesList[2], imagesList[3], imagesList[4], imagesList[5]];
 
 class DisplayImage extends React.Component {
+  componentDidMount() {
+    let imgContainer = document.getElementsByClassName('display-image')[0];
+
+    imgContainer.addEventListener('mouseenter', function(event) {
+      let center = document.getElementsByClassName('slot')[1];
+
+      center.classList.remove('center');
+    });
+
+    imgContainer.addEventListener('mouseleave', function(event) {
+      let center = document.getElementsByClassName('slot')[1];
+
+      center.classList.add('center');
+    });
+  }
   render() {
     return (
       <div className="display-image">
-        <img className="slot one" src={imagesList[0]}/>
-        <img className="slot two" src={imagesList[1]}/>
-        <img className="slot three" src={imagesList[2]}/>
+        <div className="slot">
+          <img src={imagesList[0]}/>
+        </div>
+        <div className="slot center">
+          <img src={imagesList[1]}/>
+        </div>
+        <div className="slot">
+          <img src={imagesList[2]}/>
+        </div>
       </div>
     );
   }
