@@ -13,7 +13,6 @@ class SingleBusinessTitle extends React.Component {
     let numberOfStar = this.props.singleBusinessDetail.rating || 0;
 
     return (
-
       <div className="display-business-title">
         <div>
           <div className="single-business-name">
