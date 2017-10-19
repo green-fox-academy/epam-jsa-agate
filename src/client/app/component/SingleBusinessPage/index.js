@@ -13,7 +13,10 @@ import './style.scss';
 class SingleBusinessPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'id': this.props.match.params.id, 'businessDetail': {}};
+    this.state = {
+      'id': this.props.match.params.id,
+      'businessDetail': {},
+    };
   }
   componentWillMount() {
     this.fetchBusinessesDetail();
@@ -49,7 +52,7 @@ class SingleBusinessPage extends React.Component {
           <HomePageMap/>
           <DisplayImage/>
         </div>
-        <CommentList/>
+        <CommentList comments={this.state.businessDetail.comments}/>
       </div>
     );
   }
