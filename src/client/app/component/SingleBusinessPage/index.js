@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import SingleBusinessTitle from '../SingleBusinessTitle';
 import HomePageHeader from '../HomePageHeader';
 import HomePageMap from '../HomePageMap';
 import DisplayImage from '../DisplayImage';
@@ -16,6 +17,7 @@ class SingleBusinessPage extends React.Component {
     return (
       <div className="single-business-page">
         <HomePageHeader/>
+        <SingleBusinessTitle/>
         <div className="display-business">
           <HomePageMap/>
           <DisplayImage/>
