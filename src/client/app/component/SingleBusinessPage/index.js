@@ -49,7 +49,7 @@ class SingleBusinessPage extends React.Component {
         <HomePageHeader/>
         <SingleBusinessTitle singleBusinessDetail={this.state.businessDetail}/>
         <div className="display-business">
-          <HomePageMap/>
+          <HomePageMap businesses={[this.state.businessDetail]}/>
           <DisplayImage/>
         </div>
         <CommentList comments={this.state.businessDetail.comments}/>
