@@ -152,12 +152,10 @@ function responseCreateBusinessSuccess(res) {
 }
 
 function validateRequestBody(req) {
-  if (!req.body.name || !req.body.description ||
+  return (!req.body.name || !req.body.description ||
     !req.body.imageUrl || !req.body.keyword
     || !req.body.rating || !req.body.longitude
-    || !req.body.latitude) {
-    return true;
-  } return false;
+    || !req.body.latitude);
 }
 
 app.post('/api/businesses', function(req, res) {
