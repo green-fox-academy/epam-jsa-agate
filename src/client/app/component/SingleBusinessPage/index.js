@@ -34,7 +34,7 @@ class SingleBusinessPage extends React.Component {
       if (value.error) {
         throw new Error(value.error);
       } else {
-        console.log(value);
+        that.setState({'businessDetail': value});
       }
     }).catch(function(err) {
       that.errorHandler(err);
