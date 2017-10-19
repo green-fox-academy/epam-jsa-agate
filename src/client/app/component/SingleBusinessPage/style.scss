@@ -1,21 +1,18 @@
 .display-business {
+  height: 250px;
+  padding: 1.5em;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   align-content: center;
-  .home-page-map{
-    max-height: 15.625em;
-    overflow: scroll;
-    display: block;
-    width: 100%;
-    flex-basis: 20%;
-    align-self: center;
 
+  .google-map-component {
+    height: 100%;
+    overflow: scroll;
+    width: 30%;
   }
   .display-image{
     flex-basis: 60%;
-    align-self: center;
   }
 }
 

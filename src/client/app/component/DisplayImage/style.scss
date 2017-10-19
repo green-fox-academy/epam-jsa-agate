@@ -8,11 +8,7 @@
 }
 
 .slot{
-  width: 31%;
-  height: 15.625em;
+  width: calc(100% / 3);
+  height: 100%;
 }
 
-.two{
-  width: 35%;
-  height: 16em;
-}
