@@ -17,6 +17,7 @@ class CommentList extends React.Component {
 
     return (
       <div className="comment-list-container">
+        <h2 className="comment-list-tile">Comments List</h2>
         <div className="comment-list">
           {allComments};
         </div>

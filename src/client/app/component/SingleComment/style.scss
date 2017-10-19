@@ -11,5 +11,7 @@
   .comment-details{
     margin: 0 .625em;
     padding:0 .625em;
+    display: flex;
+    flex-direction: column;
   }
 }

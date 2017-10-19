@@ -8,9 +8,9 @@ import './style.scss';
 class SingleComment extends React.Component {
   render() {
     let data = this.props.commentInfo;
-    let score = Math.floor(data.rating);
+    let score = data.rating;
     let commentSentences = data.comment;
-    let username = data.user;
+    let username = data.username;
     const character = '★';
 
     return (
