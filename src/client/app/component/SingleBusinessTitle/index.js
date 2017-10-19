@@ -7,45 +7,29 @@ import './style.scss';
 class SingleBusinessTitle extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {'isLoggedIn': localStorage.getItem('Authorization') !== null};
   }
-  // submitHandler(event) {
-  //   event.preventDefault();
-  //   const input = event.target.elements[0].value;
-
-  //   this.props.search(input)();
-  // }
-  // keyUPHandler(event) {
-  //   const input = event.target.value;
-
-  //   this.props.search(input)();
-  // }
-  // onClickHeaderLogBtn(event) {
-  //   if (this.state.isLoggedIn) {
-  //     localStorage.removeItem('Authorization');
-  //     this.setState({'isLoggedIn': false});
-  //   } else {
-  //     this.props.history.push('/login');
-  //   }
-  // }
 
   render() {
-    // const btnText = this.state.isLoggedIn ? 'Log Out' : 'Log In';
+    let numberOfStar = this.props.singleBusinessDetail.rating || 0;
 
     return (
+
       <div className="display-business-title">
         <div>
-          <div className="single-business-name">Cahoots Bar</div>
+          <div className="single-business-name">
+            <h1>{this.props.singleBusinessDetail.name}</h1>
+          </div>
           <div>
-            <Rate disabled defaultValue={2} />
+            <Rate allowHalf character="★" disabled
+              value={numberOfStar} />
           </div>
         </div>
         <div>
-          <div className="write-comment">
-            <button type="button">Wrtie a Review</button>
-            <button type="button">Add Photo</button>
-            <button type="button">Share</button>
-            <button type="button">Bookmark</button>
+          <div className="single-business-links-container">
+            <a className="single-business-links">Wrtie a Review</a>
+            <a className="single-business-links">Add Photo</a>
+            <a className="single-business-links">Share</a>
+            <a className="single-business-links">Bookmark</a>
           </div>
         </div>
       </div>

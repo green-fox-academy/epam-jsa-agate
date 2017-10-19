@@ -13,7 +13,7 @@ import './style.scss';
 class SingleBusinessPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'id': this.props.match.params.id};
+    this.state = {'id': this.props.match.params.id, 'businessDetail': {}};
   }
   componentWillMount() {
     this.fetchBusinessesDetail();
@@ -44,7 +44,7 @@ class SingleBusinessPage extends React.Component {
     return (
       <div className="single-business-page">
         <HomePageHeader/>
-        <SingleBusinessTitle/>
+        <SingleBusinessTitle singleBusinessDetail={this.state.businessDetail}/>
         <div className="display-business">
           <HomePageMap/>
           <DisplayImage/>
