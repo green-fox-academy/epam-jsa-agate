@@ -1,5 +1,4 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
 import SingleBusinessTitle from '../SingleBusinessTitle';
 import HomePageHeader from '../HomePageHeader';
 import HomePageMap from '../HomePageMap';
@@ -51,7 +50,8 @@ class SingleBusinessPage extends React.Component {
         <HomePageHeader/>
         <SingleBusinessTitle singleBusinessDetail={this.state.businessDetail}/>
         <div className="display-business">
-          <HomePageMap businesses={[this.state.businessDetail]} mapType={mapType}/>
+          <HomePageMap businesses=
+            {[this.state.businessDetail]} mapType={mapType}/>
           <DisplayImage/>
         </div>
         <CommentList comments={this.state.businessDetail.comments}/>

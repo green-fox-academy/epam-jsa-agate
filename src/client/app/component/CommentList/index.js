@@ -5,15 +5,13 @@ import SingleComment from '../SingleComment';
 class CommentList extends React.Component {
   render() {
     let allComments = [];
-    console.log('printout1', allComments.length);
-    if (this.props.comments && this.props.comments.length > 0) {
-      console.log('printout2', allComments.length);
+    const zero = 0;
+
+    if (this.props.comments && this.props.comments.length > zero) {
       allComments = this.props.comments.map(
         (element, index) => <SingleComment commentInfo={element}/>
       );
-      console.log('printout3', allComments.length);
     }
-
 
     return (
       <div className="comment-list-container">

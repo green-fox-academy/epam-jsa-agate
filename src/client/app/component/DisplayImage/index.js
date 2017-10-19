@@ -3,8 +3,6 @@ import './style.scss';
 import * as imagesJson from './imagesForTest.json';
 
 const imagesList = imagesJson.imagesUrl;
-const imageData =
-  [imagesList[2], imagesList[3], imagesList[4], imagesList[5]];
 
 class DisplayImage extends React.Component {
   componentDidMount() {
