@@ -1,5 +1,4 @@
 import React from 'react';
-// import {withRouter} from 'react-router-dom';
 import Rate from 'antd/lib/rate';
 import 'antd/lib/rate/style/index.css';
 import './style.scss';
@@ -10,14 +9,14 @@ class SingleBusinessTitle extends React.Component {
   }
 
   render() {
-    let numberOfStar = this.props.singleBusinessDetail.rating || 0;
+    let numberOfStar = this.props.rating || 0;
     let ratingScorePopUp = numberOfStar + ' rating';
 
     return (
       <div className="display-business-title">
         <div>
           <div className="single-business-name">
-            <h1>{this.props.singleBusinessDetail.name}</h1>
+            <h1>{this.props.title}</h1>
           </div>
           <div title={ratingScorePopUp}>
             <Rate allowHalf character="★" disabled

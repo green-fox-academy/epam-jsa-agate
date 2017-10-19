@@ -2,7 +2,7 @@ import React from 'react';
 import SingleBusinessTitle from '../SingleBusinessTitle';
 import HomePageHeader from '../HomePageHeader';
 import HomePageMap from '../HomePageMap';
-import DisplayImage from '../DisplayImage';
+import ImageDisplay from '../ImageDisplay';
 import CommentList from '../CommentList';
 import notification from 'antd/lib/notification';
 
@@ -48,11 +48,12 @@ class SingleBusinessPage extends React.Component {
     return (
       <div className="single-business-page">
         <HomePageHeader/>
-        <SingleBusinessTitle singleBusinessDetail={this.state.businessDetail}/>
+        <SingleBusinessTitle title={this.state.businessDetail.name}
+          rating={this.state.businessDetail.rating}/>
         <div className="display-business">
           <HomePageMap businesses=
             {[this.state.businessDetail]} mapType={mapType}/>
-          <DisplayImage/>
+          <ImageDisplay/>
         </div>
         <CommentList comments={this.state.businessDetail.comments}/>
       </div>

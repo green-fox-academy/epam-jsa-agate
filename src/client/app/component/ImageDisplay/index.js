@@ -4,7 +4,7 @@ import * as imagesJson from './imagesForTest.json';
 
 const imagesList = imagesJson.imagesUrl;
 
-class DisplayImage extends React.Component {
+class ImageDisplay extends React.Component {
   componentDidMount() {
     let imgContainer = document.getElementsByClassName('display-image')[0];
 
@@ -37,4 +37,4 @@ class DisplayImage extends React.Component {
   }
 }
 
-export default DisplayImage;
+export default ImageDisplay;

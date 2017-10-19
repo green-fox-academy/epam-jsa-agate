@@ -7,7 +7,7 @@ import './style.scss';
 
 class SingleComment extends React.Component {
   render() {
-    let data = this.props.commentInfo;
+    let data = this.props.info;
     let score = data.rating;
     let commentSentences = data.comment;
     let username = data.username;
