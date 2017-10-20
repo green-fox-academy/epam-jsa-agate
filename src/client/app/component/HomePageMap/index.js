@@ -30,7 +30,7 @@ class HomePageMap extends React.Component {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
       });
 
-    this.setState({map: map});
+    this.setState({map: map, mapCenter: center});
     this.makeMarkers(this.props.businesses);
   }
   componentWillReceiveProps(nextProps) {
@@ -47,6 +47,7 @@ class HomePageMap extends React.Component {
   setCenter(center) {
     if (this.props.mapType === 'detail') {
       this.state.map.setCenter(center);
+      this.setState({mapCenter: center});
     }
   }
   createMarker(value) {
@@ -57,9 +58,25 @@ class HomePageMap extends React.Component {
       animation: google.maps.Animation.DROP,
     });
 
+    let infowindow = new google.maps.InfoWindow({content: value.name});
+    marker.addListener('mouseover', function() {
+      infowindow.open(that.state.map, marker);
+    });
+
+    marker.addListener('mouseout', function() {
+      console.log('clossssse window');
+      infowindow.close();
+    });
     marker.addListener('click', function() {
-      that.state.setZoom(15);
+      let infowindow = new google.maps.InfoWindow({content: value.name});
+
+      that.state.map.setZoom(15);
       that.state.map.setCenter(marker.getPosition());
+      infowindow.addListener('closeclick', function(event) {
+        that.state.map.panTo(that.state.mapCenter);
+        that.state.map.setZoom(14);
+      });
+      infowindow.open(that.state.map, marker);
     });
     return marker;
   }
