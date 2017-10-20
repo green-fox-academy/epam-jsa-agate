@@ -64,7 +64,6 @@ class HomePageMap extends React.Component {
     });
 
     marker.addListener('mouseout', function() {
-      console.log('clossssse window');
       infowindow.close();
     });
     marker.addListener('click', function() {
