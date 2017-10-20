@@ -54,9 +54,11 @@ class HomePageMap extends React.Component {
     let marker = new google.maps.Marker({
       position: {lat: value.latitude, lng: value.longitude},
       map: that.state.map,
+      animation: google.maps.Animation.DROP,
     });
 
     marker.addListener('click', function() {
+      that.state.setZoom(15);
       that.state.map.setCenter(marker.getPosition());
     });
     return marker;
