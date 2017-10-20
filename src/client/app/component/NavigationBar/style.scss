@@ -25,6 +25,10 @@ $white: #fff;
   position: relative;
 }
 
+.nav-link-origin .write-review {
+  background-image: url("./images/edit.png");
+}
+
 .nav-link-origin {
   border-bottom: 1px solid #adafb2;
   color: #adafb2;
