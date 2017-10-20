@@ -21,8 +21,8 @@ class HomePageMap extends React.Component {
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAHP4cn0A4W4VIudAlmHmpAakBvbmcR5fY&callback=initMap');
   }
   initMap() {
-    const center = {lat: 22.2222, lng: 114};
-    const zoom = this.props.mapType === 'detail' ? 15 : 9;
+    const center = {lat: 22.528113, lng: 113.946343};
+    const zoom = this.props.mapType === 'detail' ? 15 : 14;
     const map = new google.maps.Map(
       document.getElementsByClassName('google-map-component')[0], {
         center: center,
