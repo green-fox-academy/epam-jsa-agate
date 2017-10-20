@@ -49,9 +49,19 @@ class HomePageMap extends React.Component {
       this.state.map.setCenter(center);
     }
   }
-  makeMarkers(businesses) {
+  createMarker(value) {
     const that = this;
+    let marker = new google.maps.Marker({
+      position: {lat: value.latitude, lng: value.longitude},
+      map: that.state.map,
+    });
 
+    marker.addListener('click', function() {
+      that.state.map.setCenter(marker.getPosition());
+    });
+    return marker;
+  }
+  makeMarkers(businesses) {
     if (businesses && this.state.map) {
       this.clearMarkers();
       this.setCenter({
@@ -59,14 +69,7 @@ class HomePageMap extends React.Component {
         lng: businesses[0].longitude,
       });
 
-      const markers = businesses.map(function(value, index) {
-        return new google.maps.Marker({
-          position: {lat: value.latitude, lng: value.longitude},
-          map: that.state.map,
-        });
-      });
-
-      this.setState({markers: markers});
+      this.setState({markers: businesses.map(this.createMarker.bind(this))});
     }
   }
   render() {
