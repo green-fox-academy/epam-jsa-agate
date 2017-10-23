@@ -182,21 +182,28 @@ function responseCreateCommentSuccess(res) {
     status(HTTP_201).json(responseMessage.CREATE_COMMENT_SUCCESS);
 }
 
-app.post('/api/business/:id/reviews', jwtMiddleware, function(req, res) {
-  if (req.user.username) {
-    BusinessessEndpoint.createComment(req.params.id,
-      req.user.username, req.body,
-      (dbResponseStatus) => {
-        if (dbResponseStatus === '500') {
-          responseOtherError(dbResponseStatus, res);
-        } else {
-          responseCreateCommentSuccess(res);
-        }
-      });
+app.post('/api/business/:id/reviews', jwtMiddleware,
+  function(req, res) {
+    if (req.user.username) {
+      let date = new Date();
+      let current_year = date.getFullYear();
+      let current_month = date.getMonth();
+      let current_data = date.getDate();
+      let current_hour = date.getHours();
+      let current_min = date.getMinutes();
+      let current_seconds = date.getSeconds();
 
-  }
-
-});
+      BusinessessEndpoint.createComment(req.params.id,
+        req.user.username, req.body,
+        (dbResponseStatus) => {
+          if (dbResponseStatus === '500') {
+            responseOtherError(dbResponseStatus, res);
+          } else {
+            responseCreateCommentSuccess(res);
+          }
+        });
+    }
+  });
 app.listen(PORT, function() {
   console.log(`app is listening on port ${PORT}`);
 });
