@@ -2,47 +2,52 @@ $border: 1px solid #000;
 $red: #d93738;
 $yellow: #f8e71c;
 $white: #fff;
+$margin: calc(9% / 6);
 
 .single-business {
   background-color: #282828;
   border: $border;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   height: 22.1875em;
-  margin-bottom: 2em;
-  position: relative;
-  width: 13.25em;
+  margin: $margin;
+  min-width: 13.25em;
+  max-width: 15.25em;
   cursor: pointer;
 }
 
 .image-container {
-  align-items: center;
   display: flex;
   height: 13.25em;
-  justify-content: center;
-  width: 13.25em;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .business-score {
   color: $red;
-  left: .625em;
-  position: absolute;
-  top: .625em;
+  display: block;
+  align-items: flex-start;
+  flex-basis: 20%;
 }
 
 .business-name {
+  display: block;
   color: $yellow;
   font-size: 1.375em;
   height: 1.6875em;
+  align-self: center;
+  flex-basis: 60%;
 }
 
 .business-title {
   color: $white;
   font-size: .875em;
   height: 1.0625em;
-  left: .4375em;
-  position: absolute;
-  top: 16.125em;
-  width: 9.6875em;
+  //width: 9.6875em;
 }
 
 .business-description {
@@ -51,41 +56,32 @@ $white: #fff;
   display: -webkit-box !important;
   font-size: .75em;
   height: 2.5em;
-  left: .6em;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  position: absolute;
   text-overflow: ellipsis;
-  top: 20.71875em;
-  width: 16.125em;
+  //width: 16.125em;
   word-break: break-all;
+  word-wrap: break-word;
 }
 
 .business-infor {
-  position: absolute;
-  top: 1.25em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .business-keywords {
   color: #adafb2;
   font-size: 12px;
   height: .875em;
-  left: .75em;
-  position: absolute;
-  top: 25.375em;
-  width: 7.3125em;
 }
 
 .business-more {
   color: $yellow;
   font-size: .75em;
   height: .875em;
-  left: 14em;
-  position: absolute;
   text-decoration: none;
   text-transform: uppercase;
-  top: 25.375em;
-  width: 2.1875em;
 }
 
 .hideBusinessName {
