@@ -11,8 +11,7 @@ $margin: calc(9% / 6);
   flex-direction: column;
   height: 22.1875em;
   margin: $margin;
-  min-width: 13.25em;
-  max-width: 15.25em;
+  width: 13.25em;
   cursor: pointer;
 }
 
@@ -20,8 +19,9 @@ $margin: calc(9% / 6);
   display: flex;
   height: 13.25em;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,8 +30,12 @@ $margin: calc(9% / 6);
 .business-score {
   color: $red;
   display: block;
-  align-items: flex-start;
-  flex-basis: 20%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-left: 0.5em;
+  margin: 0;
+
 }
 
 .business-name {
@@ -39,15 +43,13 @@ $margin: calc(9% / 6);
   color: $yellow;
   font-size: 1.375em;
   height: 1.6875em;
-  align-self: center;
-  flex-basis: 60%;
 }
 
 .business-title {
   color: $white;
   font-size: .875em;
   height: 1.0625em;
-  //width: 9.6875em;
+  padding-left: 0.3em;
 }
 
 .business-description {
@@ -55,12 +57,13 @@ $margin: calc(9% / 6);
   color: #adafb2;
   display: -webkit-box !important;
   font-size: .75em;
-  height: 2.5em;
+  height: 1.9em;
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  //width: 16.125em;
-  word-break: break-all;
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+  word-break: break-word;
   word-wrap: break-word;
 }
 
@@ -74,6 +77,7 @@ $margin: calc(9% / 6);
   color: #adafb2;
   font-size: 12px;
   height: .875em;
+  padding-left: 0.1em;
 }
 
 .business-more {
@@ -82,6 +86,7 @@ $margin: calc(9% / 6);
   height: .875em;
   text-decoration: none;
   text-transform: uppercase;
+  padding-right: 0.1em;
 }
 
 .hideBusinessName {
