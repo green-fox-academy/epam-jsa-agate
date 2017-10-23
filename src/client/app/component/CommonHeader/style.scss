@@ -1,0 +1,17 @@
+.common-header {
+  align-items: center;
+  background: linear-gradient(0deg, #4b4b4b 30%, #000);
+  display: flex;
+  flex-flow: row nowrap;
+  height: 4.8125em;
+  justify-content: flex-start;
+  width: 100%;
+ 
+  .menu {
+    background: url('./align_text_left.png') no-repeat center;
+    border: 0;
+    height: 3.125em;
+    transform: scale(.5);
+    width: 3.125em;
+  }
+}

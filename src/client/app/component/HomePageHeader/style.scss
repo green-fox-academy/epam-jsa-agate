@@ -1,0 +1,52 @@
+.home-page-header {
+  align-items: center;
+  background: linear-gradient(0deg, #4b4b4b 30%, #000);
+  display: flex;
+  height: 4.8125em;
+  justify-content: space-between;
+  padding: 0 1.5em;
+
+  .home-page-header-left {
+    display: flex;
+    align-items: center;
+
+    .menu {
+      cursor: pointer;
+    }
+  }
+
+  .home-page-header-right {
+    button {
+      font-size: 1.4em;
+      background: transparent;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      outline: 0;
+    }
+  }
+
+  .header-log-btn {
+    color: #fff;
+  }
+}
+
+.search {
+  background: url('./search.png') no-repeat .2em .1em;
+  background-color: #fff;
+  background-size: 1.75em 1.75em;
+  border-radius: .9375em;
+  height: 2.1875em;
+  margin: .1875em 0 0 3.125em;
+  outline: none;
+  padding: .375em .9375em .375em 1.875em;
+  width: 21.875em;
+}
+
+.menu {
+  background: url('./align_text_left.png') no-repeat center;
+  border: 0;
+  height: 3.125em;
+  transform: scale(.5);
+  width: 3.125em;
+};

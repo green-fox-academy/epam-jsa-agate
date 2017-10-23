@@ -1,0 +1,19 @@
+.single-business-page {
+  background-color: #4b4b4b;
+}
+.display-business {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  padding: 2em 8em;
+  height: 18em;
+
+  .google-map-component {
+    height: 100%;
+    overflow: scroll;
+    width: 35%;
+  }
+}
+
+
