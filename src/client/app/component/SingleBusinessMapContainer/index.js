@@ -9,20 +9,16 @@ class SingleBusinessMapContainer extends React.Component {
   }
   render() {
     const mapType = 'detail';
-    let business = {};
-
-    if (this.props.businesses && this.props.businesses.length > 0) {
-      business = this.props.businesses[0];
-    }
+    const {businessDetail} = this.props;
 
     return (
       <div className="detail-page-map-container">
         <HomePageMap businesses=
-          {this.props.businesses} mapType={mapType} />
+          {[businessDetail]} mapType={mapType} />
         <div className="detail-page-map-container-information">
-          <p>Location: {business.address
-            || (business.longitude + ', ' + business.latitude)}</p>
-          <p>Keyword: {business.keyword}</p>
+          <p>Location: {businessDetail.address
+            || (businessDetail.longitude + ', ' + businessDetail.latitude)}</p>
+          <p>Keyword: {businessDetail.keyword}</p>
         </div>
       </div>);
   }

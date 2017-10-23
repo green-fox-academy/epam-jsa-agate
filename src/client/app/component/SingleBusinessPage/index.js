@@ -50,7 +50,7 @@ class SingleBusinessPage extends React.Component {
           rating={this.state.businessDetail.rating}/>
         <div className="display-business">
           <SingleBusinessMapContainer
-            businesses={[this.state.businessDetail]} />
+            businessDetail={this.state.businessDetail} />
           <ImageDisplay/>
         </div>
         <CommentList comments={this.state.businessDetail.comments}/>
