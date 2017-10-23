@@ -74,8 +74,65 @@ function createBusiness(body, callback) {
   });
 }
 
+function fetchSingleComment(businessId, reviewId, callback) {
+  const url = dbUtility.createDatabaseUrl();
+  const filter = {_id: new ObjectID(businessId)};
+
+  MongoClient.connect(url, function(err, db) {
+    if (err === null) {
+      let collection = db.collection(collectionName);
+
+      collection.findOne(filter, function(err, docs) {
+        db.close();
+        if (docs && !err) {
+          return callback('200', docs);
+        }
+        return callback('404');
+      });
+    } else {
+      return callback('500');
+    }
+  });
+}
+
+function createComment(searchId, username, body, callback) {
+  const url = dbUtility.createDatabaseUrl();
+
+  MongoClient.connect(url, function(err, db) {
+    const filter = {_id: new ObjectID(searchId)};
+    const commentInfo = {
+      username: username,
+      comment: body.comment,
+      rating: body.rating,
+    };
+
+    if (err === null) {
+      let collection = db.collection(collectionName);
+
+      collection.findOne(filter, function(err, docs) {
+        if (err) {
+          return callback('500');
+        }
+        docs.comments.push(commentInfo);
+        collection.findOneAndUpdate(filter, docs,
+          function(err, doc) {
+            if (err) {
+              return callback('500');
+            }
+            db.close();
+            return callback('201');
+          });
+      });
+    } else {
+      return callback('500');
+    }
+  });
+}
+
 module.exports = {
   fetchBusinesses: fetchBusinesses,
   fetchSingleBusiness: fetchSingleBusiness,
   createBusiness: createBusiness,
+  fetchSingleComment: fetchSingleComment,
+  createComment: createComment,
 };
