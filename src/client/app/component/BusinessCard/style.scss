@@ -14,6 +14,7 @@ $card-width: calc(100% / 3 - 20px);
   height: 22.1875em;
   margin: 10px;
   width: $card-width;
+  position: relative;
 }
 
 .image-container {
@@ -73,9 +74,11 @@ $card-width: calc(100% / 3 - 20px);
 }
 
 .business-infor {
-  align-items: flex-end;
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 5px;
 }
 
 .business-keywords {
@@ -83,6 +86,7 @@ $card-width: calc(100% / 3 - 20px);
   font-size: 12px;
   height: .875em;
   padding-left: .3em;
+  float: left;
 }
 
 .business-more {
@@ -92,4 +96,5 @@ $card-width: calc(100% / 3 - 20px);
   padding-right: .3em;
   text-decoration: none;
   text-transform: uppercase;
+  float: right;
 }
