@@ -20,6 +20,8 @@ const PORT = process.env.PORT || DEFAULT_PORT;
 const secret = 'epam jsa agate';
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const expressJWT = require('express-jwt');
+const jwtMiddleware = expressJWT({secret: secret});
 
 app.use(bodyParser.json());
 
@@ -175,6 +177,26 @@ app.post('/api/businesses', function(req, res) {
   }
 });
 
+function responseCreateCommentSuccess(res) {
+  return res.set('Location', '/api/business/ok').
+    status(HTTP_201).json(responseMessage.CREATE_COMMENT_SUCCESS);
+}
+
+app.post('/api/business/:id/reviews', jwtMiddleware, function(req, res) {
+  if (req.user.username) {
+    BusinessessEndpoint.createComment(req.params.id,
+      req.user.username, req.body,
+      (dbResponseStatus) => {
+        if (dbResponseStatus === '500') {
+          responseOtherError(dbResponseStatus, res);
+        } else {
+          responseCreateCommentSuccess(res);
+        }
+      });
+
+  }
+
+});
 app.listen(PORT, function() {
   console.log(`app is listening on port ${PORT}`);
 });

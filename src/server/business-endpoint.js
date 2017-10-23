@@ -74,8 +74,43 @@ function createBusiness(body, callback) {
   });
 }
 
+function createComment(searchId, username, body, callback) {
+  const url = dbUtility.createDatabaseUrl();
+
+  MongoClient.connect(url, function(err, db) {
+    const filter = {_id: new ObjectID(searchId)};
+    const commentInfo = {
+      username: username,
+      comment: body.comment,
+      rating: body.rating,
+    };
+
+    if (err === null) {
+      let collection = db.collection(collectionName);
+
+      collection.findOne(filter, function(err, docs) {
+        if (err) {
+          return callback('500');
+        }
+        docs.comments.push(commentInfo);
+        collection.findOneAndUpdate(filter, docs,
+          function(err, doc) {
+            if (err) {
+              return callback('500');
+            }
+            db.close();
+            return callback('201');
+          });
+      });
+    } else {
+      return callback('500');
+    }
+  });
+}
+
 module.exports = {
   fetchBusinesses: fetchBusinesses,
   fetchSingleBusiness: fetchSingleBusiness,
   createBusiness: createBusiness,
+  createComment: createComment,
 };

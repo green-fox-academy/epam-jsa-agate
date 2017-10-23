@@ -16,6 +16,7 @@ const responseMessage = {
   NO_BUSINESS_EXISTS: {error: 'No business exists.'},
   REQUIREDFIELDS_MISSING: {error: 'Required fields missing.'},
   CREATE_BUSINESS_SUCCESS: {status: 'Success creating a business.'},
+  CREATE_COMMENT_SUCCESS: {status: 'Success creating a comment.'},
 };
 
 module.exports = responseMessage;
