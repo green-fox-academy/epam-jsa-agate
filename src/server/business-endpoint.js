@@ -74,27 +74,6 @@ function createBusiness(body, callback) {
   });
 }
 
-function fetchSingleComment(businessId, reviewId, callback) {
-  const url = dbUtility.createDatabaseUrl();
-  const filter = {_id: new ObjectID(businessId)};
-
-  MongoClient.connect(url, function(err, db) {
-    if (err === null) {
-      let collection = db.collection(collectionName);
-
-      collection.findOne(filter, function(err, docs) {
-        db.close();
-        if (docs && !err) {
-          return callback('200', docs);
-        }
-        return callback('404');
-      });
-    } else {
-      return callback('500');
-    }
-  });
-}
-
 function createComment(searchId, username, body, callback) {
   const url = dbUtility.createDatabaseUrl();
 
@@ -133,6 +112,5 @@ module.exports = {
   fetchBusinesses: fetchBusinesses,
   fetchSingleBusiness: fetchSingleBusiness,
   createBusiness: createBusiness,
-  fetchSingleComment: fetchSingleComment,
   createComment: createComment,
 };

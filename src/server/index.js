@@ -182,19 +182,6 @@ function responseCreateCommentSuccess(res) {
     status(HTTP_201).json(responseMessage.CREATE_COMMENT_SUCCESS);
 }
 
-app.get('/api/business/:businessId/reviews/:reviewId', function(req, res) {
-  BusinessessEndpoint.fetchSingleComment(req.params.businessId,
-    req.params.reviewId, (status, docs) => {
-      if (status === '200') {
-        return res.status(HTTP_200).json(docs);
-      } else if (status === '500') {
-        return res.status(HTTP_500).json(responseMessage.API_ERROR_MESSAGE);
-      } else if (status === '404') {
-        return res.status(HTTP_404).json(responseMessage.NO_COMMENT_EXISTS);
-      }
-    });
-});
-
 app.post('/api/business/:id/reviews', jwtMiddleware,
   function(req, res) {
     if (req.user.username) {
