@@ -182,6 +182,10 @@ function responseCreateCommentSuccess(res) {
     status(HTTP_201).json(responseMessage.CREATE_COMMENT_SUCCESS);
 }
 
+function responseJWTTokenMissing(res) {
+  return res.status(HTTP_400).json(responseMessage.JWTTOKEN_MISSING);
+}
+
 app.post('/api/business/:id/reviews', jwtMiddleware,
   function(req, res) {
     if (req.user.username) {
@@ -202,6 +206,8 @@ app.post('/api/business/:id/reviews', jwtMiddleware,
             responseCreateCommentSuccess(res);
           }
         });
+    } else {
+      responseJWTTokenMissing(res);
     }
   });
 app.listen(PORT, function() {
