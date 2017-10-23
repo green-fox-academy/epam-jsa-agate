@@ -76,16 +76,16 @@ $card-width: calc(100% / 3 - 20px);
 .business-infor {
   bottom: 0;
   left: 0;
-  margin-bottom: 5px;
   position: absolute;
   width: 100%;
+  padding: 3px 2px;
+  box-sizing: border-box;
 }
 
 .business-keywords {
   color: #adafb2;
   float: left;
   font-size: 12px;
-  height: .875em;
   padding-left: .3em;
 }
 
