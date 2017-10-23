@@ -2,35 +2,36 @@ $border: 1px solid #000;
 $red: #d93738;
 $yellow: #f8e71c;
 $white: #fff;
-$margin: calc(9% / 6);
+$card-width: calc(100% / 3 - 20px);
 
 .single-business {
   background-color: #282828;
   border: $border;
+  cursor: pointer;
   display: flex;
+  flex: 0 0 30%;
   flex-direction: column;
   height: 22.1875em;
-  margin: $margin;
-  width: 13.25em;
-  cursor: pointer;
+  margin: 10px;
+  width: $card-width;
 }
 
 .image-container {
-  display: flex;
-  height: 13.25em;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 13.25em;
+  justify-content: center;
+  position: relative;
+  width: 100%;
 }
 
-.image-container:hover{
+.image-container:hover {
   .business-name {
-    display: block;
     color: $yellow;
+    display: block;
     font-size: 1.375em;
   }
 }
@@ -38,15 +39,14 @@ $margin: calc(9% / 6);
 .business-score {
   color: $red;
   display: block;
-  position: absolute;
   left: 0;
-  top: 0;
-  padding-left: 0.5em;
   margin: 0;
-
+  padding-left: .5em;
+  position: absolute;
+  top: 0;
 }
 
-.business-name{
+.business-name {
   display: none;
 }
 
@@ -54,7 +54,7 @@ $margin: calc(9% / 6);
   color: $white;
   font-size: .875em;
   height: 1.0625em;
-  padding-left: 0.3em;
+  padding-left: .3em;
 }
 
 .business-description {
@@ -65,31 +65,31 @@ $margin: calc(9% / 6);
   height: 1.9em;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  padding-bottom: .5em;
+  padding-left: .5em;
   text-overflow: ellipsis;
-  padding-left: 0.5em;
-  padding-bottom: 0.5em;
   word-break: break-word;
   word-wrap: break-word;
 }
 
 .business-infor {
+  align-items: flex-end;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
 }
 
 .business-keywords {
   color: #adafb2;
   font-size: 12px;
   height: .875em;
-  padding-left: 0.3em;
+  padding-left: .3em;
 }
 
 .business-more {
   color: $yellow;
   font-size: .75em;
   height: .875em;
+  padding-right: .3em;
   text-decoration: none;
   text-transform: uppercase;
-  padding-right: 0.3em;
 }
