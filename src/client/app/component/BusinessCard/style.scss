@@ -13,8 +13,8 @@ $card-width: calc(100% / 3 - 20px);
   flex-direction: column;
   height: 22.1875em;
   margin: 10px;
-  width: $card-width;
   position: relative;
+  width: $card-width;
 }
 
 .image-container {
@@ -74,27 +74,27 @@ $card-width: calc(100% / 3 - 20px);
 }
 
 .business-infor {
-  width: 100%;
-  position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
   margin-bottom: 5px;
+  position: absolute;
+  width: 100%;
 }
 
 .business-keywords {
   color: #adafb2;
+  float: left;
   font-size: 12px;
   height: .875em;
   padding-left: .3em;
-  float: left;
 }
 
 .business-more {
   color: $yellow;
+  float: right;
   font-size: .75em;
   height: .875em;
   padding-right: .3em;
   text-decoration: none;
   text-transform: uppercase;
-  float: right;
 }
