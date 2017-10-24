@@ -210,6 +210,7 @@ app.post('/api/business/:id/reviews', jwtMiddleware,
       responseJWTTokenMissing(res);
     }
   });
+
 app.listen(PORT, function() {
   console.log(`app is listening on port ${PORT}`);
 });
