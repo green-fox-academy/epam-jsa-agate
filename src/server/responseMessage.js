@@ -17,7 +17,6 @@ const responseMessage = {
   REQUIREDFIELDS_MISSING: {error: 'Required fields missing.'},
   CREATE_BUSINESS_SUCCESS: {status: 'Success creating a business.'},
   CREATE_COMMENT_SUCCESS: {status: 'Success creating a comment.'},
-  JWTTOKEN_MISSING: {status: 'JWT Token missing.'},
 };
 
 module.exports = responseMessage;
