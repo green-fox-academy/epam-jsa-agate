@@ -74,7 +74,7 @@ function createBusiness(body, callback) {
   });
 }
 
-function findAndPostReview(db, searchId, username, body, callback) {
+function findBusinessAndPostReview(db, searchId, username, body, callback) {
   const businessCollection = db.collection(collectionName);
   const filter = {_id: new ObjectID(searchId)};
   const commentInfo = {
@@ -95,12 +95,12 @@ function findAndPostReview(db, searchId, username, body, callback) {
     });
 }
 
-function findExistingUser(db, searchId, username, body, callback) {
+function findExistingUserAndPostReview(db, searchId, username, body, callback) {
   const usersCollection = db.collection('users');
 
   usersCollection.findOne({username: username}, function(err, docs) {
     if (err === null && docs !== null) {
-      findAndPostReview(db, searchId, username, body, callback);
+      findBusinessAndPostReview(db, searchId, username, body, callback);
     } else {
       return callback('400');
     }
@@ -112,7 +112,7 @@ function createComment(searchId, username, body, callback) {
 
   MongoClient.connect(url, function(err, db) {
     if (err === null) {
-      findExistingUser(db, searchId, username, body, callback);
+      findExistingUserAndPostReview(db, searchId, username, body, callback);
     } else {
       return callback('500');
     }
@@ -124,5 +124,4 @@ module.exports = {
   fetchSingleBusiness: fetchSingleBusiness,
   createBusiness: createBusiness,
   createComment: createComment,
-  findExistingUser: findExistingUser,
 };

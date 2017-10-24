@@ -10,6 +10,7 @@ const responseMessage = {
   },
   USERNAME_MISSING: {error: 'Username required.'},
   PASSWORD_MISSING: {error: 'Password required.'},
+  RATING_MISSING: {error: 'Rating required.'},
   USERNAME_CONFLICT: {error: 'Conflict user name.'},
   OTHER_ERROR: {error: 'Something else went wrong.'},
   REGISTER_SUCCESS: {status: 'Success Register'},

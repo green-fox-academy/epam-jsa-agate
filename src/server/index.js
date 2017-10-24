@@ -181,6 +181,9 @@ app.post('/api/business/:id/comments', jwtMiddleware,
   function(req, res) {
     if (req.headers['content-type'] !== 'application/json') {
       responseContentTypeError(res);
+    } else if (req.body.rating === undefined) {
+      res.status(HTTP_400).json(
+        responseMessage.RATING_MISSING);
     } else if (req.user.username) {
       BusinessessEndpoint.createComment(req.params.id,
         req.user.username, req.body,
