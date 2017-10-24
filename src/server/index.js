@@ -162,6 +162,7 @@ function validateRequestBody(req) {
 }
 
 app.post('/api/businesses', function(req, res) {
+  console.log("reqbody: " + req.body);
   if (req.headers['content-type'] !== 'application/json') {
     (responseContentTypeError(res));
   } else if (validateRequestBody(req)) {
