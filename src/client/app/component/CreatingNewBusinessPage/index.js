@@ -26,7 +26,7 @@ class CreatingNewBusinessPage extends React.Component {
       rating: 3,
       longitude: 20,
       latitude: 30,
-      image: [
+      images: [
         event.target.elements[5].value,
         event.target.elements[6].value,
         event.target.elements[7].value,
