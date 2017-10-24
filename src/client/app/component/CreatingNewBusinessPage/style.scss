@@ -1,10 +1,14 @@
+.content-container {
+  display: flex;
+  padding: 0 1.5em;
+}
 .creating-new-business .search {
   display: none;
 }
 
 .creating-new-business .home-page-header-left:after {
   content: 'for Business Owners';
-  padding: 10em;
+  padding: 2em;
   color: #fff;
   font-size: 1.5em;
 }
