@@ -177,7 +177,7 @@ app.post('/api/businesses', function(req, res) {
   }
 });
 
-app.post('/api/business/:id/comments', jwtMiddleware,
+app.post('/api/businesses/:id/comments', jwtMiddleware,
   function(req, res) {
     if (req.headers['content-type'] !== 'application/json') {
       responseContentTypeError(res);
