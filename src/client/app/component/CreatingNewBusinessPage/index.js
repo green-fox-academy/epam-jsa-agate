@@ -11,7 +11,8 @@ class CreatingNewBusinessPage extends React.Component {
   render() {
     return (
       <div className="creating-new-business">
-        <Header />
+        <Header/>
+        <CreatingNewBusinessForm/>
       </div>
     );
   }
