@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import CreatingNewBusinessForm from '../CreatingNewBusinessForm';
-import Header from '../CommonHeader';
+import Header from '../HomePageHeader';
 import './style.scss';
 
 class CreatingNewBusinessPage extends React.Component {
