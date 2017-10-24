@@ -1,9 +1,7 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import Image from './images/businessPic.jpg';
+import HomePageMap from '../HomePageMap';
 import './style.scss';
-
-const businessImage = Image;
 
 class CreatingNewImage extends React.Component {
   constructor(props) {
@@ -11,8 +9,8 @@ class CreatingNewImage extends React.Component {
   }
   render() {
     return (
-      <div className="creating-new-image">
-        <img src={businessImage}/>
+      <div className="creating-new-map">
+        <HomePageMap />
       </div>
 
     );

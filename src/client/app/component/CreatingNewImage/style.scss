@@ -1,12 +1,12 @@
-.creating-new-image{
+.creating-new-map{
   display: flex;
   justify-content: center;
-  align-items: center;
-  width:50%;
+  width: 50%;
+  margin: 2em;
 
-  img {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
+  .google-map-component {
+    width:100%;
+    height:100%;
+    overflow: visible;
   }
 }
