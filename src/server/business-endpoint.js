@@ -84,8 +84,10 @@ function findBusinessAndPostReview(db, searchId, username, body, callback) {
     id: new ObjectID(),
   };
 
+  console.log("commentinfo" + commentInfo);
   businessCollection.update(filter, {$addToSet: {comments: commentInfo}},
     function(err, result, state) {
+      console.log("result: " + result);
       if (result.result.nModified !== 1) {
         return callback('404');
       } else if (result.result.nModified === 1 && !err) {

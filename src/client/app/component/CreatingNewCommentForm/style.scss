@@ -1,0 +1,40 @@
+$form-width: calc(100% - 2em);
+$form-height: calc(100% - 4.8125em);
+
+.creating-new-comment-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 1em;
+  width: 50%;
+  .comment-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: $form-width;
+    height: $form-height;
+  }
+
+  input {
+    margin-bottom: 1em;
+    font-size: 16px;
+    padding: .3em;
+  }
+  .comment-submit {
+    background: #3498db;
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    border-radius: 12px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 1em;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    width: 30%;
+    outline: none;
+  }
+  .comment-submit:hover {
+    background: #3cb0fd;
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }
+}

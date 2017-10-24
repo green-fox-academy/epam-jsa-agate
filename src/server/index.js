@@ -60,7 +60,7 @@ app.get('/api/business/:id', function(req, res) {
   });
 });
 
-app.get(['/', '/login', '/register', '/business/:id'], (req, res) => {
+app.get(['/', '/login', '/register', '/business/:id', '/create-comment'], (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
 });
 
@@ -185,6 +185,7 @@ app.post('/api/businesses/:id/comments', jwtMiddleware,
       res.status(HTTP_400).json(
         responseMessage.RATING_MISSING);
     } else if (req.user.username) {
+      console.log("username" + req.user.username);
       BusinessessEndpoint.createComment(req.params.id,
         req.user.username, req.body,
         (dbResponseStatus, commentId) => {
