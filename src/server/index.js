@@ -177,8 +177,9 @@ app.post('/api/businesses', function(req, res) {
   }
 });
 
-function responseCreateCommentSuccess(res) {
-  return res.set('Location', '/api/business/ok').
+function responseCreateCommentSuccess(res, businessId, commentId) {
+  return res.set('Location', ' /api/business/' +
+    businessId + '/comments/' + commentId).
     status(HTTP_201).json(responseMessage.CREATE_COMMENT_SUCCESS);
 }
 
@@ -186,29 +187,17 @@ function responseJWTTokenMissing(res) {
   return res.status(HTTP_400).json(responseMessage.JWTTOKEN_MISSING);
 }
 
-app.post('/api/business/:id/reviews', jwtMiddleware,
+app.post('/api/business/:id/comments', jwtMiddleware,
   function(req, res) {
-    if (req.user.username) {
-      let date = new Date();
-      let current_year = date.getFullYear();
-      let current_month = date.getMonth();
-      let current_data = date.getDate();
-      let current_hour = date.getHours();
-      let current_min = date.getMinutes();
-      let current_seconds = date.getSeconds();
-
-      BusinessessEndpoint.createComment(req.params.id,
-        req.user.username, req.body,
-        (dbResponseStatus) => {
-          if (dbResponseStatus === '500') {
-            responseOtherError(dbResponseStatus, res);
-          } else {
-            responseCreateCommentSuccess(res);
-          }
-        });
-    } else {
-      responseJWTTokenMissing(res);
-    }
+    BusinessessEndpoint.createComment(req.params.id,
+      req.user.username, req.body,
+      (dbResponseStatus, commentId) => {
+        if (dbResponseStatus === '500') {
+          responseOtherError(dbResponseStatus, res);
+        } else {
+          responseCreateCommentSuccess(res, req.params.id, commentId);
+        }
+      });
   });
 
 app.listen(PORT, function() {

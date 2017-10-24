@@ -4,6 +4,7 @@ const dbUtility = require('./db-utility');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const collectionName = 'businesses';
+const loginStatusCode = require('./status-code');
 
 function fetchBusinesses(callback) {
   const url = dbUtility.createDatabaseUrl();
@@ -74,36 +75,62 @@ function createBusiness(body, callback) {
   });
 }
 
+function findExistingUser(userName) {
+  const url = dbUtility.createDatabaseUrl();
+
+  dbUtility.connectMongo(url, function(err, db) {
+    if (err === null) {
+      db.collection('users').findOne({username: userName}, function(err, docs) {
+        db.close();
+        console.log('docs ' + docs.username);
+        if (docs !== null && err === null) {
+          console.log('docs2 ' + docs.username);
+          console.log('corrent ' + loginStatusCode.CORRECT);
+          return loginStatusCode.CORRECT;
+        }
+        return loginStatusCode.WRONG_SERVER;
+      });
+    } else {
+      return loginStatusCode.WRONG_SERVER;
+    }
+  });
+}
+
 function createComment(searchId, username, body, callback) {
   const url = dbUtility.createDatabaseUrl();
 
   MongoClient.connect(url, function(err, db) {
-    const filter = {_id: new ObjectID(searchId)};
-    const commentInfo = {
-      username: username,
-      comment: body.comment,
-      rating: body.rating,
-    };
+    if (findExistingUser(username) === 0) {
+      const filter = {_id: new ObjectID(searchId)};
+      const commentInfo = {
+        username: username,
+        comment: body.comment,
+        rating: body.rating,
+        id: new ObjectID(),
+      };
 
-    if (err === null) {
-      let collection = db.collection(collectionName);
+      if (err === null) {
+        let collection = db.collection(collectionName);
 
-      collection.findOne(filter, function(err, docs) {
-        if (err) {
-          return callback('500');
-        }
-        docs.comments.push(commentInfo);
-        collection.findOneAndUpdate(filter, docs,
-          function(err, doc) {
-            if (err) {
-              return callback('500');
-            }
-            db.close();
-            return callback('201');
-          });
-      });
+        collection.findOne(filter, function(err, docs) {
+          if (err) {
+            return callback('500');
+          }
+          docs.comments.push(commentInfo);
+          collection.findOneAndUpdate(filter, docs,
+            function(err, doc) {
+              if (err) {
+                return callback('500');
+              }
+              db.close();
+              return callback('201', commentInfo.id);
+            });
+        });
+      } else {
+        return callback('500');
+      }
     } else {
-      return callback('500');
+      return callback('400');
     }
   });
 }
@@ -113,4 +140,5 @@ module.exports = {
   fetchSingleBusiness: fetchSingleBusiness,
   createBusiness: createBusiness,
   createComment: createComment,
+  findExistingUser: findExistingUser,
 };
