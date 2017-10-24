@@ -55,7 +55,7 @@ function createBusiness(body, callback) {
       address: body.address, phone: body.phone,
       keyword: body.keyword, rating: body.rating,
       longitude: body.longitude, latitude: body.latitude,
-      imageUrl: body.imageUrl, images:
+      images:
       [
         body.images[0],
         body.images[1],

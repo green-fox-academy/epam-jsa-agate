@@ -158,7 +158,7 @@ function validateRequestBody(req) {
     || !req.body.address || !req.body.phone
     || !req.body.keyword || !req.body.rating
     || !req.body.longitude || !req.body.latitude
-    || !req.body.imageUrl || !req.body.images);
+    || !req.body.images);
 }
 
 app.post('/api/businesses', function(req, res) {
