@@ -12,7 +12,9 @@ class CreatingNewBusinessPage extends React.Component {
     return (
       <div className="creating-new-business">
         <Header/>
-        <CreatingNewBusinessForm/>
+        <main className="content-container">
+          <CreatingNewBusinessForm/>
+        </main>
       </div>
     );
   }
