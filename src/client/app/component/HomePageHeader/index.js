@@ -48,6 +48,11 @@ class HomePageHeader extends React.Component {
       this.redirectTopage.bind(this, '/login')();
     }
   }
+  valueChangeHandler(event) {
+    const input = event.target.value;
+
+    this.props.search(input)();
+  }
   render() {
     let btnText = '';
 
@@ -80,10 +85,10 @@ class HomePageHeader extends React.Component {
       <div className="home-page-header">
         <div className="home-page-header-left">
           <div className="menu" ref="menuButton"></div>
-          <form className="header" onSubmit={this.submitHandler.bind(this)}
-            onKeyUp={this.keyUPHandler.bind(this)}>
+          <form className="header" onSubmit={this.submitHandler.bind(this)}>
             <input className="search" type="search" id="mySearch"
-              placeholder="Search"/>
+              placeholder="Search"
+              onInput={this.valueChangeHandler.bind(this)}/>
           </form>
         </div>
         <div className="home-page-header-right">
