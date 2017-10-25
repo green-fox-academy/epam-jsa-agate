@@ -38,18 +38,13 @@ class CreatingNewBusinessForm extends React.Component {
             <label htmlFor="business-phone">Phone</label>
             <input name="phone" id="business-phone" required
               type="text" placeholder="+86 136 8888 8888"/>
-            <label htmlFor="business-key-words">Business Key Words</label>
+            <label htmlFor="business-key-words">Key Words</label>
             <input name="key-words" id="business-key-words" required
               type="text" placeholder="Coffee Asian ..."/>
-            <label htmlFor="image-url-1">image url 1</label>
-            <input name="url1" id="image-url-1" required
-              type="text" placeholder="https://image.com"/>
-            <label htmlFor="image-url-2">image url 2</label>
-            <input name="url2" id="image-url-2" required
-              type="text" placeholder="https://image.com"/>
-            <label htmlFor="image-url-3">image url 3</label>
-            <input name="url3" id="image-url-3" required
-              type="text" placeholder="https://image.com"/>
+            <label htmlFor="image-url">Images url</label>
+            <textarea id="image-url" rows="3" placeholder=
+              "Highly recommend to input 3 images and seperate them into 3 lines."
+            required></textarea>
             <input className="business-submit"
               type="submit" value="Add business"/>
           </form>

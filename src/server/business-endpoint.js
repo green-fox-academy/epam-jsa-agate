@@ -53,14 +53,9 @@ function createBusiness(body, callback) {
     const businessInfo = {
       name: body.name, description: body.description,
       address: body.address, phone: body.phone,
-      keyword: body.keyword, rating: body.rating,
+      keyword: body.keyword, rating: 0,
       longitude: body.longitude, latitude: body.latitude,
-      images:
-      [
-        body.images[0],
-        body.images[1],
-        body.images[2],
-      ],
+      images: body.images,
     };
 
     if (err === null) {

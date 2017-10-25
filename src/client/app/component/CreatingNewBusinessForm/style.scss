@@ -1,5 +1,4 @@
 $form-width: calc(100% - 2em);
-$form-height: calc(100% - 4.8125em);
 
 .creating-new-business-form {
   display: flex;
@@ -7,34 +6,45 @@ $form-height: calc(100% - 4.8125em);
   justify-content: flex-start;
   padding: 0 1em;
   width: 50%;
+  font-size: 12px;
   .business-info {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: $form-width;
-    height: $form-height;
   }
 
   input {
     margin-bottom: 1em;
-    font-size: 16px;
+    font-size: 12px;
     padding: .3em;
+    border-radius: 5px;
   }
+
+  textarea {
+    font-size: 12px;
+    margin-bottom: 1em;
+    border-radius: 5px;
+  }
+
   .business-submit {
-    background: #3498db;
-    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    background: linear-gradient(#d90007, #c91400);
+    border: 1px solid #8d0005;
     border-radius: 12px;
     font-family: Arial;
-    color: #ffffff;
+    color: #fff;
     font-size: 1em;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-    width: 30%;
+    width: 100%;
     outline: none;
   }
   .business-submit:hover {
-    background: #3cb0fd;
-    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-    text-decoration: none;
+    background: #e11002;
   }
+  // .business-submit:hover {
+  //   background: #3cb0fd;
+  //   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  //   text-decoration: none;
+  // }
 }

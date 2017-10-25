@@ -41,11 +41,14 @@ class HomePageHeader extends React.Component {
       <div className = "home-page-header">
         <div className="home-page-header-left">
           <div className="menu" ref="menuButton"></div>
-          <form className="header" onSubmit={this.submitHandler.bind(this)}
-            onKeyUp={this.keyUPHandler.bind(this)}>
-            <input className="search" type="search" id="mySearch"
-              placeholder="Search"/>
-          </form>
+          {this.props.headerType === 'create' ?
+            (<div className="create-page-header-infor">
+              for Business Owners</div>) :
+            (<form className="header" onSubmit={this.submitHandler.bind(this)}
+              onKeyUp={this.keyUPHandler.bind(this)}>
+              <input className="search" type="search" id="mySearch"
+                placeholder="Search"/>
+            </form>)}
         </div>
         <div className="home-page-header-right">
           <button onClick={this.onClickHeaderLogBtn.bind(this)}>

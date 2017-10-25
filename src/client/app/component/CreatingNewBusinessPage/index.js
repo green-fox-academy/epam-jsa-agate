@@ -15,24 +15,24 @@ class CreatingNewBusinessPage extends React.Component {
       'loading': false,
       'successCreate': false,
     };
+    this.submitHandler = this.submitHandler.bind(this);
+    this.clickMapHandler = this.clickMapHandler.bind(this);
   }
   submitHandler(event) {
     this.setState({'loading': true});
     event.preventDefault();
+    let images = event.target.elements[5].value;
+    let imagesArr = images.split('\n');
+
     this.submitData({
       name: event.target.elements[0].value,
       description: event.target.elements[1].value,
       address: event.target.elements[2].value,
       phone: event.target.elements[3].value,
       keyword: event.target.elements[4].value,
-      rating: 3,
       longitude: this.state.longitute,
       latitude: this.state.latitude,
-      images: [
-        event.target.elements[5].value,
-        event.target.elements[6].value,
-        event.target.elements[7].value,
-      ],
+      images: imagesArr,
     });
   }
   errorHandler(err) {
@@ -83,13 +83,13 @@ class CreatingNewBusinessPage extends React.Component {
 
     return this.state.successCreate ? (<Redirect to="/" />) : (
       <div className="creating-new-business">
-        <Header/>
+        <Header headerType="create"/>
         <main className="content-container">
-          <CreatingNewBusinessForm onSubmit={this.submitHandler.bind(this)}
+          <CreatingNewBusinessForm onSubmit={this.submitHandler}
             loading={loading} address={address}/>
           <div className="creating-new-map">
             <HomePageMap mapType="create"
-              clickHandlerForCreate={this.clickMapHandler.bind(this)}/>
+              clickHandlerForCreate={this.clickMapHandler}/>
           </div>
         </main>
       </div>
