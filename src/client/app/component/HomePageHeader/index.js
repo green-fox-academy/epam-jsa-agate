@@ -55,7 +55,7 @@ class HomePageHeader extends React.Component {
     if (btnText !== 'Log In') {
       button =
         <Dropdown overlay={menu} size="small">
-          <a className="ant-dropdown-link" href="#">
+          <a className="ant-dropdown-link" >
             {btnText}
           </a>
         </Dropdown>;
