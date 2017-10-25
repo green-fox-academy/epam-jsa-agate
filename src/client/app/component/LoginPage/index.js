@@ -24,10 +24,12 @@ class LoginPage extends React.Component {
   errorHandler(err) {
     this.setState({'errMsg': err.message, 'formHasError': true});
     localStorage.removeItem('Authorization');
+    localStorage.removeItem('Username');
   }
-  successHandler(token) {
+  successHandler(value) {
     this.setState({'errMsg': '', 'formHasError': false});
-    localStorage.setItem('Authorization', token);
+    localStorage.setItem('Authorization', value.token);
+    localStorage.setItem('Username', value.username);
     this.setState({'isLoggedIn': true});
   }
   submitData(data) {
@@ -48,7 +50,7 @@ class LoginPage extends React.Component {
       if (value.error) {
         throw new Error(value.error);
       } else {
-        that.successHandler(value.token);
+        that.successHandler(value);
       }
     }).catch(function(err) {
       that.errorHandler(err);
