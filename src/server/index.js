@@ -185,7 +185,6 @@ app.post('/api/businesses/:id/comments', jwtMiddleware,
       res.status(HTTP_400).json(
         responseMessage.RATING_MISSING);
     } else if (req.user.username) {
-      console.log("username" + req.user.username);
       BusinessessEndpoint.createComment(req.params.id,
         req.user.username, req.body,
         (dbResponseStatus, commentId) => {
