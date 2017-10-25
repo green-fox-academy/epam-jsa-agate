@@ -81,7 +81,7 @@ app.post('/api/login', (req, res) => {
           const token = jwt.sign({username: req.body.username}, secret);
 
           return res.status(HTTP_200).
-            json({token: token, username: req.body.username});
+            json({token: token});
         } else if (status === loginStatusCode.MISSING_CREDENTIALS) {
           return res.status(HTTP_403).json({error: 'Bad credentials.'});
         } else if (status === loginStatusCode.WRONG_SERVER) {

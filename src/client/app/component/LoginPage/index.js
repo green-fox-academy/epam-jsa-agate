@@ -24,12 +24,10 @@ class LoginPage extends React.Component {
   errorHandler(err) {
     this.setState({'errMsg': err.message, 'formHasError': true});
     localStorage.removeItem('Authorization');
-    localStorage.removeItem('Username');
   }
   successHandler(value) {
     this.setState({'errMsg': '', 'formHasError': false});
     localStorage.setItem('Authorization', value.token);
-    localStorage.setItem('Username', value.username);
     this.setState({'isLoggedIn': true});
   }
   submitData(data) {
