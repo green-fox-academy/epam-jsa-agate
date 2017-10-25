@@ -11,15 +11,22 @@ class CreatingNewBusinessPage extends React.Component {
     this.state = {
       'loading': false,
       'formHasError': false,
+      'rating': 2,
     };
+  }
+
+  changeRating(currentRating) {
+    console.log('changerating: ' + currentRating);
+    this.setState({'rating': currentRating});
+    console.log('change rating after set state: ' + this.state.rating);
   }
   submitHandler(event) {
     this.setState({'loading': true});
-    console.log('values', event.target.elements[0].value);
+    console.log('submitHandler rating: ', this.state.rating);
     event.preventDefault();
     this.submitData({
       comment: event.target.elements[0].value,
-      rating: 3,
+      rating: this.state.rating,
     });
   }
   errorHandler(err) {
@@ -38,12 +45,14 @@ class CreatingNewBusinessPage extends React.Component {
     };
 
     let jwtToken = localStorage.getItem('Authorization');
-    console.log("token: " + jwtToken);
+
+    console.log('token: ' + jwtToken);
     myHeaders.append('Content-Type', 'application/json');
     myHeaders.append('Authorization', 'Bearer ' + jwtToken);
 
-    let bid = '59e988d562e4e88dad8ee5df'
-    fetch('/api/businesses/'+ bid +'/comments', myInt).then(
+    let businessId = '59e988d562e4e88dad8ee5df';
+
+    fetch('/api/businesses/' + businessId + '/comments', myInt).then(
       function(response) {
         return response.json();
       }).then(
@@ -66,7 +75,8 @@ class CreatingNewBusinessPage extends React.Component {
         <Header/>
         <main className="content-container">
           <CreatingNewCommentForm onSubmit={this.submitHandler.bind(this)}
-            loading={loading} formHasError={formHasError}/>
+            loading={loading} formHasError={formHasError} changeRating={this.changeRating}
+            rating={this.state.rating}/>
           {/* <CreatingNewImage /> */}
         </main>
       </div>

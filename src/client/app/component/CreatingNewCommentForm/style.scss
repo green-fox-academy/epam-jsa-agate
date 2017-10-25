@@ -1,40 +1,68 @@
 $form-width: calc(100% - 2em);
-$form-height: calc(100% - 4.8125em);
+$form-height: calc(100% - 6em);
+$border: 1px solid #fff;
 
 .creating-new-comment-form {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 0 1em;
-  width: 50%;
-  .comment-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: $form-width;
-    height: $form-height;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  height: calc(100vh - 4.8125em);
+
+  .ant-spin-nested-loading {
+    flex-basis: 40%;
+    p {
+      font-size: 1.5em;
+    }
+
+    .comment-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: $form-width;
+      height: 22em;
+      border: $border;
+      padding: 1em;
+
+      ul.ant-rate {
+        height: 2em;
+        border-bottom: $border;
+      }
+
+      textarea {
+        flex-basis: 50%;
+      }
+  
+      input {
+        margin-bottom: 1em;
+        font-size: 16px;
+        padding: .3em;
+      }
+  
+      .comment-submit {
+        background: #3498db;
+        background-image: linear-gradient(to bottom, #3498db, #2980b9);
+        border-radius: 12px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 1em;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        width: 30%;
+        outline: none;
+      }
+
+      .comment-submit:hover {
+        background: #3cb0fd;
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+      }
+    }
   }
 
-  input {
-    margin-bottom: 1em;
-    font-size: 16px;
-    padding: .3em;
-  }
-  .comment-submit {
-    background: #3498db;
-    background-image: linear-gradient(to bottom, #3498db, #2980b9);
-    border-radius: 12px;
-    font-family: Arial;
-    color: #ffffff;
-    font-size: 1em;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-    width: 30%;
-    outline: none;
-  }
-  .comment-submit:hover {
-    background: #3cb0fd;
-    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-    text-decoration: none;
+  .single-business-info {
+    flex-basis: 30%;
+    border: $border;
+    height: 90%;
   }
 }

@@ -9,26 +9,30 @@ import './style.scss';
 class CreatingNewBusinessForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {loading: false};
+    this.state = {'loading': false };
   }
+
   render() {
-    const {loading, onSubmit} = this.props;
+    const {loading, onSubmit, changeRating, rating} = this.props;
 
     return (
       <div className="creating-new-comment-form">
         <Spin spinning={loading}>
-          <h1> Add Your Comment</h1>
+          <p> Add Your Comment</p>
           <p>Add information about your comment below.</p>
           <form className="comment-info"
             method="POST" name="comment-info-form"
             onSubmit={onSubmit}>
-            <Rate allowHalf character="★"
-              value={0} />
+            <Rate onChange={changeRating.bind(this)} character="★"
+              value={rating} />
             <textarea rows="4" cols="50" name="comment-input" required placeholder="Input comment" />
             <input className="comment-submit"
               type="submit" value="Add Comment"/>
           </form>
         </Spin>
+        <div className="single-business-info">
+          <p>12323289389348983098</p>
+        </div>
       </div>
     );
   }
