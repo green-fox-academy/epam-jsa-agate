@@ -1,5 +1,5 @@
 import React from 'react';
-//import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import CreatingNewBusinessForm from '../CreatingNewBusinessForm';
 import HomePageMap from '../HomePageMap';
 import Header from '../HomePageHeader';
@@ -13,7 +13,7 @@ class CreatingNewBusinessPage extends React.Component {
     super(props);
     this.state = {
       'loading': false,
-      'formHasError': false,
+      'successCreate': false,
     };
   }
   submitHandler(event) {
@@ -36,7 +36,6 @@ class CreatingNewBusinessPage extends React.Component {
     });
   }
   errorHandler(err) {
-    //this.setState({'errMsg': err.message, 'formHasError': true});
     notification.open({
       message: err.message,
       description: 'Please try again.',
@@ -44,7 +43,7 @@ class CreatingNewBusinessPage extends React.Component {
     });
   }
   successHandler() {
-    this.setState({'errMsg': '', 'formHasError': false});
+    this.setState({'successCreate': true});
   }
   submitData(data) {
     let that = this;
@@ -80,14 +79,14 @@ class CreatingNewBusinessPage extends React.Component {
     });
   }
   render() {
-    const {loading, formHasError, address} = this.state;
+    const {loading, address} = this.state;
 
-    return (
+    return this.state.successCreate ? (<Redirect to="/" />) : (
       <div className="creating-new-business">
         <Header/>
         <main className="content-container">
           <CreatingNewBusinessForm onSubmit={this.submitHandler.bind(this)}
-            loading={loading} formHasError={formHasError} address={address}/>
+            loading={loading} address={address}/>
           <div className="creating-new-map">
             <HomePageMap mapType="create"
               clickHandlerForCreate={this.clickMapHandler.bind(this)}/>
