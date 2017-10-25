@@ -49,10 +49,15 @@ class HomePageHeader extends React.Component {
     }
   }
   render() {
-    const userText = this.state.isLoggedIn ? JSON.parse(window
-      .atob(localStorage.getItem('Authorization').split('.')[1]))
-      .username : '';
-    const btnText = this.state.isLoggedIn ? userText : 'Log In';
+    let btnText = '';
+
+    if (this.state.isLoggedIn) {
+      btnText = JSON.parse(atob(localStorage
+        .getItem('Authorization').split('.')[1]))
+        .username;
+    } else {
+      btnText = 'Log In';
+    }
     let button = null;
     const menu = (
       <Menu onClick={this.logOut}>
