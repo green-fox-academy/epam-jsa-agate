@@ -5,9 +5,10 @@ import SingleBusinessMapContainer from '../SingleBusinessMapContainer';
 import ImageDisplay from '../ImageDisplay';
 import CommentList from '../CommentList';
 import notification from 'antd/lib/notification';
-
 import 'antd/lib/notification/style/index.css';
 import './style.scss';
+// import {Redirect} from 'react-router-dom';
+import CreatingNewCommentPage from '../CreatingNewCommentPage';
 
 class SingleBusinessPage extends React.Component {
   constructor(props) {
@@ -15,9 +16,10 @@ class SingleBusinessPage extends React.Component {
     this.state = {
       'id': this.props.match.params.id,
       'businessDetail': {},
+      'commentPage': false,
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     this.fetchBusinessesDetail();
   }
   errorHandler(err) {
@@ -42,12 +44,21 @@ class SingleBusinessPage extends React.Component {
       that.errorHandler(err);
     });
   }
+  goToCommentPage() {
+    this.setState({'commentPage': true});
+  }
+
+  handleSubmitComment() {
+    this.setState({'commentPage': false});
+  }
   render() {
-    return (
+    const commentPage = this.state.commentPage;
+
+    return commentPage ? (<CreatingNewCommentPage businessDetail={this.state.businessDetail} handleSubmitComment={this.handleSubmitComment.bind(this)}/>) : (
       <div className="single-business-page">
         <HomePageHeader/>
         <SingleBusinessTitle title={this.state.businessDetail.name}
-          rating={this.state.businessDetail.rating}/>
+          rating={this.state.businessDetail.rating} goToCommentPage={this.goToCommentPage.bind(this)}/>
         <div className="display-business">
           <SingleBusinessMapContainer
             businessDetail={this.state.businessDetail} />

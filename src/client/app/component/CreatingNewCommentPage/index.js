@@ -1,26 +1,26 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import CreatingNewCommentForm from '../CreatingNewCommentForm';
-// import CreatingNewImage from '../CreatingNewImage';
 import Header from '../HomePageHeader';
 import './style.scss';
 
-class CreatingNewBusinessPage extends React.Component {
+class CreatingNewCommentPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       'loading': false,
       'formHasError': false,
-      'rating': 2,
+      'rating': 0,
     };
   }
 
-  changeRating(currentRating) {
-    console.log('changerating: ' + currentRating);
-    this.setState({'rating': currentRating});
-    console.log('change rating after set state: ' + this.state.rating);
+  changeRating(event) {
+    console.log('change rating ' + event);
+    this.setState({'rating': event});
+    //console.log('after change rating ' + this.state.rating);
   }
   submitHandler(event) {
+    console.log('after change rating ' + this.state.rating);
     this.setState({'loading': true});
     console.log('submitHandler rating: ', this.state.rating);
     event.preventDefault();
@@ -34,6 +34,7 @@ class CreatingNewBusinessPage extends React.Component {
   }
   successHandler() {
     this.setState({'errMsg': '', 'formHasError': false});
+    this.props.handleSubmitComment();
   }
   submitData(data) {
     let that = this;
@@ -50,7 +51,7 @@ class CreatingNewBusinessPage extends React.Component {
     myHeaders.append('Content-Type', 'application/json');
     myHeaders.append('Authorization', 'Bearer ' + jwtToken);
 
-    let businessId = '59e988d562e4e88dad8ee5df';
+    let businessId = this.props.businessDetail._id;
 
     fetch('/api/businesses/' + businessId + '/comments', myInt).then(
       function(response) {
@@ -75,13 +76,12 @@ class CreatingNewBusinessPage extends React.Component {
         <Header/>
         <main className="content-container">
           <CreatingNewCommentForm onSubmit={this.submitHandler.bind(this)}
-            loading={loading} formHasError={formHasError} changeRating={this.changeRating}
+            loading={loading} formHasError={formHasError} changeRating={this.changeRating.bind(this)}
             rating={this.state.rating}/>
-          {/* <CreatingNewImage /> */}
         </main>
       </div>
     );
   }
 }
 
-export default CreatingNewBusinessPage;
+export default CreatingNewCommentPage;

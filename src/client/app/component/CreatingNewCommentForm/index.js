@@ -5,11 +5,12 @@ import 'antd/lib/spin/style/index.css';
 import Rate from 'antd/lib/rate';
 import 'antd/lib/rate/style/index.css';
 import './style.scss';
+import businessImage from './imagegs/businessPic.jpg';
 
-class CreatingNewBusinessForm extends React.Component {
+class CreatingNewCommentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'loading': false };
+    this.state = {'loading': false};
   }
 
   render() {
@@ -23,7 +24,7 @@ class CreatingNewBusinessForm extends React.Component {
           <form className="comment-info"
             method="POST" name="comment-info-form"
             onSubmit={onSubmit}>
-            <Rate onChange={changeRating.bind(this)} character="★"
+            <Rate onChange={changeRating} character="★"
               value={rating} />
             <textarea rows="4" cols="50" name="comment-input" required placeholder="Input comment" />
             <input className="comment-submit"
@@ -31,11 +32,17 @@ class CreatingNewBusinessForm extends React.Component {
           </form>
         </Spin>
         <div className="single-business-info">
-          <p>12323289389348983098</p>
+          <div>Name</div>
+          <div>Rating</div>
+          <div>Phone No.</div>
+          <div>Address</div>
+          <div>
+            <img src={businessImage}/>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(CreatingNewBusinessForm);
+export default withRouter(CreatingNewCommentForm);
