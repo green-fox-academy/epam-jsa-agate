@@ -27,23 +27,33 @@ $border: 1px solid #fff;
         flex-direction: column;
         justify-content: space-between;
         width: $form-width;
-        // height: 22em;
         border: $border;
-        padding: 1em;
+        padding: 0 1em 1em 1em;
         height: 80%;
   
         .rating-container {
           border-bottom: $border;
-          height: 2em;
+
+          .ant-rate {
+            font-size: 2em;
+          }
+
+          .ant-rate-text {
+            font-size: 1.8em;
+            height: 1.5em;
+            padding-top: 0.5em
+          }
+          
         }
   
         textarea {
           flex-basis: 50%;
+          font-size: 1.5em;
         }
     
         input {
           margin-bottom: 1em;
-          font-size: 16px;
+          font-size: 1em;
           padding: .3em;
         }
     
@@ -54,6 +64,7 @@ $border: 1px solid #fff;
           font-family: Arial;
           color: #ffffff;
           font-size: 1em;
+          font-weight: bold;
           padding: 10px 20px 10px 20px;
           text-decoration: none;
           width: 30%;
