@@ -5,7 +5,6 @@ import 'antd/lib/spin/style/index.css';
 import Rate from 'antd/lib/rate';
 import 'antd/lib/rate/style/index.css';
 import './style.scss';
-import businessImage from './imagegs/businessPic.jpg';
 
 class CreatingNewCommentForm extends React.Component {
   constructor(props) {
@@ -19,27 +18,23 @@ class CreatingNewCommentForm extends React.Component {
     return (
       <div className="creating-new-comment-form">
         <Spin spinning={loading}>
-          <p> Add Your Comment</p>
-          <p>Add information about your comment below.</p>
+          <div className="business-container">
+            <div >{this.props.businessDetail.name}</div>
+            <div>Rating: {this.props.businessDetail.rating} stars</div>
+          </div>
           <form className="comment-info"
             method="POST" name="comment-info-form"
             onSubmit={onSubmit}>
-            <Rate onChange={changeRating} character="★"
-              value={rating} />
-            <textarea rows="4" cols="50" name="comment-input" required placeholder="Input comment" />
+            <div className="rating-container">
+              <Rate onChange={changeRating} character="★"
+                value={rating} />
+              <span className="ant-rate-text">{rating} stars</span>
+            </div>
+            <textarea rows="4" cols="50" name="comment-input" required placeholder="Add you comment" />
             <input className="comment-submit"
               type="submit" value="Add Comment"/>
           </form>
         </Spin>
-        <div className="single-business-info">
-          <div>{this.props.businessDetail.name}</div>
-          <div>{this.props.businessDetail.rating}</div>
-          <div>{this.props.businessDetail.phone}</div>
-          <div>{this.props.businessDetail.address}</div>
-          <div>
-            <img src={businessImage}/>
-          </div>
-        </div>
       </div>
     );
   }
