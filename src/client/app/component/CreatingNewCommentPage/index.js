@@ -15,14 +15,10 @@ class CreatingNewCommentPage extends React.Component {
   }
 
   changeRating(event) {
-    console.log('change rating ' + event);
     this.setState({'rating': event});
-    //console.log('after change rating ' + this.state.rating);
   }
   submitHandler(event) {
-    console.log('after change rating ' + this.state.rating);
     this.setState({'loading': true});
-    console.log('submitHandler rating: ', this.state.rating);
     event.preventDefault();
     this.submitData({
       comment: event.target.elements[0].value,
@@ -47,7 +43,6 @@ class CreatingNewCommentPage extends React.Component {
 
     let jwtToken = localStorage.getItem('Authorization');
 
-    console.log('token: ' + jwtToken);
     myHeaders.append('Content-Type', 'application/json');
     myHeaders.append('Authorization', 'Bearer ' + jwtToken);
 
@@ -77,7 +72,7 @@ class CreatingNewCommentPage extends React.Component {
         <main className="content-container">
           <CreatingNewCommentForm onSubmit={this.submitHandler.bind(this)}
             loading={loading} formHasError={formHasError} changeRating={this.changeRating.bind(this)}
-            rating={this.state.rating}/>
+            rating={this.state.rating} businessDetail={this.props.businessDetail}/>
         </main>
       </div>
     );

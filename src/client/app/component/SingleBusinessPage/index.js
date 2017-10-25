@@ -7,7 +7,6 @@ import CommentList from '../CommentList';
 import notification from 'antd/lib/notification';
 import 'antd/lib/notification/style/index.css';
 import './style.scss';
-// import {Redirect} from 'react-router-dom';
 import CreatingNewCommentPage from '../CreatingNewCommentPage';
 
 class SingleBusinessPage extends React.Component {
@@ -45,7 +44,13 @@ class SingleBusinessPage extends React.Component {
     });
   }
   goToCommentPage() {
-    this.setState({'commentPage': true});
+    let loginStatus = localStorage.getItem('Authorization') !== null;
+
+    if (loginStatus) {
+      this.setState({'commentPage': true});
+    } else {
+      this.errorHandler(new Error('You should login.'));
+    }
   }
 
   handleSubmitComment() {

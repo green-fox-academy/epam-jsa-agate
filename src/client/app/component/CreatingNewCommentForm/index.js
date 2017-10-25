@@ -32,10 +32,10 @@ class CreatingNewCommentForm extends React.Component {
           </form>
         </Spin>
         <div className="single-business-info">
-          <div>Name</div>
-          <div>Rating</div>
-          <div>Phone No.</div>
-          <div>Address</div>
+          <div>{this.props.businessDetail.name}</div>
+          <div>{this.props.businessDetail.rating}</div>
+          <div>{this.props.businessDetail.phone}</div>
+          <div>{this.props.businessDetail.address}</div>
           <div>
             <img src={businessImage}/>
           </div>
