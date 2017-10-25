@@ -1,8 +1,11 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+//import {Redirect} from 'react-router-dom';
 import CreatingNewBusinessForm from '../CreatingNewBusinessForm';
-import CreatingNewImage from '../CreatingNewImage';
+import HomePageMap from '../HomePageMap';
 import Header from '../HomePageHeader';
+import notification from 'antd/lib/notification';
+
+import 'antd/lib/notification/style/index.css';
 import './style.scss';
 
 class CreatingNewBusinessPage extends React.Component {
@@ -15,7 +18,6 @@ class CreatingNewBusinessPage extends React.Component {
   }
   submitHandler(event) {
     this.setState({'loading': true});
-    console.log('values', event.target.elements);
     event.preventDefault();
     this.submitData({
       name: event.target.elements[0].value,
@@ -24,8 +26,8 @@ class CreatingNewBusinessPage extends React.Component {
       phone: event.target.elements[3].value,
       keyword: event.target.elements[4].value,
       rating: 3,
-      longitude: 20,
-      latitude: 30,
+      longitude: this.state.longitute,
+      latitude: this.state.latitude,
       images: [
         event.target.elements[5].value,
         event.target.elements[6].value,
@@ -34,7 +36,12 @@ class CreatingNewBusinessPage extends React.Component {
     });
   }
   errorHandler(err) {
-    this.setState({'errMsg': err.message, 'formHasError': true});
+    //this.setState({'errMsg': err.message, 'formHasError': true});
+    notification.open({
+      message: err.message,
+      description: 'Please try again.',
+      placement: 'bottomLeft',
+    });
   }
   successHandler() {
     this.setState({'errMsg': '', 'formHasError': false});
@@ -65,16 +72,26 @@ class CreatingNewBusinessPage extends React.Component {
       that.errorHandler(err);
     });
   }
+  clickMapHandler(position, address) {
+    this.setState({
+      longitute: position.lng(),
+      latitude: position.lat(),
+      address: address,
+    });
+  }
   render() {
-    const {loading, formHasError} = this.state;
+    const {loading, formHasError, address} = this.state;
 
     return (
       <div className="creating-new-business">
         <Header/>
         <main className="content-container">
           <CreatingNewBusinessForm onSubmit={this.submitHandler.bind(this)}
-            loading={loading} formHasError={formHasError}/>
-          <CreatingNewImage />
+            loading={loading} formHasError={formHasError} address={address}/>
+          <div className="creating-new-map">
+            <HomePageMap mapType="create"
+              clickHandlerForCreate={this.clickMapHandler.bind(this)}/>
+          </div>
         </main>
       </div>
     );

@@ -9,8 +9,13 @@ class CreatingNewBusinessForm extends React.Component {
     super(props);
     this.state = {loading: false};
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.address) {
+      this.setState({address: nextProps.address});
+    }
+  }
   render() {
-    const {loading, onSubmit} = this.props;
+    const {loading, onSubmit, address} = this.props;
 
     return (
       <div className="creating-new-business-form">
@@ -20,35 +25,30 @@ class CreatingNewBusinessForm extends React.Component {
           <form className="business-info"
             method="POST" name="business-info-form"
             onSubmit={onSubmit}>
-            <label for="business-name">Business Name</label>
+            <label htmlFor="business-name">Business Name</label>
             <input name="name" id="business-name"
-              type="text" placeholder="Mel's Diner"/>
-            <label for="business-description">Business Description</label>
-            <input name="description" id="business-description"
+              type="text" placeholder="Mel's Diner" required/>
+            <label htmlFor="business-description">Business Description</label>
+            <input name="description" id="business-description" required
               type="text" placeholder="Organic Coffee, Natural Food"/>
-            <label for="business-address">Address</label>
+            <label htmlFor="business-address">Address</label>
             <input name="address" id="business-address"
-              type="text" placeholder=""/>
-            <label for="business-phone">Phone</label>
-            <input name="phone" id="business-phone"
+              type="text" placeholder="Click the map to get the address..."
+              value={address} required readOnly/>
+            <label htmlFor="business-phone">Phone</label>
+            <input name="phone" id="business-phone" required
               type="text" placeholder="+86 136 8888 8888"/>
-            <label for="business-key-words">Business Key Words</label>
-            <input name="key-words" id="business-key-words"
+            <label htmlFor="business-key-words">Business Key Words</label>
+            <input name="key-words" id="business-key-words" required
               type="text" placeholder="Coffee Asian ..."/>
-            <label for="business-longitute">Longitute</label>
-            <input name="longitute" id="business-longitute"
-              type="text" placeholder="22.33434"/>
-            <label for="business-latitude">Latitude</label>
-            <input name="latitude" id="business-latitude"
-              type="text" placeholder="30.12323"/>
-            <label for="image-url-1">image url 1</label>
-            <input name="url1" id="image-url-1"
+            <label htmlFor="image-url-1">image url 1</label>
+            <input name="url1" id="image-url-1" required
               type="text" placeholder="https://image.com"/>
-            <label for="image-url-2">image url 2</label>
-            <input name="url2" id="image-url-2"
+            <label htmlFor="image-url-2">image url 2</label>
+            <input name="url2" id="image-url-2" required
               type="text" placeholder="https://image.com"/>
-            <label for="image-url-3">image url 3</label>
-            <input name="url3" id="image-url-3"
+            <label htmlFor="image-url-3">image url 3</label>
+            <input name="url3" id="image-url-3" required
               type="text" placeholder="https://image.com"/>
             <input className="business-submit"
               type="submit" value="Add business"/>
