@@ -78,8 +78,17 @@ class HomePageHeader extends React.Component {
     if (this.state.isLoggedIn) {
       const menu = (
         <Menu onClick={this.handleMenuBtnClick}>
-          <Menu.Item key="1">Log Out</Menu.Item>
-          <Menu.Item key="2">Create Business</Menu.Item>
+          <Menu.Item key="1">
+            <button className="home-page-header-log-out-btn">
+              Log Out
+            </button>
+          </Menu.Item>
+          <Menu.Divider />
+          <Menu.Item key="2">
+            <button className="home-page-header-create-btn">
+              Create Business
+            </button>
+          </Menu.Item>
         </Menu>);
 
       button = <Dropdown overlay={menu} trigger={['click']}

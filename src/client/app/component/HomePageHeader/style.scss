@@ -1,5 +1,21 @@
 @import '../../scss/variables';
 
+.ant-dropdown-menu {
+  button {
+    border: 0;
+    padding-left: 1.5em;
+    outline: 0;
+    color: #898c8f;
+  }
+  .home-page-header-log-out-btn {
+    background: no-repeat left url("./sign-out-icon.svg");
+  }
+  .home-page-header-create-btn {
+    background: no-repeat left url("./create-new-business-icon.svg");
+  }
+}
+
+
 .home-page-header {
   align-items: center;
   color: #fff;
