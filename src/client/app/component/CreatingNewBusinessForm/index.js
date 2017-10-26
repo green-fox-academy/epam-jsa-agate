@@ -17,6 +17,7 @@ class CreatingNewBusinessForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {loading: false};
+    this.handleImageSubmit = this.handleImageSubmit.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.address) {
@@ -25,7 +26,7 @@ class CreatingNewBusinessForm extends React.Component {
   }
 
   getSignedRequest(file) {
-    return fetch(`${serverUrl}/sign-s3?fileName=${file.name}&fileType=${file.type}`)
+    return fetch(`/sign-s3?fileName=${file.name}&fileType=${file.type}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`${response.status}: ${response.statusText}`);
@@ -34,10 +35,10 @@ class CreatingNewBusinessForm extends React.Component {
       });
   }
 
-  uploadFile(file, signedRequest, url) {
+  uploadFile(binaryFile, signedRequest, url) {
     const options = {
       method: 'PUT',
-      body: file,
+      body: binaryFile,
     };
 
     return fetch(signedRequest, options)
@@ -50,23 +51,17 @@ class CreatingNewBusinessForm extends React.Component {
   }
 
   uploadToS3(file) {
-    return getSignedRequest(file)
-      .then((json) => uploadFile(file, json.signedRequest, json.url))
-      .then((url) => url)
+    return this.getSignedRequest(file)
+      .then((json) => this.uploadFile(file, json.signedRequest, json.url))
+      .then((url) => console.log(url))
       .catch((err) => {
         console.error(err);
         return null;
       });
   }
 
-  handleImageSubmit() {
-    const input = document.querySelector("#file-input");
-    if (!input.files || !input.files.length) {
-      return;
-    }
-    const file = input.files[0];
-  
-    uploadToS3(file)
+  handleImageSubmit(file) {
+    this.uploadToS3(file.file)
       .then(url => {
         // save the url to the database
       });
@@ -74,10 +69,13 @@ class CreatingNewBusinessForm extends React.Component {
   render() {
     const {loading, onSubmit, address} = this.props;
     const props = {
-      name: 'file',
       action: '//jsonplaceholder.typicode.com/posts/',
-      headers: {authorization: 'authorization-text' },
-
+      headers: {authorization: 'authorization-text'},
+      data: {
+        ddd: 111,
+        ds: 222,
+      },
+      customRequest: this.handleImageSubmit,
       onChange(info) {
         if (info.file.status !== 'uploading') {
           console.log(info.file, info.fileList);
