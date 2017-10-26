@@ -16,13 +16,18 @@ import 'antd/lib/message/style/index.css';
 class CreatingNewBusinessForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {loading: false};
+    this.state = {loading: false, imgList: []};
     this.handleImageSubmit = this.handleImageSubmit.bind(this);
+    this.onSubmitTrigger = this.onSubmitTrigger.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.address) {
       this.setState({address: nextProps.address});
     }
+  }
+
+  onSubmitTrigger(event) {
+    this.props.onSubmit(event, this.state.imgList);
   }
 
   getSignedRequest(file) {
@@ -53,17 +58,22 @@ class CreatingNewBusinessForm extends React.Component {
   uploadToS3(file) {
     return this.getSignedRequest(file)
       .then((json) => this.uploadFile(file, json.signedRequest, json.url))
-      .then((url) => console.log(url))
-      .catch((err) => {
+      .then((url) => {
+        return url;
+      }).catch((err) => {
         console.error(err);
         return null;
       });
   }
 
   handleImageSubmit(file) {
+    const that = this;
+    let {imgList} = this.state;
+
     this.uploadToS3(file.file)
-      .then(url => {
-        // save the url to the database
+      .then((url) => {
+        imgList.push(url);
+        that.setState({imgList: imgList});
       });
   }
   render() {
@@ -71,12 +81,9 @@ class CreatingNewBusinessForm extends React.Component {
     const props = {
       action: '//jsonplaceholder.typicode.com/posts/',
       headers: {authorization: 'authorization-text'},
-      data: {
-        ddd: 111,
-        ds: 222,
-      },
       customRequest: this.handleImageSubmit,
       onChange(info) {
+        console.log(info.file.status);
         if (info.file.status !== 'uploading') {
           console.log(info.file, info.fileList);
         }
@@ -95,7 +102,7 @@ class CreatingNewBusinessForm extends React.Component {
           <p>Add information about your business below.</p>
           <form className="business-info"
             method="POST" name="business-info-form"
-            onSubmit={onSubmit}>
+            onSubmit={this.onSubmitTrigger}>
             <label htmlFor="business-name">Business Name</label>
             <input name="name" id="business-name"
               type="text" placeholder="Mel's Diner" required/>
