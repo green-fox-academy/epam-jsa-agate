@@ -21,6 +21,12 @@ class SingleBusinessPage extends React.Component {
   componentDidMount() {
     this.fetchBusinessesDetail();
   }
+  componentWillUpdate(nextProps, nextStates) {
+    if (this.state.commentPage === true &&
+        nextStates.commentPage === false) {
+      this.fetchBusinessesDetail();
+    }
+  }
   errorHandler(err) {
     notification.open({
       message: err.message,
