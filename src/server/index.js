@@ -212,7 +212,7 @@ app.get('/sign-s3', (req, res) => {
   const task = 'putObject';
   const s3Params = {
     Bucket: process.env.S3_BUCKET,
-    Key: process.env.AWS_SECRET_ACCESS_KEY,
+    Key: fileName,
     ContentType: fileType,
     ACL: 'public-read',
   };
@@ -222,7 +222,7 @@ app.get('/sign-s3', (req, res) => {
       signedRequest: data,
       url: `https://${process.env.S3_BUCKET}.s3.amazonaws.com/${fileName}`,
     });
-  });
+  })();
 });
 
 app.use(function(err, req, res, next) {
