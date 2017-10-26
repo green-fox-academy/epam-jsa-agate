@@ -66,7 +66,7 @@ class HomePageHeader extends React.Component {
 
     if (this.state.isLoggedIn) {
       button =
-        <Dropdown overlay={menu} size="small">
+        <Dropdown overlay={menu} trigger={['click']} size="small">
           <a className="ant-dropdown-link" >
             {btnText}
           </a>
