@@ -24,7 +24,7 @@ class CreatingNewBusinessPage extends React.Component {
     let images = event.target.elements[5].value;
     let imagesArr = images.split('\n');
     while(imagesArr.length < 3) {
-      imagesArr.push('./images/no_image_available.png');
+      imagesArr.push('/images/no_image_available.png');
     }
 
     this.submitData({

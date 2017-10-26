@@ -51,7 +51,7 @@ class SingleBusinessPage extends React.Component {
         <div className="display-business">
           <SingleBusinessMapContainer
             businessDetail={this.state.businessDetail} />
-          <ImageDisplay/>
+          <ImageDisplay images={this.state.businessDetail.images}/>
         </div>
         <CommentList comments={this.state.businessDetail.comments}/>
       </div>
