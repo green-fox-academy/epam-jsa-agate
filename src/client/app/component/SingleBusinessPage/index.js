@@ -53,7 +53,9 @@ class SingleBusinessPage extends React.Component {
             businessDetail={this.state.businessDetail} />
           <ImageDisplay images={this.state.businessDetail.images}/>
         </div>
-        <CommentList comments={this.state.businessDetail.comments}/>
+        {this.state.businessDetail.comments ?
+          <CommentList comments={this.state.businessDetail.comments}/>
+          : ''}
       </div>
     );
   }

@@ -6,6 +6,9 @@ class HomePageHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {'isLoggedIn': localStorage.getItem('Authorization') !== null};
+    this.submitHandler = this.submitHandler.bind(this);
+    this.keyUPHandler = this.keyUPHandler.bind(this);
+    this.onClickHeaderLogBtn = this.onClickHeaderLogBtn.bind(this);
   }
   componentDidMount() {
     const that = this;
@@ -44,14 +47,14 @@ class HomePageHeader extends React.Component {
           {this.props.headerType === 'create' ?
             (<div className="create-page-header-infor">
               for Business Owners</div>) :
-            (<form className="header" onSubmit={this.submitHandler.bind(this)}
-              onKeyUp={this.keyUPHandler.bind(this)}>
+            (<form className="header" onSubmit={this.submitHandler}
+              onKeyUp={this.keyUPHandler}>
               <input className="search" type="search" id="mySearch"
                 placeholder="Search"/>
             </form>)}
         </div>
         <div className="home-page-header-right">
-          <button onClick={this.onClickHeaderLogBtn.bind(this)}>
+          <button onClick={this.onClickHeaderLogBtn}>
             {btnText}</button>
         </div>
       </div>
