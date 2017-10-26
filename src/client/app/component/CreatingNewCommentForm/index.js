@@ -14,11 +14,7 @@ class CreatingNewCommentForm extends React.Component {
   }
 
   handleKeyPress(e) {
-    if (e.nativeEvent.keyCode === 13) {
-      if (e.nativeEvent.shiftKey) {
-        this.props.onSubmit(e);
-      }
-    }
+    this.props.onEnterShiftSubmit(e);
   }
 
   render() {
@@ -29,19 +25,19 @@ class CreatingNewCommentForm extends React.Component {
         <Spin spinning={loading}>
           <div className="business-container">
             <h1 >{this.props.businessDetail.name}</h1>
-            <div><h2>General Rating: </h2> <Rate allowHalf character="★" disabled
+            <div><h2>General Rating </h2> <Rate allowHalf character="★" disabled
               value={this.props.businessDetail.rating} /></div>
           </div>
           <form className="comment-info"
             method="POST" name="comment-info-form"
-            onSubmit={onSubmit}>
+            onSubmit={onSubmit} onKeyPress = {this.handleKeyPress}>
             <div className="rating-container">
               <Rate onChange={changeRating} character="★"
                 value={rating} />
               <span className="ant-rate-text">(Please give rates for this business)</span>
             </div>
             <textarea rows="4" cols="50" name="comment-input"
-              onKeyUp = {this.handleKeyPress} required placeholder="Add you comment" />
+              required placeholder="Add you comment" />
             <input className="comment-submit"
               type="submit" value="Add Comment"/>
           </form>

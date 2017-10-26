@@ -25,6 +25,18 @@ class CreatingNewCommentPage extends React.Component {
       rating: this.state.rating,
     });
   }
+
+  keyPressSubmitHandler(event) {
+    if (event.key === 'Enter') {
+      if (event.shiftKey) {
+        this.setState({'loading': true});
+        this.submitData({
+          comment: event.target.value,
+          rating: this.state.rating,
+        });
+      }
+    }
+  }
   errorHandler(err) {
     this.setState({'errMsg': err.message, 'formHasError': true});
   }
@@ -32,6 +44,7 @@ class CreatingNewCommentPage extends React.Component {
     this.setState({'errMsg': '', 'formHasError': false});
     this.props.handleSubmitComment();
   }
+
   submitData(data) {
     let that = this;
     let myHeaders = new Headers();
@@ -71,6 +84,7 @@ class CreatingNewCommentPage extends React.Component {
         <Header/>
         <main className="content-container">
           <CreatingNewCommentForm onSubmit={this.submitHandler.bind(this)}
+            onEnterShiftSubmit={this.keyPressSubmitHandler.bind(this)}
             loading={loading} formHasError={formHasError} changeRating={this.changeRating.bind(this)}
             rating={this.state.rating} businessDetail={this.props.businessDetail}/>
         </main>

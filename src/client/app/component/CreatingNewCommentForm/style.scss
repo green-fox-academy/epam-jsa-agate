@@ -30,6 +30,13 @@ $border: 1px solid #fff;
           flex-direction: row;
           align-items: baseline;
 
+          h2:after {
+            content: " ";
+            display: inline-block;
+            padding-right: 0.5em;
+
+          }
+
           .ant-rate {
             font-size: 2em;
           }
@@ -72,8 +79,7 @@ $border: 1px solid #fff;
         }
     
         .comment-submit {
-          background: #3498db;
-          background-image: linear-gradient(to bottom, #3498db, #2980b9);
+          background: #f5a623;
           border-radius: 12px;
           font-family: Arial;
           color: #ffffff;
@@ -86,8 +92,7 @@ $border: 1px solid #fff;
         }
   
         .comment-submit:hover {
-          background: #3cb0fd;
-          background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+          background: #f5a623;
           text-decoration: none;
         }
       }
