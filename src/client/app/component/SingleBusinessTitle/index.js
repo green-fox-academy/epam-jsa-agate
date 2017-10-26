@@ -24,7 +24,7 @@ class SingleBusinessTitle extends React.Component {
           </div>
         </div>
         <div className="single-business-links-container">
-          <a>Write a Review</a>
+          <a onClick={this.props.goToCommentPage}>Write a Review</a>
           <a>Add Photo</a>
           <a>Share</a>
           <a>Bookmark</a>
