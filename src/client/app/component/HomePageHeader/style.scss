@@ -1,10 +1,11 @@
+@import '../../scss/variables';
+
 .home-page-header {
   align-items: center;
-  //background: linear-gradient(0deg, #ff925b 30%, #ff381a);
   color: #fff;
-  background-color: #bd1f1f;
+  background-color: $deeperRed;
   display: flex;
-  height: 4.8125em;
+  height: $homePageHeaderHeight;
   justify-content: space-between;
   padding: 0 1.5em;
 
