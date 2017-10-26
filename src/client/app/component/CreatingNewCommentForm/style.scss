@@ -3,11 +3,6 @@ $form-height: calc(100% - 6em);
 $border: 1px solid #fff;
 
 .creating-new-comment-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  height: calc(100vh - 4.8125em);
 
   .ant-spin-nested-loading {
     flex-basis: 40%;
@@ -44,21 +39,19 @@ $border: 1px solid #fff;
       .comment-info {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         width: $form-width;
         border: 1px solid #e6e6e6;
         padding: 0 1em 1em 1em;
-        height: 80%;
   
         .rating-container {
           border-bottom: $border;
+          padding: 0.5em 0;
           
           .ant-rate {
             font-size: 1.5em;
           }
 
           .ant-rate-text {
-            font-size: 1.5em;
             height: 1.5em;
             padding-top: 0.5em
           }
@@ -87,6 +80,7 @@ $border: 1px solid #fff;
           padding: 10px 20px;
           text-decoration: none;
           outline: none;
+          margin-top: 1em;
         }
   
         .comment-submit:hover {
