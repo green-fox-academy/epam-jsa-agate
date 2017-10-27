@@ -18,7 +18,7 @@
   ]
 }
 {
-  "name": "Fullness Vege Restaurant",
+  "name": "Fullness Vege",
   "description": "Good for kids",
   "address" : "China, Guangdong Sheng, Shenzhen Shi, Nanshan Qu, NanYou, Nanguang Rd, China, 518052",
   "phone" : "+86 755 2645 5630",
@@ -43,8 +43,8 @@
   "phone" : "+86 755 8628 7232",
   "keyword": "Food Fish",
   "rating": 4.5,
-  "longitude": 113.9348355,
-  "latitude": 22.5169542,
+  "longitude": 113.95328960730694,
+  "latitude": 22.52367208872206,
   "images" : [
     "https://s3-ap-northeast-1.amazonaws.com/epam-jsa-agate/japan4.jpeg",
     "http://farm6.static.flickr.com/5244/5225397356_0088ef0223.jpg",
@@ -81,8 +81,8 @@
   "phone" : "+86 755 8626 8888",
   "keyword": "Hotel",
   "rating": 4.5,
-  "longitude": 113.9372163,
-  "latitude": 22.5169599,
+  "longitude": 113.9478866639547,
+  "latitude": 22.519643542593176,
   "images" : [
     "http://3.bp.blogspot.com/-4FB0N5d5tAQ/TyaQqPFPiXI/AAAAAAAATR8/9-8dMGwALaQ/s1600/mg1.jpg",
     "https://s3-ap-northeast-1.amazonaws.com/epam-jsa-agate/F14E4CC7-4D40-460D-8848-F1AF0E02FB11.jpeg",
