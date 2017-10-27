@@ -17,9 +17,8 @@
     {username: "Elizabeth R.", comment: "How is this the top rated restaurant? I realise there are only 7 reviews but WTF? Have you 7 lost your damn minds? This place is not good. It's 'passable' if you are completely desperate. ", rating: 2}
   ]
 }
-
 {
-  "name": "Fullness Vegetarian Restaurant",
+  "name": "Fullness Vege Restaurant",
   "description": "Good for kids",
   "address" : "China, Guangdong Sheng, Shenzhen Shi, Nanshan Qu, NanYou, Nanguang Rd, China, 518052",
   "phone" : "+86 755 2645 5630",
@@ -47,7 +46,7 @@
   "longitude": 113.9348355,
   "latitude": 22.5169542,
   "images" : [
-    "https://photos.smugmug.com/Japanese-food/i-GmSM9G7/0/M/food-in-japan-2-M.jpg",
+    "https://s3-ap-northeast-1.amazonaws.com/epam-jsa-agate/japan4.jpeg",
     "http://farm6.static.flickr.com/5244/5225397356_0088ef0223.jpg",
     "http://3.bp.blogspot.com/-Nn8DAv-Oqjs/U_RDZyyHLLI/AAAAAAAAbiI/2UmVcS3utzU/s1600/DSC_0875.JPG"
   ],
@@ -66,9 +65,9 @@
   "longitude": 113.9348355,
   "latitude": 22.5169542,
   "images" : [
-    "https://www.indianfoodforever.com/images/indian-vegetarian.jpg",
+    "https://s3-ap-northeast-1.amazonaws.com/epam-jsa-agate/indiafood.jpg",
     "https://i.pinimg.com/736x/42/d0/6d/42d06d3b0041cfcb6b27bb70dfb603c5--curry-ingredients-indian-foods.jpg",
-    "https://us.123rf.com/450wm/kaisorn/kaisorn1506/kaisorn150600052/41817126-asia-street-food-web-banner--korean-food--indian-food--vietnam-food-flat-design.jpg",
+    "https://us.123rf.com/450wm/kaisorn/kaisorn1506/kaisorn150600052/41817126-asia-street-food-web-banner--korean-food--indian-food--vietnam-food-flat-design.jpg"
   ],
   "comments":[
     {username: "John", comment: "Vegetarian food is available here in reasonable variety though they cook non-vegetarian food also.", rating: 5},
