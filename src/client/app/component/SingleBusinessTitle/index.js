@@ -21,6 +21,8 @@ class SingleBusinessTitle extends React.Component {
           <div className="single-business-rating" title={ratingScorePopUp}>
             <Rate allowHalf character="★" disabled
               value={numberOfStar} />
+            <p>Rating: {this.props.rating}</p>
+            <p>Tel: {this.props.phone}</p>
           </div>
         </div>
         <div className="single-business-links-container">

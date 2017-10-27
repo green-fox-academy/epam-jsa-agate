@@ -69,7 +69,9 @@ class SingleBusinessPage extends React.Component {
       <div className="single-business-page">
         <HomePageHeader/>
         <SingleBusinessTitle title={this.state.businessDetail.name}
-          rating={this.state.businessDetail.rating} goToCommentPage={this.goToCommentPage.bind(this)}/>
+          rating={this.state.businessDetail.rating}
+          phone ={this.state.businessDetail.phone}
+          goToCommentPage={this.goToCommentPage.bind(this)}/>
         <div className="display-business">
           <SingleBusinessMapContainer
             businessDetail={this.state.businessDetail} />
