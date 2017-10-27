@@ -60,9 +60,8 @@ class LoginPage extends React.Component {
     });
   }
   render() {
-    const {isLoggedIn, loading, errMsg, formHasError} = this.state;
+    const {loading, errMsg, formHasError} = this.state;
 
-    //return isLoggedIn ? (<Redirect go={-1} />) : (
     return (
       <div className="login-page">
         <Header />
