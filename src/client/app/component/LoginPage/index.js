@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import LoginForm from '../LoginForm';
 import Header from '../CommonHeader';
 import './style.scss';
@@ -12,6 +12,11 @@ class LoginPage extends React.Component {
       'isLoggedIn': localStorage.getItem('Authorization') !== null,
       'formHasError': false,
     };
+  }
+  componentWillUpdate(nextProps, nextStates) {
+    if (this.state.isLoggedIn === false && nextStates.isLoggedIn === true) {
+      this.props.history.go(-1);
+    }
   }
   submitHandler(event) {
     this.setState({'loading': true});
@@ -57,7 +62,8 @@ class LoginPage extends React.Component {
   render() {
     const {isLoggedIn, loading, errMsg, formHasError} = this.state;
 
-    return isLoggedIn ? (<Redirect to="/" />) : (
+    //return isLoggedIn ? (<Redirect go={-1} />) : (
+    return (
       <div className="login-page">
         <Header />
         <div className="login-page-content">
@@ -70,4 +76,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);
