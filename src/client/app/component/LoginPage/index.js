@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import LoginForm from '../LoginForm';
 import Header from '../CommonHeader';
 import './style.scss';
@@ -13,6 +13,11 @@ class LoginPage extends React.Component {
       'formHasError': false,
     };
   }
+  componentWillUpdate(nextProps, nextStates) {
+    if (this.state.isLoggedIn === false && nextStates.isLoggedIn === true) {
+      this.props.history.go(-1);
+    }
+  }
   submitHandler(event) {
     this.setState({'loading': true});
     event.preventDefault();
@@ -25,9 +30,9 @@ class LoginPage extends React.Component {
     this.setState({'errMsg': err.message, 'formHasError': true});
     localStorage.removeItem('Authorization');
   }
-  successHandler(token) {
+  successHandler(value) {
     this.setState({'errMsg': '', 'formHasError': false});
-    localStorage.setItem('Authorization', token);
+    localStorage.setItem('Authorization', value.token);
     this.setState({'isLoggedIn': true});
   }
   submitData(data) {
@@ -48,16 +53,16 @@ class LoginPage extends React.Component {
       if (value.error) {
         throw new Error(value.error);
       } else {
-        that.successHandler(value.token);
+        that.successHandler(value);
       }
     }).catch(function(err) {
       that.errorHandler(err);
     });
   }
   render() {
-    const {isLoggedIn, loading, errMsg, formHasError} = this.state;
+    const {loading, errMsg, formHasError} = this.state;
 
-    return isLoggedIn ? (<Redirect to="/" />) : (
+    return (
       <div className="login-page">
         <Header />
         <div className="login-page-content">
@@ -70,4 +75,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

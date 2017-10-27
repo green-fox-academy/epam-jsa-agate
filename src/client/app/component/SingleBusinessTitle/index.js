@@ -18,18 +18,18 @@ class SingleBusinessTitle extends React.Component {
           <div className="single-business-name">
             <h1 className="single-business-title-name">{this.props.title}</h1>
           </div>
-          <div title={ratingScorePopUp}>
+          <div className="single-business-rating" title={ratingScorePopUp}>
             <Rate allowHalf character="★" disabled
               value={numberOfStar} />
+            <p>Rating: {this.props.rating}</p>
+            <p>Tel: {this.props.phone}</p>
           </div>
         </div>
-        <div>
-          <div className="single-business-links-container">
-            <a className="single-business-links">Wrtie a Review</a>
-            <a className="single-business-links">Add Photo</a>
-            <a className="single-business-links">Share</a>
-            <a className="single-business-links">Bookmark</a>
-          </div>
+        <div className="single-business-links-container">
+          <a onClick={this.props.goToCommentPage}>Write a Comment</a>
+          <a>Add Photo</a>
+          <a>Share</a>
+          <a>Bookmark</a>
         </div>
       </div>
     );
