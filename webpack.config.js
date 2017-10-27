@@ -10,9 +10,6 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/app/',
   },
-  devServer: {
-    historyApiFallback: true,
-  },
   module: {
     loaders: [{
       test: /\.js$/,
