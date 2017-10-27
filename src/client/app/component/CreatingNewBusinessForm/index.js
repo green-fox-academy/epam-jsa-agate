@@ -120,11 +120,11 @@ class CreatingNewBusinessForm extends React.Component {
             <input name="key-words" id="business-key-words" required
               type="text" placeholder="Coffee Asian ..."/>
             <label htmlFor="image-url">Images url</label>
-            {/* <textarea id="image-url" rows="3" placeholder=
-              "Highly recommend to input 3 images and seperate them into 3 lines."
-            required></textarea> */}
             <Upload {...props}>
-              <Button>Click to Upload</Button>
+              {/* <Button >Click to Upload</Button> */}
+              <button className="create-page-upload-btn">
+                Click to Upload
+              </button>
             </Upload>
             <input className="business-submit"
               type="submit" value="Add business"/>
