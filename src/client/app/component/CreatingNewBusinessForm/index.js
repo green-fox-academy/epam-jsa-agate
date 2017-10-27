@@ -4,14 +4,8 @@ import Spin from 'antd/lib/spin';
 import 'antd/lib/spin/style/index.css';
 import './style.scss';
 
-import Button from 'antd/lib/button';
-import 'antd/lib/button/style/index.css';
-
 import Upload from 'antd/lib/upload';
 import 'antd/lib/upload/style/index.css';
-
-import message from 'antd/lib/message';
-import 'antd/lib/message/style/index.css';
 
 class CreatingNewBusinessForm extends React.Component {
   constructor(props) {
@@ -77,22 +71,10 @@ class CreatingNewBusinessForm extends React.Component {
       });
   }
   render() {
-    const {loading, onSubmit, address} = this.props;
+    const {loading, address} = this.props;
     const props = {
-      action: '//jsonplaceholder.typicode.com/posts/',
-      headers: {authorization: 'authorization-text'},
+      action: '/',
       customRequest: this.handleImageSubmit,
-      onChange(info) {
-        console.log(info.file.status);
-        if (info.file.status !== 'uploading') {
-          console.log(info.file, info.fileList);
-        }
-        if (info.file.status === 'done') {
-          message.success(`${info.file.name} file uploaded successfully`);
-        } else if (info.file.status === 'error') {
-          message.error(`${info.file.name} file upload failed.`);
-        }
-      },
     };
 
     return (
@@ -121,7 +103,6 @@ class CreatingNewBusinessForm extends React.Component {
               type="text" placeholder="Coffee Asian ..."/>
             <label htmlFor="image-url">Images url</label>
             <Upload {...props}>
-              {/* <Button >Click to Upload</Button> */}
               <button className="create-page-upload-btn">
                 Click to Upload
               </button>

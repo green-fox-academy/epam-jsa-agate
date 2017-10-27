@@ -15,8 +15,7 @@ class BusinessCard extends React.Component {
   render() {
     let data = this.props.itemInfo;
     let score = Math.floor(data.rating);
-    let imagesUrl = data.imageUrl || data.images[0];
-    let style = {'background-image': 'url(' + imagesUrl + ')'};
+    let style = {'background-image': 'url(' + data.images[0] + ')'};
 
     data.score = '★'.repeat(score);
 
