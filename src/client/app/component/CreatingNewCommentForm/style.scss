@@ -25,7 +25,7 @@ form.comment-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 50vh;
+  height: 60vh;
 
   .comment-info-name {
     margin: 0;
@@ -74,9 +74,9 @@ form.comment-info {
 
 }
 
-@media (max-width: 380px) {
+@media screen and (max-width: 380px) {
   .creating-new-comment-form {
-    width: 80%;
+    width: 90%;
   }
   .business-info .business-info-name-rating {
     flex-direction: column;
