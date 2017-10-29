@@ -13,7 +13,7 @@ class HomePageHeader extends React.Component {
     super(props);
     this.state = {
       'isLoggedIn': localStorage.getItem('Authorization') !== null,
-      'theme': this.decideTheme(),
+     // 'theme': props.theme,
     };
     this.submitHandler = this.submitHandler.bind(this);
     this.valueChangeHandler = this.valueChangeHandler.bind(this);
@@ -27,19 +27,6 @@ class HomePageHeader extends React.Component {
     this.refs.menuButton.addEventListener('click', function(event) {
       that.props.history.push('/');
     });
-  }
-
-  decideTheme() {
-    let theme = 'red';
-    let storedTheme = localStorage.getItem('theme');
-
-    if (storedTheme && (storedTheme === 'red' || storedTheme === 'dark')) {
-      theme = storedTheme;
-    } else {
-      localStorage.setItem('theme', theme);
-    }
-
-    return theme;
   }
 
   submitHandler(event) {
@@ -93,14 +80,14 @@ class HomePageHeader extends React.Component {
   themeSwitchClicked(checked) {
     const theme = checked ? 'red' : 'dark';
 
-    localStorage.setItem('theme', theme);
-    this.setState({theme: theme});
+    //localStorage.setItem('theme', theme);
+    //this.setState({theme: theme});
     this.props.themeSwitchHandler(theme);
   }
   getHeaderClassList() {
     const themeClassList = 'home-page-header';
 
-    if (this.state.theme === 'dark') {
+    if (this.props.theme === 'dark') {
       return 'home-page-header home-page-header-dark-theme';
     }
     return themeClassList;
@@ -119,7 +106,7 @@ class HomePageHeader extends React.Component {
           <Menu.Item key="3">
             <Switch onChange={this.themeSwitchClicked.bind(this)}
               checkedChildren="red" unCheckedChildren="dark"
-              defaultChecked={true}/>
+              defaultChecked={this.props.theme === 'dark' ? false : true}/>
           </Menu.Item>
           <Menu.Divider />
           <Menu.Item key="1">
