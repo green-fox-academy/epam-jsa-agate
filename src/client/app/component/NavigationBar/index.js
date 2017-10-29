@@ -11,8 +11,15 @@ class NavigationBar extends React.Component {
     }
     return 'home-page-navigation-container navigation-red-theme';
   }
+  getClassList4NavItem() {
+    if (this.props.theme === 'dark') {
+      return 'nav-link-dark-theme';
+    }
+    return 'nav-link-red-theme';
+  }
   render() {
     const classList = this.getClassList4NavBar();
+    const navLinkClassList = this.getClassList4NavItem();
 
     return (
       <div className={classList}>
@@ -20,10 +27,10 @@ class NavigationBar extends React.Component {
           <h1>Browsing Shenzhen</h1>
         </div>
         <nav className="nav-container">
-          <a href="#" className="nav-link-change">Overview</a>
-          <a href="#" className="nav-link-origin">Restaurants</a>
-          <a href="#" className="nav-link-origin">Nightlife</a>
-          <a href="#" className="nav-link-origin">Home Service</a>
+          <a href="#" className={navLinkClassList.concat(' nav-link-clicked')}>Overview</a>
+          <a href="#" className={navLinkClassList}>Restaurants</a>
+          <a href="#" className={navLinkClassList}>Nightlife</a>
+          <a href="#" className={navLinkClassList}>Home Service</a>
         </nav>
       </div>
     );
