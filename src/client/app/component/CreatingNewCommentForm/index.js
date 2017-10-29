@@ -5,7 +5,6 @@ import 'antd/lib/spin/style/index.css';
 import Rate from 'antd/lib/rate';
 import 'antd/lib/rate/style/index.css';
 import './style.scss';
-// import SingleBusinessTitle from '../SingleBusinessTitle';
 
 class CreatingNewCommentForm extends React.Component {
   constructor(props) {
@@ -25,11 +24,6 @@ class CreatingNewCommentForm extends React.Component {
       <div className="creating-new-comment-form">
         <Spin spinning={loading}>
           <h3 className="comment-title">Write a comment</h3>
-          {/* <div className="business-container"> */}
-          {/* <h1 >{this.props.businessDetail.name}</h1> */}
-          {/* <div><h2>General Rating </h2> <Rate allowHalf character="★" disabled
-              value={this.props.businessDetail.rating} /></div> */}
-          {/* </div> */}
           <div className="business-info">
             <div className="business-info-name-rating">
               <h3 className="comment-business-name">{this.props.businessDetail.name}</h3>
@@ -49,7 +43,6 @@ class CreatingNewCommentForm extends React.Component {
               <textarea rows="4" cols="50" name="comment-input"
                 required placeholder="Add you comment" />
             </div>
-
             <input className="comment-submit"
               type="submit" value="Add Comment"/>
           </form>
