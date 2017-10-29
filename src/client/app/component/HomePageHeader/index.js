@@ -4,12 +4,17 @@ import Menu from 'antd/lib/menu';
 import 'antd/lib/menu/style/index.css';
 import Dropdown from 'antd/lib/dropdown';
 import 'antd/lib/dropdown/style/index.css';
+import Switch from 'antd/lib/switch';
+import 'antd/lib/switch/style/index.css';
 import './style.scss';
 
 class HomePageHeader extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'isLoggedIn': localStorage.getItem('Authorization') !== null};
+    this.state = {
+      'isLoggedIn': localStorage.getItem('Authorization') !== null,
+      'theme': this.decideTheme(),
+    };
     this.submitHandler = this.submitHandler.bind(this);
     this.valueChangeHandler = this.valueChangeHandler.bind(this);
     this.onClickHeaderLogBtn = this.onClickHeaderLogBtn.bind(this);
@@ -22,6 +27,19 @@ class HomePageHeader extends React.Component {
     this.refs.menuButton.addEventListener('click', function(event) {
       that.props.history.push('/');
     });
+  }
+
+  decideTheme() {
+    let theme = 'red';
+    let storedTheme = localStorage.getItem('theme');
+
+    if (storedTheme && (storedTheme === 'red' || storedTheme === 'dark')) {
+      theme = storedTheme;
+    } else {
+      localStorage.setItem('theme', theme);
+    }
+
+    return theme;
   }
 
   submitHandler(event) {
@@ -72,6 +90,21 @@ class HomePageHeader extends React.Component {
     }
     return btnText;
   }
+  themeSwitchClicked(checked) {
+    const theme = checked ? 'red' : 'dark';
+
+    localStorage.setItem('theme', theme);
+    this.setState({theme: theme});
+    this.props.themeSwitchHandler(theme);
+  }
+  getHeaderClassList() {
+    const themeClassList = 'home-page-header';
+
+    if (this.state.theme === 'dark') {
+      return 'home-page-header home-page-header-dark-theme';
+    }
+    return themeClassList;
+  }
   getLogBtnType() {
     let button = <button onClick={this.onClickHeaderLogBtn}>Log In</button>;
 
@@ -82,6 +115,11 @@ class HomePageHeader extends React.Component {
             <button className="home-page-header-create-btn">
               Create Business
             </button>
+          </Menu.Item>
+          <Menu.Item key="3">
+            <Switch onChange={this.themeSwitchClicked.bind(this)}
+              checkedChildren="red" unCheckedChildren="dark"
+              defaultChecked={true}/>
           </Menu.Item>
           <Menu.Divider />
           <Menu.Item key="1">
@@ -104,9 +142,10 @@ class HomePageHeader extends React.Component {
   }
   render() {
     const button = this.getLogBtnType();
+    const headerClassList = this.getHeaderClassList();
 
     return (
-      <div className="home-page-header">
+      <div className={headerClassList}>
         <div className="home-page-header-left">
           <div className="menu" ref="menuButton"></div>
           {this.props.headerType === 'create' ?

@@ -2,6 +2,9 @@ import React from 'react';
 import './style.scss';
 
 class NavigationBar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="home-page-navigation-container">

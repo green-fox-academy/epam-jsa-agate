@@ -10,8 +10,35 @@ import './style.scss';
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {businesses: [], constBusinesses: []};
+    this.state = {
+      businesses: [],
+      constBusinesses: [],
+      theme: 'red',
+    };
   }
+  themeSwitchHandler(color) {
+    this.setState({'theme': color});
+  }
+  getClassList() {
+    const themeClassList = 'home-page-main';
+
+    if (this.state.theme === 'dark') {
+      return 'home-page-main home-page-dark-theme';
+    }
+    return themeClassList;
+  }
+  // componentWillUpdate(nextProps, nextStates) {
+  //   if (nextStates.theme !== this.state.theme) {
+  //     const homePageContainer =
+  //       document.getElementsByClassName('home-page-main')[0];
+
+  //     if (nextStates.theme === 'dark') {
+  //       homePageContainer.classList.add('home-page-dark-theme');
+  //     } else {
+  //       homePageContainer.classList.remove('home-page-dark-theme');
+  //     }
+  //   }
+  // }
   filterBusinesses(inputStr) {
     const filteredBusinesses =
       () => this.state.constBusinesses.filter((el) =>
@@ -53,10 +80,13 @@ class HomePage extends React.Component {
     });
   }
   render() {
+    const classList = this.getClassList();
+
     return (
       <div className="home-page">
-        <div className="home-page-main">
-          <HomePageHeader search={this.filterBusinesses.bind(this)}/>
+        <div className={classList}>
+          <HomePageHeader search={this.filterBusinesses.bind(this)}
+            themeSwitchHandler={this.themeSwitchHandler.bind(this)}/>
           <HomePageContainer businesses={this.state.businesses}/>
         </div>
         <HomePageMap businesses={this.state.businesses}/>
