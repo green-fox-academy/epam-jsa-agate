@@ -1,3 +1,6 @@
+main.content-container {
+  height: calc(100vh - 3.4em);
+}
 .creating-new-comment-form {
   min-width: 30%;
   margin: 0 auto;
@@ -24,7 +27,7 @@
 form.comment-info {
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 20em;
 
   .comment-info-name {
     margin: 0;
