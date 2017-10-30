@@ -5,3 +5,37 @@ body {
 * {
   font-family: 'Work Sans', sans-serif;
 }
+
+.root-dark {
+  .home-page-header {
+    background: linear-gradient(0deg, #4b4b4b 30%, #000);
+  }
+  .home-page-main {
+    background-color: #4b4b4b;
+    color: #fff;
+    .home-page-navigation-container {
+      background: #4b4b4b;
+      a:hover {
+        color:#fff;
+      }
+      .nav-link-clicked {
+        color: #fff;
+      }
+    }
+    .single-business {
+      background: #282828;
+      border: 1px solid #000;
+    }
+    .single-business:hover {
+      background: #000;
+    }
+  }
+
+  .single-business-page {
+    background: #4b4b4b;
+    color: #fff;
+    .comment-list-container {
+      background: transparent;
+    }
+  }
+}
