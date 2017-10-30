@@ -16,7 +16,7 @@ class NavigationBar extends React.Component {
 
         removeClassNameFromListPromise.then(
           (success) => {
-            element.classList.add('nav-link-change');
+            element.classList.add('nav-link-clicked');
             if (category !== 'OVERVIEW') {
               that.props.navigation(category, 'category')();
             } else {
@@ -32,7 +32,7 @@ class NavigationBar extends React.Component {
 
     return function() {
       map.call(arrList,
-        (element) => element.classList.remove('nav-link-change'));
+        (element) => element.classList.remove('nav-link-clicked'));
     };
   }
   componentDidMount() {

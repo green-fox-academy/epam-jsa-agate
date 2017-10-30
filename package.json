@@ -17,11 +17,9 @@
     "build:dev": "webpack -d --colors --config webpack.dev.js",
     "start:backend": "node -r dotenv/config ./src/server/index.js",
     "start": "npm-run-all --sequential build start:backend",
-    "start:watch": "npm-run-all --sequential dev:backend dev:frontendnewport",
     "start:dev": "npm-run-all --sequential  start:backend build:dev",
     "heroku-prebuild": "npm install --only=dev",
     "dev:frontend": "webpack-dev-server --colors --config webpack.dev.js --content-base dist/ --inline --hot --port 3000",
-    "dev:frontendnewport": "webpack-dev-server --colors --config webpack.dev.js --content-base dist/ --inline --hot --port 6000",
     "dev:backend": "nodemon -r dotenv/config ./src/server/index.js"
   },
   "repository": {
