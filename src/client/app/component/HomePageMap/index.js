@@ -143,7 +143,7 @@ class HomePageMap extends React.Component {
     return marker;
   }
   makeMarkers(businesses) {
-    if (businesses && businesses.length > 0 && this.state.map) {
+    if (businesses && this.state.map) {
       this.clearMarkers();
       this.setCenter({
         lat: businesses[0].latitude,
