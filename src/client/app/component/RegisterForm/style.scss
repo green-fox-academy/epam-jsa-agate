@@ -3,3 +3,9 @@
 .register-box {
   @include login-signup-form-box;
 }
+.register-box-dark-theme {
+  @include login-signup-form-box-dark-theme;
+}
+.register-box-red-theme {
+  @include login-signup-form-box-red-theme;
+}

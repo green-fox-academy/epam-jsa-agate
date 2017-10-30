@@ -7,3 +7,11 @@
 .error-form-box {
   @include error-form-box ;
 }
+
+.login-form-red-theme {
+  @include login-signup-form-box-red-theme;
+}
+
+.login-form-dark-theme {
+  @include login-signup-form-box-dark-theme;
+}

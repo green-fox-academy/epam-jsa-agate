@@ -9,7 +9,8 @@ class SingleBusinessTitle extends React.Component {
   }
 
   render() {
-    let numberOfStar = this.props.rating || 0;
+    let numberOfStar = this.props.rating ?
+      parseFloat(this.props.rating.toFixed(1)) : 0;
     let ratingScorePopUp = numberOfStar + ' rating';
 
     return (

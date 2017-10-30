@@ -12,15 +12,22 @@ class BusinessCard extends React.Component {
       this.props.history.push('/business/' + id);
     }.bind(this));
   }
+  getSingleBusinessStyle() {
+    if (this.props.theme === 'dark') {
+      return 'single-business single-business-dark-theme';
+    }
+    return 'single-business single-business-red-theme';
+  }
   render() {
     let data = this.props.itemInfo;
     let score = Math.floor(data.rating);
-    let style = {'background-image': 'url(' + data.images[0] + ')'};
+    let style = {'backgroundImage': 'url(' + data.images[0] + ')'};
+    const singleBusinessStyle = this.getSingleBusinessStyle();
 
     data.score = '★'.repeat(score);
 
     return (
-      <div className="single-business" ref="businessCard">
+      <div className={singleBusinessStyle} ref="businessCard">
         <div className="image-container" ref="imageContainer"
           style={style} >
           <span className="business-score">

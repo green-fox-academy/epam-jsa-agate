@@ -4,6 +4,7 @@ import CreatingNewBusinessForm from '../CreatingNewBusinessForm';
 import HomePageMap from '../HomePageMap';
 import Header from '../HomePageHeader';
 import notification from 'antd/lib/notification';
+import utilities from '../../utilities/common';
 
 import 'antd/lib/notification/style/index.css';
 import './style.scss';
@@ -14,6 +15,7 @@ class CreatingNewBusinessPage extends React.Component {
     this.state = {
       'loading': false,
       'successCreate': false,
+      'theme': utilities.decideTheme(),
     };
     this.submitHandler = this.submitHandler.bind(this);
     this.clickMapHandler = this.clickMapHandler.bind(this);
@@ -27,7 +29,6 @@ class CreatingNewBusinessPage extends React.Component {
       while (imagesArr.length < 3) {
         imagesArr.push('/images/no_image_available.png');
       }
-  
       this.submitData({
         name: event.target.elements[0].value,
         description: event.target.elements[1].value,
@@ -83,15 +84,27 @@ class CreatingNewBusinessPage extends React.Component {
       address: address,
     });
   }
+  getClassList() {
+    if (this.state.theme === 'dark') {
+      return 'content-container content-container-dark-theme';
+    }
+    return 'content-container';
+  }
+  themeSwitchHandler(color) {
+    localStorage.setItem('theme', color);
+    this.setState({'theme': color});
+  }
   render() {
     const {loading, address} = this.state;
+    const classList = this.getClassList();
 
     return this.state.successCreate ? (<Redirect to="/" />) : (
       <div className="creating-new-business">
-        <Header headerType="create"/>
-        <main className="content-container">
+        <Header headerType="create" theme={this.state.theme}
+          themeSwitchHandler={this.themeSwitchHandler.bind(this)}/>
+        <main className={classList}>
           <CreatingNewBusinessForm onSubmit={this.submitHandler}
-            loading={loading} address={address}/>
+            loading={loading} address={address} theme={this.state.theme} />
           <div className="creating-new-map">
             <HomePageMap mapType="create"
               clickHandlerForCreate={this.clickMapHandler}/>

@@ -5,7 +5,10 @@
   .register-page-content {
     align-items: center;
     display: flex;
-    height: calc(100vh - 4.8125em);
+    height: calc(100vh - 3.4em);
     justify-content: center;
+  }
+  .register-page-content-dark-theme {
+    background-color: #4b4b4b;
   }
 };

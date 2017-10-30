@@ -3,14 +3,30 @@ import HomePageHeader from '../HomePageHeader';
 import HomePageContainer from '../HomePageContainer';
 import HomePageMap from '../HomePageMap';
 import notification from 'antd/lib/notification';
-
+import utilities from '../../utilities/common';
 import 'antd/lib/notification/style/index.css';
 import './style.scss';
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {businesses: [], constBusinesses: []};
+    this.state = {
+      businesses: [],
+      constBusinesses: [],
+      theme: utilities.decideTheme(),
+    };
+  }
+  themeSwitchHandler(color) {
+    localStorage.setItem('theme', color);
+    this.setState({'theme': color});
+  }
+  getClassList() {
+    const themeClassList = 'home-page-main';
+
+    if (this.state.theme === 'dark') {
+      return 'home-page-main home-page-dark-theme';
+    }
+    return themeClassList;
   }
   filterBusinesses(inputStr) {
     const filteredBusinesses =
@@ -53,11 +69,16 @@ class HomePage extends React.Component {
     });
   }
   render() {
+    const classList = this.getClassList();
+
     return (
       <div className="home-page">
-        <div className="home-page-main">
-          <HomePageHeader search={this.filterBusinesses.bind(this)}/>
-          <HomePageContainer businesses={this.state.businesses}/>
+        <div className={classList}>
+          <HomePageHeader search={this.filterBusinesses.bind(this)}
+            themeSwitchHandler={this.themeSwitchHandler.bind(this)}
+            theme={this.state.theme}/>
+          <HomePageContainer businesses={this.state.businesses}
+            theme={this.state.theme}/>
         </div>
         <HomePageMap businesses={this.state.businesses}/>
       </div>

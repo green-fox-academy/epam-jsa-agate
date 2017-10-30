@@ -8,7 +8,8 @@ class BusinessOverview extends React.Component {
   }
   render() {
     let allBusiness = this.props.businesses.map(
-      (item, index) => <BusinessCard itemInfo={item} />);
+      (item, index) => <BusinessCard theme={this.props.theme}
+        itemInfo={item} />);
 
     return (
       <div className="business-overview-container scrollbar scrollbar-style">

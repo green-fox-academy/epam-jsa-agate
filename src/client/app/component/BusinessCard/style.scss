@@ -4,9 +4,23 @@ $yellow: #f8e71c;
 $white: #fff;
 $card-width: calc(100% / 3 - 20px);
 
-.single-business {
+.single-business-red-theme {
   background-color: #f2f2f2;
-  border: $border;
+  border-color: #e6e6e6 !important;
+}
+.single-business-red-theme:hover {
+  background: #d8d8d8;
+}
+.single-business-dark-theme {
+  background-color: #282828;
+  border-color:#000 !important;
+}
+.single-business-dark-theme:hover {
+  background: #000;
+}
+
+.single-business {
+  border: 1px solid;
   cursor: pointer;
   display: flex;
   flex: 0 0 30%;
@@ -15,9 +29,6 @@ $card-width: calc(100% / 3 - 20px);
   margin: 10px;
   position: relative;
   width: $card-width;
-}
-.single-business:hover {
-  background: #d8d8d8;
 }
 
 .image-container {

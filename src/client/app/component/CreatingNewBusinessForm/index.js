@@ -70,12 +70,19 @@ class CreatingNewBusinessForm extends React.Component {
         that.setState({imgList: imgList});
       });
   }
+  getClassList4SubmitBtn() {
+    if (this.props.theme === 'dark') {
+      return 'business-submit business-submit-dark-theme';
+    }
+    return 'business-submit business-submit-red-theme';
+  }
   render() {
     const {loading, address} = this.props;
     const props = {
       action: '/',
       customRequest: this.handleImageSubmit,
     };
+    const classList = this.getClassList4SubmitBtn();
 
     return (
       <div className="creating-new-business-form">
@@ -107,7 +114,7 @@ class CreatingNewBusinessForm extends React.Component {
                 Click to Upload
               </div>
             </Upload>
-            <input className="business-submit"
+            <input className={classList}
               type="submit" value="Add business"/>
           </form>
         </Spin>
