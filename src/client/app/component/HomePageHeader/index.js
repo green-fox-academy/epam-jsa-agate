@@ -83,9 +83,9 @@ class HomePageHeader extends React.Component {
     const input = event.target.value;
 
     if (input.includes('#')) {
-      this.props.search(input.substring(1, input.length), 'keyword')();
+      this.props.search(input.substring(1, input.length), 'keyword');
     } else {
-      this.props.search(input, 'name')();
+      this.props.search(input, 'name');
     }
   }
   getUserName() {

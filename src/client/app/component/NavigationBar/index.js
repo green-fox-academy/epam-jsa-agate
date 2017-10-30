@@ -4,41 +4,28 @@ import './style.scss';
 class NavigationBar extends React.Component {
   categoryFilter(arrList) {
     const that = this;
-    const map = Array.prototype.map;
 
-    map.call(arrList,
-      (element) => element.addEventListener('click', function(event) {
-        const category = element.innerText;
+    arrList.map((element) => element.addEventListener('click', function(event) {
+      const category = element.innerText;
 
-        let removeClassNameFromListPromise = new Promise((resolve, reject) => {
-          resolve(that.removeClassNameFromList(arrList)());
-        });
+      const selectedNav = document.
+        getElementsByClassName('nav-link-clicked')[0];
 
-        removeClassNameFromListPromise.then(
-          (success) => {
-            element.classList.add('nav-link-clicked');
-            if (category !== 'OVERVIEW') {
-              that.props.navigation(category, 'category')();
-            } else {
-              that.props.navigation('', 'name')();
-            }
-          }
-        );
-      })
+      selectedNav.classList.remove('nav-link-clicked');
+
+      element.classList.add('nav-link-clicked');
+      if (category !== 'OVERVIEW') {
+        that.props.navigation(category, 'category');
+      } else {
+        that.props.navigation('', 'name');
+      }
+    })
     );
-  }
-  removeClassNameFromList(arrList) {
-    const map = Array.prototype.map;
-
-    return function() {
-      map.call(arrList,
-        (element) => element.classList.remove('nav-link-clicked'));
-    };
   }
   componentDidMount() {
     const that = this;
     const navContainer = document.getElementsByClassName('nav-container')[0];
-    const navLinkOrigin = navContainer.getElementsByTagName('a');
+    const navLinkOrigin = Array.from(navContainer.getElementsByTagName('a'));
 
     that.categoryFilter(navLinkOrigin);
   }

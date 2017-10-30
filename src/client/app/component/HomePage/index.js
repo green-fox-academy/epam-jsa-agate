@@ -17,9 +17,8 @@ class HomePage extends React.Component {
     const filteredBusinesses =
       () => this.state.constBusinesses.filter((el) =>
         this.searchString(el[objKey].toLowerCase(), inputStr.toLowerCase()));
-    return () => {
-      this.setState({businesses: filteredBusinesses()});
-    };
+
+    this.setState({businesses: filteredBusinesses()});
   }
   searchString(business, inputStr) {
     return business.includes(inputStr);
