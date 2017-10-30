@@ -12,14 +12,23 @@ class RegisterForm extends React.Component {
   goToLoginPage() {
     this.props.history.push('/login');
   }
+  getFormClass() {
+    let formClassNames = 'register-box';
+    const themeClass = this.props.theme === 'dark' ?
+      ' register-box-dark-theme' : ' register-box-red-theme';
+
+    formClassNames += themeClass;
+    return formClassNames;
+  }
   render() {
-    const formClassNames = this.props.formHasError ?
-      'register-box error-form-box' : 'login-box';
+    // const formClassNames = this.props.formHasError ?
+    //   'register-box error-form-box' : 'login-box';
     const {loading, onSubmit, errMsg} = this.props;
     const passwordFormat = '.{6,}';
+    const formClassList = this.getFormClass();
 
     return (
-      <div className={formClassNames}>
+      <div className={formClassList}>
         <Spin spinning={loading}>
           <h1>Sign up</h1>
           <form method="post" onSubmit={onSubmit}>

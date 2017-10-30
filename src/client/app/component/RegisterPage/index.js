@@ -2,6 +2,7 @@ import React from 'react';
 import {Redirect} from 'react-router-dom';
 import RegisterForm from '../RegisterForm';
 import Header from '../CommonHeader';
+import utilities from '../../utilities/common';
 import './style.scss';
 
 class RegisterPage extends React.Component {
@@ -11,6 +12,7 @@ class RegisterPage extends React.Component {
       'loading': false,
       'successRegister': localStorage.getItem('Authorization') !== null,
       'formHasError': false,
+      'theme': utilities.decideTheme(),
     };
   }
   submitHandler(event) {
@@ -74,16 +76,23 @@ class RegisterPage extends React.Component {
       localStorage.removeItem('Authorization');
     }
   }
+  getClassList() {
+    if (this.state.theme === 'dark') {
+      return 'register-page-content register-page-content-dark-theme';
+    }
+    return 'register-page-content';
+  }
   render() {
-    const {successRegister, loading, errMsg, formHasError} = this.state;
+    const {successRegister, loading, errMsg, formHasError, theme} = this.state;
+    const classList = this.getClassList();
 
     return successRegister ? (<Redirect to="/" />) : (
       <div className="register-page">
-        <Header />
-        <div className="register-page-content">
+        <Header theme={theme}/>
+        <div className={classList}>
           <RegisterForm onSubmit={this.submitHandler.bind(this)}
             loading={loading} errMsg={errMsg}
-            formHasError={formHasError} />
+            formHasError={formHasError} theme={theme}/>
         </div>
       </div>
     );
