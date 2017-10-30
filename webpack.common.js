@@ -59,7 +59,7 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '/api': 'http://localhost:6000',
+      '/': 'http://localhost:3000',
     },
   },
   plugins: [
