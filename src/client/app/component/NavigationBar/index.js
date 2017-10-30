@@ -25,7 +25,6 @@ class NavigationBar extends React.Component {
           }
         );
       })
-
     );
   }
   removeClassNameFromList(arrList) {
@@ -36,7 +35,6 @@ class NavigationBar extends React.Component {
         (element) => element.classList.remove('nav-link-change'));
     };
   }
-
   componentDidMount() {
     const that = this;
     const navContainer = document.getElementsByClassName('nav-container')[0];

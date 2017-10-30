@@ -16,7 +16,7 @@ const {
 } = require('./http-status-code');
 const {getSignedUrlByAwsSdk} = require('./file-to-s3-upload');
 const app = express();
-const DEFAULT_PORT = 3000;
+const DEFAULT_PORT = 6000;
 const PORT = process.env.PORT || DEFAULT_PORT;
 const secret = 'epam jsa agate';
 const bcrypt = require('bcrypt');
