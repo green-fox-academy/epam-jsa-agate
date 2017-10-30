@@ -9,11 +9,11 @@ class NavigationBar extends React.Component {
       const category = element.innerText;
 
       const selectedNav = document.
-        getElementsByClassName('nav-link-clicked')[0];
+        getElementsByClassName('nav-link-selected')[0];
 
-      selectedNav.classList.remove('nav-link-clicked');
+      selectedNav.classList.remove('nav-link-selected');
 
-      element.classList.add('nav-link-clicked');
+      element.classList.add('nav-link-selected');
       if (category !== 'OVERVIEW') {
         that.props.navigation(category, 'category');
       } else {
@@ -37,7 +37,7 @@ class NavigationBar extends React.Component {
           <h1>Browsing Shenzhen</h1>
         </div>
         <nav className="nav-container">
-          <a href="#" className="nav-link-clicked">Overview</a>
+          <a href="#" className="nav-link-selected">Overview</a>
           <a href="#">Restaurants</a>
           <a href="#">Nightlife</a>
           <a href="#">Home Service</a>
