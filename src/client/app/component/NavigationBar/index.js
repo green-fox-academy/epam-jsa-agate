@@ -31,7 +31,6 @@ class NavigationBar extends React.Component {
 
     that.categoryFilter(navLinkOrigin);
   }
-
   render() {
     return (
       <div className="home-page-navigation-container">
