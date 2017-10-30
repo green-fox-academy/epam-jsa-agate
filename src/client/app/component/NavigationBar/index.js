@@ -27,7 +27,9 @@ class NavigationBar extends React.Component {
           <h1>Browsing Shenzhen</h1>
         </div>
         <nav className="nav-container">
-          <a href="#" className={navLinkClassList.concat(' nav-link-clicked')}>Overview</a>
+          <a href="#" className={navLinkClassList.concat(' nav-link-clicked')}>
+            Overview
+          </a>
           <a href="#" className={navLinkClassList}>Restaurants</a>
           <a href="#" className={navLinkClassList}>Nightlife</a>
           <a href="#" className={navLinkClassList}>Home Service</a>

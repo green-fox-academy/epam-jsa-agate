@@ -3,7 +3,7 @@ import HomePageHeader from '../HomePageHeader';
 import HomePageContainer from '../HomePageContainer';
 import HomePageMap from '../HomePageMap';
 import notification from 'antd/lib/notification';
-
+import utilities from '../../utilities/common';
 import 'antd/lib/notification/style/index.css';
 import './style.scss';
 
@@ -13,24 +13,12 @@ class HomePage extends React.Component {
     this.state = {
       businesses: [],
       constBusinesses: [],
-      theme: this.decideTheme(),
+      theme: utilities.decideTheme(),
     };
   }
   themeSwitchHandler(color) {
     localStorage.setItem('theme', color);
     this.setState({'theme': color});
-  }
-  decideTheme() {
-    let theme = 'red';
-    let storedTheme = localStorage.getItem('theme');
-
-    if (storedTheme && (storedTheme === 'red' || storedTheme === 'dark')) {
-      theme = storedTheme;
-    } else {
-      localStorage.setItem('theme', theme);
-    }
-
-    return theme;
   }
   getClassList() {
     const themeClassList = 'home-page-main';

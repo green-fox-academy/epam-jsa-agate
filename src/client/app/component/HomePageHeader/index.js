@@ -19,6 +19,7 @@ class HomePageHeader extends React.Component {
     this.valueChangeHandler = this.valueChangeHandler.bind(this);
     this.onClickHeaderLogBtn = this.onClickHeaderLogBtn.bind(this);
     this.handleMenuBtnClick = this.handleMenuBtnClick.bind(this);
+    this.themeSwitchClicked = this.themeSwitchClicked.bind(this);
   }
 
   componentDidMount() {
@@ -80,8 +81,6 @@ class HomePageHeader extends React.Component {
   themeSwitchClicked(checked) {
     const theme = checked ? 'red' : 'dark';
 
-    //localStorage.setItem('theme', theme);
-    //this.setState({theme: theme});
     this.props.themeSwitchHandler(theme);
   }
   getHeaderClassList() {
@@ -104,8 +103,8 @@ class HomePageHeader extends React.Component {
             </button>
           </Menu.Item>
           <Menu.Item key="3">
-            <Switch onChange={this.themeSwitchClicked.bind(this)}
-              checkedChildren="red" unCheckedChildren="dark"
+            <Switch onChange={this.themeSwitchClicked}
+              checkedChildren="red theme" unCheckedChildren="dark theme"
               defaultChecked={this.props.theme === 'dark' ? false : true}/>
           </Menu.Item>
           <Menu.Divider />
