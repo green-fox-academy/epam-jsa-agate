@@ -7,6 +7,11 @@ body {
 }
 
 .root-dark {
+  .infoWindow {
+    h3 {
+      color: #000;
+    }
+  }
   .home-page-header {
     background: linear-gradient(0deg, #4b4b4b 30%, #000);
   }
