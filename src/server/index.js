@@ -16,7 +16,7 @@ const {
 } = require('./http-status-code');
 const {getSignedUrlByAwsSdk} = require('./file-to-s3-upload');
 const app = express();
-const DEFAULT_PORT = 6000;
+const DEFAULT_PORT = 3000;
 const PORT = process.env.PORT || DEFAULT_PORT;
 const secret = 'epam jsa agate';
 const bcrypt = require('bcrypt');
@@ -158,7 +158,7 @@ function responseCreateBusinessSuccess(res) {
 function validateRequestBody(req) {
   return (!req.body.name || !req.body.description
     || !req.body.address || !req.body.phone
-    || !req.body.keyword || !req.body.longitude 
+    || !req.body.keyword || !req.body.longitude
     || !req.body.latitude || !req.body.images);
 }
 

@@ -34,7 +34,8 @@ class CreatingNewCommentForm extends React.Component {
             <div className="rating-container">
               <Rate allowHalf onChange={changeRating}
                 character="★" value={rating} />
-              <span className="ant-rate-text">(Please give rates for this business)</span>
+              <span className="ant-rate-text">
+                (Please give rates for this business)</span>
             </div>
             <textarea rows="4" cols="50" name="comment-input"
               required placeholder="Add you comment" />
