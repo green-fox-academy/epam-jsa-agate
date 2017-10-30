@@ -49,6 +49,9 @@ form.comment-info {
       align-items: baseline;
       .ant-rate {
         font-size: 2em;
+        .ant-rate-star {
+          -webkit-tap-highlight-color: transparent;
+        }
       }
     }
     
