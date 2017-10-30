@@ -13,7 +13,6 @@ class HomePageHeader extends React.Component {
     super(props);
     this.state = {
       'isLoggedIn': localStorage.getItem('Authorization') !== null,
-     // 'theme': props.theme,
     };
     this.submitHandler = this.submitHandler.bind(this);
     this.valueChangeHandler = this.valueChangeHandler.bind(this);
