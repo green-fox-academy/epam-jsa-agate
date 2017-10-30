@@ -57,6 +57,11 @@ module.exports = {
     },
     ],
   },
+  devServer: {
+    proxy: {
+      '/api': 'http://localhost:6000',
+    },
+  },
   plugins: [
     new CleanWebpackPlugin([path.resolve(__dirname, './dist/app')]),
     new ExtractTextPlugin('style.css'),
