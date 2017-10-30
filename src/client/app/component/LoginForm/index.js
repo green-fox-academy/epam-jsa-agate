@@ -12,13 +12,21 @@ class LoginForm extends React.Component {
   goToRegisterPage() {
     this.props.history.push('/register');
   }
+  getFormClass() {
+    let formClassNames = 'login-box';
+    const errorClass = this.props.formHasError ? ' error-form-box' : '';
+    const themeClass = this.props.theme === 'dark' ?
+      ' login-form-dark-theme' : ' login-form-red-theme';
+
+    formClassNames += (errorClass + themeClass);
+    return formClassNames;
+  }
   render() {
-    const formClassNames = this.props.formHasError ?
-      'login-box error-form-box' : 'login-box';
     const {loading, onSubmit, errMsg} = this.props;
+    const formClassList = this.getFormClass();
 
     return (
-      <div className={formClassNames}>
+      <div className={formClassList}>
         <Spin spinning={loading}>
           <h1>Log in</h1>
           <form method="post" onSubmit={onSubmit}>

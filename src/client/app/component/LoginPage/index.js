@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import LoginForm from '../LoginForm';
 import Header from '../CommonHeader';
+import utilities from '../../utilities/common';
 import './style.scss';
 
 class LoginPage extends React.Component {
@@ -11,6 +12,7 @@ class LoginPage extends React.Component {
       'loading': false,
       'isLoggedIn': localStorage.getItem('Authorization') !== null,
       'formHasError': false,
+      'theme': utilities.decideTheme(),
     };
   }
   componentWillUpdate(nextProps, nextStates) {
@@ -59,16 +61,23 @@ class LoginPage extends React.Component {
       that.errorHandler(err);
     });
   }
+  getClassList() {
+    if (this.state.theme === 'dark') {
+      return 'login-page-content login-page-content-dark-theme';
+    }
+    return 'login-page-content';
+  }
   render() {
-    const {loading, errMsg, formHasError} = this.state;
+    const {loading, errMsg, formHasError, theme} = this.state;
+    const classList = this.getClassList();
 
     return (
       <div className="login-page">
-        <Header />
-        <div className="login-page-content">
+        <Header theme={theme}/>
+        <div className={classList}>
           <LoginForm onSubmit={this.submitHandler.bind(this)}
             loading={loading} errMsg={errMsg}
-            formHasError={formHasError}/>
+            formHasError={formHasError} theme={theme}/>
         </div>
       </div>
     );

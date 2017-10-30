@@ -114,7 +114,7 @@ class CreatingNewBusinessForm extends React.Component {
                 Click to Upload
               </div>
             </Upload>
-            <input className="business-submit"
+            <input className={classList}
               type="submit" value="Add business"/>
           </form>
         </Spin>

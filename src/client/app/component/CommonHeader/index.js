@@ -10,10 +10,18 @@ class CommonHeader extends React.Component {
       that.props.history.push('/');
     });
   }
+  getHeaderClassList() {
+    if (this.props.theme === 'dark') {
+      return 'common-header common-header-dark-theme';
+    }
+    return 'common-header common-header-red-theme';
+  }
 
   render() {
+    const headerClassList = this.getHeaderClassList();
+
     return (
-      <div className="common-header">
+      <div className={headerClassList}>
         <div className="menu" ref="menuButton"></div>
         <div className="avatar"></div>
       </div>
