@@ -23,7 +23,7 @@ class CreatingNewCommentForm extends React.Component {
     return (
       <div className="creating-new-comment-form">
         <Spin spinning={loading}>
-          <h3 className="comment-title">Write a comment</h3>
+          <h2 className="comment-title">Write a comment</h2>
           <div className="business-info">
             <div className="business-info-name-rating">
               <h3 className="comment-business-name">{this.props.businessDetail.name}</h3>
@@ -33,12 +33,10 @@ class CreatingNewCommentForm extends React.Component {
           <form className="comment-info"
             method="POST" name="comment-info-form"
             onSubmit={onSubmit} onKeyPress = {this.handleKeyPress}>
-            <p className="comment-info-name">Your comment</p>
             <div className="comment-container">
               <div className="rating-container">
                 <Rate allowHalf onChange={changeRating}
                   character="★" value={rating} />
-                <span className="ant-rate-text">Select your rating</span>
               </div>
               <textarea rows="4" cols="50" name="comment-input"
                 required placeholder="Add you comment" />

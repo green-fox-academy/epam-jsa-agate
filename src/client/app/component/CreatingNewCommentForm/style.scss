@@ -24,7 +24,6 @@
 form.comment-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   height: 60vh;
 
   .comment-info-name {
@@ -35,7 +34,7 @@ form.comment-info {
     border: 1px solid #000;
     border-radius: 0.5em;
     padding: 0 1em;
-    height: 60%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -45,12 +44,16 @@ form.comment-info {
       height: 20%;
       display: flex;
       align-items: baseline;
+      .ant-rate {
+        font-size: 2em;
+      }
     }
     
     textarea {
       border: none;
       height: 70%;
       outline:none;
+      font-size: 1em;
     }
   }
 
@@ -75,10 +78,33 @@ form.comment-info {
 }
 
 @media screen and (max-width: 380px) {
-  .creating-new-comment-form {
-    width: 90%;
+  main.content-container {
+    margin: 0 1em;
+    .creating-new-comment-form {
+      width: 90%;
+    }
+    .business-info .business-info-name-rating {
+      flex-direction: row;
+      align-items: baseline;
+    } 
+    form.comment-info {
+      .comment-container {
+        height: 75%;
+        justify-content: initial;
+        .rating-container {
+          height: 15%;
+          align-items: center;
+          .ant-rate {
+            font-size: 2.0em;
+          }
+        }
+        textarea {
+          height: 70%;
+          margin-top: 0.5em;
+        } 
+      }
+    }
+   
   }
-  .business-info .business-info-name-rating {
-    flex-direction: column;
-  }  
+
 }
