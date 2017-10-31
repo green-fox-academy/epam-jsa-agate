@@ -97,7 +97,7 @@ class CreatingNewBusinessPage extends React.Component {
           </div>
           <div className="creating-new-map">
             <h1 className="mobile-infor">Add Your Business</h1>
-            <p className="mobile-infor">please click on the map and select your business address</p>
+            <p className="mobile-infor">Please click on the map and select your business address.</p>
             <HomePageMap mapType="create"
               clickHandlerForCreate={this.clickMapHandler}/>
           </div>
