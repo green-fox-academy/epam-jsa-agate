@@ -29,6 +29,16 @@
       }
       .single-business-links-container {
         width: auto;
+        display: block;
+        a {
+          display: block;
+          text-align: center;
+        }
+        a:not(:first-child) {
+          width: calc(100%/3);
+          box-sizing: border-box;
+          display: inline-block;
+        }
       }
     }
     .display-business {
@@ -39,6 +49,9 @@
         height: 49%;
         width: 90%;
         margin: 1em auto;
+        p {
+          margin: 5px 0;
+        }
       }
       .display-image {
         height: 35%;
