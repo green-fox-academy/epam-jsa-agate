@@ -1,9 +1,4 @@
 $map-width: 35%;
-$container-width: calc(13.25em * 3 + 9% + 4em);
-
-body {
-  margin: 0;
-}
 
 .home-page {
   background-color: #fff;
@@ -12,12 +7,12 @@ body {
 
   .home-page-main {
     height: 100vh;
-    width: $container-width;
+    flex: 3;
   }
 
   .google-map-component {
     height: 100vh;
-    width: calc(100% - #{$container-width});
+    flex: 2;
   }
 }
 
