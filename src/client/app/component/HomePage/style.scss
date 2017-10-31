@@ -20,28 +20,23 @@ $map-width: 35%;
 .ant-notification-notice-close-x::after {
   content: 'Close';
 }
-@media screen and (max-width: 375px){
 
- .home-page {
+@media screen and (max-width: 768px){
 
-   width: 100vw;
-   .home-page-main {
-     width: 100vw;
-     flex: initial;
-   }
+  .home-page {
+    flex-wrap: wrap;
+    .home-page-main {
+      width: 768px;
+      flex-basis: 768px;
 
-   .search {
-     width: 166px;
-   }
-   .nav-container {
-      padding: 0 1em;
-
-      a {
-        padding: 17.952px 2px;
-      }
     }
 
- }
+    .google-map-component {
+      flex-basis: 768px;
+      margin: 0 3em;
+      height: 80vh;
+    }
+  }
 
 }
 
@@ -69,3 +64,29 @@ $map-width: 35%;
   }
 
 }
+
+@media screen and (max-width: 375px){
+
+ .home-page {
+
+   width: 100vw;
+   .home-page-main {
+     width: 100vw;
+     flex: initial;
+   }
+
+   .search {
+     width: 166px;
+   }
+   .nav-container {
+      padding: 0 1em;
+
+      a {
+        padding: 17.952px 2px;
+      }
+    }
+
+ }
+
+}
+
