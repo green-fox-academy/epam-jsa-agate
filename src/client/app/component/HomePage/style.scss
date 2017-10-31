@@ -1,9 +1,5 @@
 $map-width: 35%;
-$container-width: calc(13.25em * 3 + 9% + 4em);
 
-body {
-  margin: 0;
-}
 
 .home-page {
   background-color: #fff;
@@ -12,15 +8,64 @@ body {
 
   .home-page-main {
     height: 100vh;
-    width: $container-width;
+    flex: 3;
   }
 
   .google-map-component {
     height: 100vh;
-    width: calc(100% - #{$container-width});
+    flex: 2;
   }
 }
 
 .ant-notification-notice-close-x::after {
   content: 'Close';
+}
+@media screen and (max-width: 375px){
+
+ .home-page {
+
+   width: 100vw;
+   .home-page-main {
+     width: 100vw;
+     flex: initial;
+   }
+
+   .search {
+     width: 166px;
+   }
+   .nav-container {
+      padding: 0 1em;
+
+      a {
+        padding: 17.952px 2px;
+      }
+    }
+
+ }
+
+}
+
+@media screen and (max-width: 425px) {
+  .home-page {
+
+    width: 100vw;
+    .home-page-main {
+      width: 100vw;
+      flex: initial;
+    }
+
+    .search {
+      width: 200px;
+    }
+
+    .nav-container {
+      padding: 0 1em;
+
+      a {
+        padding: 17.952px 2px;
+      }
+    }
+
+  }
+
 }

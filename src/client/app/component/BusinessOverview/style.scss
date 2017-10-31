@@ -6,11 +6,9 @@ $yellow: #f8e71c;
 $white: #fff;
 
 .business-overview-title {
-  background-color: transparent;
   font-size: 1.2em;
   margin: 0 0 0 1.5em;
   padding: 1em 0 0;
-  width: 47.4375em;
 }
 
 .businesses-container {
@@ -42,5 +40,19 @@ $white: #fff;
 .scrollbar-style::-webkit-scrollbar-track {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+@media screen and (max-width: 425px){
+
+  .business-overview-container {
+    padding: 0;
+
+  }
+}
+@media screen and (max-width: 320px){
+
+  .business-overview-container {
+   height: 100%;
+
+  }
 }
 
