@@ -10,16 +10,19 @@ import './style.scss';
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {businesses: [], constBusinesses: []};
+    this.state = {businesses: [], constBusinesses: [], displayBusinesses: []};
+    this.filterBusinesses = this.filterBusinesses.bind(this);
+    this.setDisplayBusinesses = this.setDisplayBusinesses.bind(this);
   }
-  filterBusinesses(inputStr) {
+  filterBusinesses(inputStr, objKey, collection) {
     const filteredBusinesses =
-      () => this.state.constBusinesses.filter((el) =>
-        this.searchString(el.name.toLowerCase(), inputStr.toLowerCase()));
+      () => this.state[collection].filter((el) =>
+        this.searchString(el[objKey].toLowerCase(), inputStr.toLowerCase()));
 
-    return () => {
-      this.setState({businesses: filteredBusinesses()});
-    };
+    this.setState({businesses: filteredBusinesses()});
+  }
+  setDisplayBusinesses() {
+    this.setState({displayBusinesses: this.state.businesses});
   }
   searchString(business, inputStr) {
     return business.includes(inputStr);
@@ -56,8 +59,10 @@ class HomePage extends React.Component {
     return (
       <div className="home-page">
         <div className="home-page-main">
-          <HomePageHeader search={this.filterBusinesses.bind(this)}/>
-          <HomePageContainer businesses={this.state.businesses}/>
+          <HomePageHeader search={this.filterBusinesses}/>
+          <HomePageContainer businesses={this.state.businesses}
+            navigation={this.filterBusinesses}
+            setDisplayBiz={this.setDisplayBusinesses}/>
         </div>
         <HomePageMap businesses={this.state.businesses}/>
       </div>
