@@ -6,6 +6,10 @@ html {
   font-family: 'Work Sans', sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .root-dark {
   .infoWindow {
     h3 {
