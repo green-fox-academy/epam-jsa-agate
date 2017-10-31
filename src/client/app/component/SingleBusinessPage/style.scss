@@ -12,3 +12,45 @@
   padding: 2em 8em;
 }
 
+@media screen and (max-width: 420px) {
+  .single-business-page {
+    .home-page-header {
+      .search {
+        margin: 0;
+        width: auto;
+      }
+    }
+    .display-business-title {
+      display: block;
+      .single-business-rating {
+        p {
+          margin-left: 0;
+        }
+      }
+      .single-business-links-container {
+        width: auto;
+      }
+    }
+    .display-business {
+      display: block;
+      height: 32em;
+      padding: 0 1em;
+      .detail-page-map-container {
+        height: 49%;
+        width: 90%;
+        margin: 1em auto;
+      }
+      .display-image {
+        height: 35%;
+        width: 95%;
+        margin: 2em auto;
+        
+      }
+    }
+    .comment-list-container {
+      .comment-list {
+        padding: 0;
+      }
+    }
+  }
+}
