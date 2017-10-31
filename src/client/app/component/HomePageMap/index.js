@@ -111,15 +111,14 @@ class HomePageMap extends React.Component {
     let that = this;
 
     marker.addListener('click', function(evt) {
-      console.log(value.images[0]);
-      let contentStr = '<div class="infoWindow">' + 
-        '<div class="infoWindow-left">' +
+      let contentStr = '<div class="info-window">' + 
+        '<div class="info-window-left">' +
         '<h3>' + value.name + '</h3>' +
         '<p>Rating: ' + value.rating.toFixed(1) + '</p>' +
         '<p>Address: ' + value.address + '</p>' +
         '<p>Tel: ' + value.phone + '</p>' +
         '</div>' +
-        '<div class="infoWindow-right">' +
+        '<div class="info-window-right">' +
         '<img src="' + value.images[0] + '" />' +
         '</div>' +
         '</div>';
