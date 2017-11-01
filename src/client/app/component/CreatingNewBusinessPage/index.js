@@ -19,7 +19,7 @@ class CreatingNewBusinessPage extends React.Component {
     this.clickMapHandler = this.clickMapHandler.bind(this);
   }
   submitHandler(event, imagesArr, categoryArr) {
-    console.log("event: " , categoryArr);
+    console.log('event: ', event.target.elements[1].value);
     event.preventDefault();
     if (imagesArr.length === 0) {
       this.errorHandler(new Error('Please at least upload one image.'));
@@ -28,10 +28,10 @@ class CreatingNewBusinessPage extends React.Component {
       while (imagesArr.length < 3) {
         imagesArr.push('/images/no_image_available.png');
       }
-  
+
       this.submitData({
         name: event.target.elements[0].value,
-        category: categoryArr[0],
+        category: event.target.elements[1].value,
         description: event.target.elements[2].value,
         address: event.target.elements[3].value,
         phone: event.target.elements[4].value,
@@ -53,7 +53,6 @@ class CreatingNewBusinessPage extends React.Component {
     this.setState({'successCreate': true});
   }
   submitData(data) {
-    
     let that = this;
     let myHeaders = new Headers();
     let myInt = {

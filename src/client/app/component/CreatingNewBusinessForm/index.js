@@ -109,8 +109,12 @@ class CreatingNewBusinessForm extends React.Component {
             <label htmlFor="business-name">Business Name</label>
             <input name="name" id="business-name"
               type="text" placeholder="Mel's Diner" required/>
-            <label>Business Category</label>
-            <Cascader options={options} onChange={this.onChange} placeholder="Please select" />
+            <label htmlFor="business-categories">Business Category</label>
+            <select >
+              <option value="restaurants">Restaurants</option>
+              <option value="nightlife">Night Life</option>
+              <option value="home service">Home Service</option>
+              <option value="">Others</option></select>
             <label htmlFor="business-description">Business Description</label>
             <input name="description" id="business-description" required
               type="text" placeholder="Organic Coffee, Natural Food"/>
