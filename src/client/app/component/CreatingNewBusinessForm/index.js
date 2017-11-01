@@ -83,22 +83,6 @@ class CreatingNewBusinessForm extends React.Component {
       customRequest: this.handleImageSubmit,
     };
 
-    const options = [
-      {
-        value: 'restaurants',
-        label: 'Restaurants',
-      }, {
-        value: 'nightlife',
-        label: 'Night-Life',
-      }, {
-        value: 'home service',
-        label: 'Home-Service',
-      }, {
-        value: '',
-        label: 'Others',
-      },
-    ];
-
     return (
       <div className="creating-new-business-form">
         <Spin spinning={loading}>
@@ -110,11 +94,12 @@ class CreatingNewBusinessForm extends React.Component {
             <input name="name" id="business-name"
               type="text" placeholder="Mel's Diner" required/>
             <label htmlFor="business-categories">Business Category</label>
-            <select >
+            <select>
               <option value="restaurants">Restaurants</option>
               <option value="nightlife">Night Life</option>
               <option value="home service">Home Service</option>
-              <option value="">Others</option></select>
+              <option value="">Others</option>
+            </select>
             <label htmlFor="business-description">Business Description</label>
             <input name="description" id="business-description" required
               type="text" placeholder="Organic Coffee, Natural Food"/>
@@ -125,7 +110,6 @@ class CreatingNewBusinessForm extends React.Component {
             <label htmlFor="business-phone">Phone</label>
             <input name="phone" id="business-phone" required
               type="text" placeholder="+86 136 8888 8888"/>
-
             <label htmlFor="business-key-words">Key Words</label>
             <input name="key-words" id="business-key-words" required
               type="text" placeholder="Coffee Asian ..."/>
