@@ -12,9 +12,10 @@ import 'antd/lib/cascader/style/index.css';
 class CreatingNewBusinessForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {loading: false, imgList: []};
+    this.state = {loading: false, imgList: [], category: []};
     this.handleImageSubmit = this.handleImageSubmit.bind(this);
     this.onSubmitTrigger = this.onSubmitTrigger.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.address) {
@@ -23,7 +24,7 @@ class CreatingNewBusinessForm extends React.Component {
   }
 
   onSubmitTrigger(event) {
-    this.props.onSubmit(event, this.state.imgList);
+    this.props.onSubmit(event, this.state.imgList, this.state.category);
   }
 
   getSignedRequest(file) {
@@ -54,9 +55,7 @@ class CreatingNewBusinessForm extends React.Component {
   uploadToS3(file) {
     return this.getSignedRequest(file)
       .then((json) => this.uploadFile(file, json.signedRequest, json.url))
-      .then((url) => {
-        return url;
-      }).catch((err) => {
+      .then((url) => url).catch((err) => {
         console.error(err);
         return null;
       });
@@ -74,7 +73,7 @@ class CreatingNewBusinessForm extends React.Component {
   }
 
   onChange(value) {
-    console.log(value);
+    this.setState({category: value});
   }
 
   render() {
@@ -84,20 +83,21 @@ class CreatingNewBusinessForm extends React.Component {
       customRequest: this.handleImageSubmit,
     };
 
-    const options = [{
-      value: 'Restaurants',
-      label: 'Restaurants',
-    }, {
-      value: 'Night Life',
-      label: 'Night-Life',
-    }, {
-      value: 'Home Service',
-      label: 'Home-Service',
-    }, {
-      value: '',
-      label: 'Others',
-    },
-  ];
+    const options = [
+      {
+        value: 'restaurants',
+        label: 'Restaurants',
+      }, {
+        value: 'nightlife',
+        label: 'Night-Life',
+      }, {
+        value: 'home service',
+        label: 'Home-Service',
+      }, {
+        value: '',
+        label: 'Others',
+      },
+    ];
 
     return (
       <div className="creating-new-business-form">
@@ -121,7 +121,7 @@ class CreatingNewBusinessForm extends React.Component {
             <label htmlFor="business-phone">Phone</label>
             <input name="phone" id="business-phone" required
               type="text" placeholder="+86 136 8888 8888"/>
-            
+
             <label htmlFor="business-key-words">Key Words</label>
             <input name="key-words" id="business-key-words" required
               type="text" placeholder="Coffee Asian ..."/>
