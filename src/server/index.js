@@ -77,9 +77,10 @@ app.post('/api/login', (req, res) => {
   });
   if (!res._headerSent) {
     login.createTokenForExistingUser(req.body,
-      (status) => {
+      (status, avatar) => {
         if (status === loginStatusCode.CORRECT) {
-          const token = jwt.sign({username: req.body.username}, secret);
+          const token = jwt.sign(
+            {username: req.body.username, avatar: avatar}, secret);
 
           return res.status(HTTP_200).
             json({token: token});
