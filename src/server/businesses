@@ -118,3 +118,23 @@
     {username: "Elizabeth R.", comment: "Too many people on weekends, usually quite relaxed, not very quiet, but there are a lot of beauty to see.", rating: 4}
   ]
 }
+{
+  "name": "Red Devil Sports Bar",
+  "description": "Seattle-based coffeehouse chain known for its signature roasts, light bites and WiFi availability.",
+  "address" : "China, Guangdong Sheng, Shenzhen Shi, Nanshan Qu, HouHai, Wenxin 5th Rd, , China, 518054",
+  "phone" : "+86 755 2646 6676",
+  "keyword": "Beer",
+  "category": "restaurants",
+  "rating": 4.5,
+  "longitude": 113.9372163,
+  "latitude": 22.5169599,
+  "images" : [
+    "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Starbucks_Coffee_Logo.svg/1024px-Starbucks_Coffee_Logo.svg.png",
+    "https://www.reviewjournal.com/wp-content/uploads/2016/02/f7jhoenh-3500-2333_0.jpg",
+    "https://news.starbucks.com/uploads/images/Beverages/Mocha_Affogato_resized.JPG"
+  ],
+  "comments":[
+    {username: "John", comment: "Nice and clean shop, arrived Saturday around 7pm, not many people.", rating: 5},
+    {username: "Elizabeth R.", comment: "Too many people on weekends, usually quite relaxed, not very quiet, but there are a lot of beauty to see.", rating: 4}
+  ]
+}
