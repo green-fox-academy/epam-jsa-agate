@@ -19,7 +19,6 @@ class CreatingNewBusinessPage extends React.Component {
     this.clickMapHandler = this.clickMapHandler.bind(this);
   }
   submitHandler(event, imagesArr, categoryArr) {
-    console.log('event: ', event.target.elements[1].value);
     event.preventDefault();
     if (imagesArr.length === 0) {
       this.errorHandler(new Error('Please at least upload one image.'));

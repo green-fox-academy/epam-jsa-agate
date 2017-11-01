@@ -73,38 +73,9 @@ $borderStyle: 1px solid #d8d8d8;
   }
 }
 
-.business-info .ant-cascader-picker-label {
-  position: absolute;
-  left: 0;
-  height: 20px;
-  line-height: 20px;
-
-  top: 0;
-  margin-top: 0;
-  white-space: nowrap;
-  text-overflow: initial;
-  overflow: initial;
-  width: 0;
-
-  padding: 0 1px 0 8px;
-
-
-}
-
-.ant-cascader-menus.ant-cascader-menus-placement-bottomLeft{
-  top: 253.203px;
-}
-
-ul.ant-cascader-menu {
-  height: 100%;
-}
-
 .business-info select{
   border-color: #d8d8d8;
   height: 2em;
   margin-bottom: 1em;
   background-color: #fff;
-
-
-
 }
