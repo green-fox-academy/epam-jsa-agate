@@ -21,8 +21,7 @@ $map-width: 35%;
   content: 'Close';
 }
 
-@media screen and (max-width: 768px){
-
+@media screen and (min-width: 769px) and (max-width: 1024px){
   .home-page {
     flex-wrap: wrap;
     .home-page-main {
@@ -40,7 +39,13 @@ $map-width: 35%;
 
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .home-page .home-page-main {
+    flex: initial;
+  }
+}
+
+@media screen and (min-width: 376px) and (max-width: 425px) {
   .home-page {
 
     width: 100vw;
@@ -65,7 +70,7 @@ $map-width: 35%;
 
 }
 
-@media screen and (max-width: 375px){
+@media screen and (min-width: 321px) and (max-width: 375px){
 
  .home-page {
 
