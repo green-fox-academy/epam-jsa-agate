@@ -14,6 +14,7 @@ class NavigationBar extends React.Component {
       selectedNav.classList.remove('nav-link-selected');
 
       element.classList.add('nav-link-selected');
+      console.log('category', category);
       if (category !== 'OVERVIEW') {
         that.props.navigation(category, 'category', 'constBusinesses');
         that.props.setDisplayBiz();
