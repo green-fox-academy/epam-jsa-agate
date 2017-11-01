@@ -6,6 +6,8 @@ import './style.scss';
 
 import Upload from 'antd/lib/upload';
 import 'antd/lib/upload/style/index.css';
+import Cascader from 'antd/lib/cascader';
+import 'antd/lib/cascader/style/index.css';
 
 class CreatingNewBusinessForm extends React.Component {
   constructor(props) {
@@ -70,12 +72,32 @@ class CreatingNewBusinessForm extends React.Component {
         that.setState({imgList: imgList});
       });
   }
+
+  onChange(value) {
+    console.log(value);
+  }
+
   render() {
     const {loading, address} = this.props;
     const props = {
       action: '/',
       customRequest: this.handleImageSubmit,
     };
+
+    const options = [{
+      value: 'Restaurants',
+      label: 'Restaurants',
+    }, {
+      value: 'Night Life',
+      label: 'Night-Life',
+    }, {
+      value: 'Home Service',
+      label: 'Home-Service',
+    }, {
+      value: '',
+      label: 'Others',
+    },
+  ];
 
     return (
       <div className="creating-new-business-form">
@@ -87,6 +109,8 @@ class CreatingNewBusinessForm extends React.Component {
             <label htmlFor="business-name">Business Name</label>
             <input name="name" id="business-name"
               type="text" placeholder="Mel's Diner" required/>
+            <label>Business Category</label>
+            <Cascader options={options} onChange={this.onChange} placeholder="Please select" />
             <label htmlFor="business-description">Business Description</label>
             <input name="description" id="business-description" required
               type="text" placeholder="Organic Coffee, Natural Food"/>
@@ -97,6 +121,7 @@ class CreatingNewBusinessForm extends React.Component {
             <label htmlFor="business-phone">Phone</label>
             <input name="phone" id="business-phone" required
               type="text" placeholder="+86 136 8888 8888"/>
+            
             <label htmlFor="business-key-words">Key Words</label>
             <input name="key-words" id="business-key-words" required
               type="text" placeholder="Coffee Asian ..."/>

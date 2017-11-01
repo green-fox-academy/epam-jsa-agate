@@ -19,6 +19,7 @@ class CreatingNewBusinessPage extends React.Component {
     this.clickMapHandler = this.clickMapHandler.bind(this);
   }
   submitHandler(event, imagesArr) {
+    console.log("event: " + event.target.elements[1]);
     event.preventDefault();
     if (imagesArr.length === 0) {
       this.errorHandler(new Error('Please at least upload one image.'));
@@ -30,10 +31,11 @@ class CreatingNewBusinessPage extends React.Component {
   
       this.submitData({
         name: event.target.elements[0].value,
-        description: event.target.elements[1].value,
-        address: event.target.elements[2].value,
-        phone: event.target.elements[3].value,
-        keyword: event.target.elements[4].value,
+        category: event.target.elements[1].value,
+        description: event.target.elements[2].value,
+        address: event.target.elements[3].value,
+        phone: event.target.elements[4].value,
+        keyword: event.target.elements[5].value,
         longitude: this.state.longitute,
         latitude: this.state.latitude,
         images: imagesArr,
@@ -51,6 +53,7 @@ class CreatingNewBusinessPage extends React.Component {
     this.setState({'successCreate': true});
   }
   submitData(data) {
+    
     let that = this;
     let myHeaders = new Headers();
     let myInt = {
