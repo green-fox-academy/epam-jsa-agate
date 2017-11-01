@@ -81,7 +81,7 @@ $borderStyle: 1px solid #d8d8d8;
 
   top: 0;
   margin-top: 0;
-  white-space: initial;
+  white-space: nowrap;
   text-overflow: initial;
   overflow: initial;
   width: 0;
@@ -90,8 +90,7 @@ $borderStyle: 1px solid #d8d8d8;
 
 }
 
-.business-info .ant-cascader-menu {
+ul.ant-cascader-menu {
   height: 100%;
-
 }
 
