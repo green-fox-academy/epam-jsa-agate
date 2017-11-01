@@ -35,7 +35,6 @@
   }
 
   .home-page-header-right {
-    width: 3em;
     button:hover {
       cursor: pointer;
     }
@@ -51,6 +50,7 @@
     }
     .ant-dropdown-link {
       background: no-repeat right/22% url("./arrow1.png");
+      width: 3em;
     }
   }
 
