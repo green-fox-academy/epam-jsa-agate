@@ -154,7 +154,7 @@ class HomePageHeader extends React.Component {
   }
   getHeaderElement() {
     if (this.props.headerType === 'create') {
-      return (<div className="create-page-header-infor">
+      return (<div className="create-page-header-info">
       for Business Owners</div>);
     } else if (this.props.headerType === 'home') {
       return (<form className="header" onSubmit={this.submitHandler}>
