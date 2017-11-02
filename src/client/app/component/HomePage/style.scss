@@ -30,11 +30,8 @@ $map-width: 35%;
       flex-basis: 768px;
 
     }
-
     .google-map-component {
-      flex-basis: 768px;
-      margin: 0 3em;
-      height: 80vh;
+      display: none;
     }
   }
 
@@ -60,7 +57,9 @@ $map-width: 35%;
         padding: 17.952px 2px;
       }
     }
-
+    .google-map-component {
+      display: none;
+    }
   }
 
 }
@@ -85,7 +84,9 @@ $map-width: 35%;
         padding: 17.952px 2px;
       }
     }
-
+   .google-map-component {
+     display: none;
+   }
  }
 
 }
