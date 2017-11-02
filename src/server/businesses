@@ -15,7 +15,7 @@
   ],
   "comments":[
     {username: "Zhengnan", avatar: "https://s3-ap-northeast-1.amazonaws.com/epam-jsa-agate/2611509593450_.pic_hd.jpg", comment: "I had some scrambled eggs and latte for breakfast, nothing sophisticated but they were good and well presented. The place is very beautiful, nice atmosphere as well.", rating: 5},
-    {username: "Leo", avatar: "https://s3-ap-northeast-1.amazonaws.com/epam-jsa-agate/2651509600226_.pic.jpg", comment: "How is this the top rated restaurant? I realise there are only 1 reviews but WTF? Have you 7 lost your damn minds? This place is not good. It's 'passable' if you are completely desperate. ", rating: 2}
+    {username: "Leo", avatar: "https://s3-ap-northeast-1.amazonaws.com/epam-jsa-agate/2651509600226_.pic.jpg", comment: "How is this the top rated restaurant? I realise there are only 1 reviews but WTF? Have you lost your damn minds? This place is not good. It's 'passable' if you are completely desperate. ", rating: 2}
   ]
 }
 {
